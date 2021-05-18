@@ -1,5 +1,5 @@
 site_name: Linux共同開発サーバー公式ホームページ
 
 nav:
-    - index.md
-    - Join: invite.md
+    - ホーム: index.md
+    - 参加: invite.md

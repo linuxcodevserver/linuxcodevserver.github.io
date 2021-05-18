@@ -29,6 +29,3 @@ jobs:
           
       - name: Deploy HTML files
         run: python3 -m mkdocs gh-deploy
-nav:
-    - ホーム: index.md
-    - 参加: invite.md

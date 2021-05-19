@@ -2,5 +2,4 @@ site_name: Linux共同開発サーバー公式ホームページ
 
 nav:
     - ホーム: index.md
-    - 参加: invite.md
     - プロジェクト一覧: projects.md

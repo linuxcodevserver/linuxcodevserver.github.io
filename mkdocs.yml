@@ -2,6 +2,22 @@ site_name: Linux共同開発サーバー公式ホームページ
 
 theme:
     name: material
+    palette:
+        primary: indigo
+        accent: blue
+        - scheme: default
+            toggle:
+                icon: material/toggle-switch-off-outline
+                name: Switch to dark mode
+        - scheme: slate
+            toggle:
+                icon: material/toggle-switch
+                name: Switch to light mode
+    language: ja
+    features:
+        - navigation.indexes
+        - navigation.tabs
+        - navigation.tabs.sticky
 
 nav:
     - ホーム: index.md

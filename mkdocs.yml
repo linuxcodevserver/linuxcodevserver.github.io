@@ -1,5 +1,8 @@
 site_name: Linux共同開発サーバー公式ホームページ
 
+theme:
+    name: material
+
 nav:
     - ホーム: index.md
     - プロジェクト一覧: projects.md

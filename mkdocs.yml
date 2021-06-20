@@ -24,3 +24,4 @@ theme:
 nav:
     - ホーム: index.md
     - プロジェクト一覧: projects.md
+    - 寄付: donate.md

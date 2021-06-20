@@ -46,7 +46,7 @@ SDGOを始める方法は2つあります。<br>
 そして、<a href="https://alpha.information-portal.net/account.php">アカウント設定画面</a>で、サービス連携の連携コマンドをコピーします。<br>
 そして、Alpha Discordの #botコマンド広場 にて、ペーストして送信します。<br>
 そうすると警告メッセージがでてDMが届きます。そのDMでもう一回ペーストして送信します。<br>
-そして、<a href="https://alpha.information-portal.net/coin.php?coin=sandego">ここ<a>からSDGO-CPを貯めるボタンを押します。<br>
+そして、<a href="https://alpha.information-portal.net/coin.php?coin=sandego">ここ</a>からSDGO-CPを貯めるボタンを押します。<br>
 ボタンのテキストから分かるように、これ押すとSDGOが貯まります。<br>
 Alpha Discordの #botコマンド広場 にて、<br>
 k/tip sdgo 寄付する枚数 <@796153532264218664><br>

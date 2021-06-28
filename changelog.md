@@ -1,5 +1,5 @@
 | Repository | Branch | Description |
-| :---: | :---: | :---: |
+| :--- | :--- | :--- |
 | linuxcodevserver/linuxcodevblog | gh-pages | 初期設定 |
 | linuxcodevserver/linuxcodevblog | gh-pages | デフォルトの記事を消去 |
 | linuxcodevserver/linuxcodevblog | gh-pages | 2021-06-28-Hello-World.md（記事）を作成 |

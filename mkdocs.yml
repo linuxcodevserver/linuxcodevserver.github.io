@@ -20,7 +20,9 @@ theme:
           toggle:
               icon: material/toggle-switch
               name: Switch to light mode
-
+repo_name: linuxcodevserver/linuxcodevserver.github.io
+repo_url: https://github.com/linuxcodevserver/linuxcodevserver.github.io
+edit_uri: ""
 nav:
     - ホーム: index.md
     - プロジェクト一覧: projects.md

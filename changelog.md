@@ -10,3 +10,4 @@
 | linuxcodevserver/linuxcodevserver.github.io | master | LICENCEをmd形式に変更 |
 | linuxcodevserver/linuxcodevblog | master,gh-pages | LICENCEをmd形式に変更 |
 | linuxcodevserver/linuxcodevserver.github,io | master | changelog.md作成 |
+| linuxcodevserver/linuxcodevblog | gh-pages | 広告を挿入 |

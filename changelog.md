@@ -11,3 +11,6 @@
 | linuxcodevserver/linuxcodevblog | master,gh-pages | LICENCEをmd形式に変更 |
 | linuxcodevserver/linuxcodevserver.github,io | master | changelog.md作成 |
 | linuxcodevserver/linuxcodevblog | gh-pages | 広告を挿入 |
+| linuxcodevserver/linuxcodevblog | master,gh-pages | READMEを改良 |
+| linuxcodevserver/linuxcodevblog | gh-pages | RSS追加 |
+| linuxcodevserver/linuxcodevblog | gh-pages | ブログタイトルをクリックするとホームに戻るようにする |

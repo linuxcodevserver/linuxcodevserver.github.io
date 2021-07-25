@@ -1,3 +1,4 @@
+[![MkDocs](https://github.com/linuxcodevserver/linuxcodevserver.github.io/actions/workflows/mkdocs.yml/badge.svg?branch=master)](https://github.com/linuxcodevserver/linuxcodevserver.github.io/actions/workflows/mkdocs.yml)
 # commit tags
 - fix：バグ修正
 - hotfix：クリティカルなバグ修正

@@ -8,6 +8,7 @@ on:
       - mkdocs.yml
       - docs/**
       - custom_dir/**
+      - overrides/**
 
 jobs:
   deploy:

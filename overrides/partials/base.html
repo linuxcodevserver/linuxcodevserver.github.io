@@ -2,7 +2,7 @@
 <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
     {% block site_meta %}
-      <script data-ad-client="ca-pub-4024345701490281" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       {% if page and page.meta and page.meta.description %}
@@ -71,6 +71,7 @@
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
+    <script data-ad-client="ca-pub-4024345701490281" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
   {% if config.theme.palette %}

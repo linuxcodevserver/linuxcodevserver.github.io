@@ -5,7 +5,7 @@
 最近はOS自作プロジェクトが進行中です！  
 是非来てください！  
 下部の `Connect` を押すと、サーバーに参加できます！
-<script type="text/javascript" src="http://discord.deliriousdrunkards.com/discord.min.js"></script>
+<script type="text/javascript" src="https://discord.deliriousdrunkards.com/discord.min.js"></script>
 <script type="text/javascript">
     discordWidget.init({
         serverId: '847449592660230159',

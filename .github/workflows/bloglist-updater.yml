@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest # 最新のubuntu環境で下記のジョブを実行
     steps:
       - uses: actions/checkout@v2 # おまじない
-      - name: Add Blog Title and Categories and Description to index.md
+      - name: Add Blog Title and Categories and Description and Author to index.md
         run: |
           cat << "EOF" > docs/blogs.md
           ---
@@ -27,11 +27,12 @@ jobs:
             cat $bloglist > cfn
             url=$(echo ${bloglist} | sed -e "s/docs\///d")
             url="https://linuxcodevserver.github.io/${url}"
-            title=$(cat cfn | grep "title: " | sed -e "s/title: //g")
+            title=$(cat cfn | grep "title: " | sed -e "s/title:\ //g")
             echo '<a href="'$url'"><h2>'"${title}"'</h2><br>' >> docs/blogs.md
-            categories=$(cat cfn | grep "categories: " | sed -e "s/categories: //g")
-            echo "<p><b>${categories}</b></p><br>" >> docs/blogs.md
-            description=$(cat cfn | grep "description: " | sed -e "s/description: //g")
+            categories=$(cat cfn | grep "categories: " | sed -e "s/categories:\ //g")
+            author=$(cat cfn | grep "author: " | sed -e "s/author:\ //g")
+            echo "<p>categories: <b>${categories}</b>, author: ${author}</p><br>" >> docs/blogs.md
+            description=$(cat cfn | grep "description: " | sed -e "s/description:\ //g")
             echo '<p style="width: 80%; height: 80%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
             done
 

@@ -21,7 +21,7 @@ jobs:
           <h1>ブログ一覧</h1>
           EOF
           sed -e "s/
-          /\ /d" bloglist >> bloglist-fixed
+          /\ /g" bloglist >> bloglist-fixed
           for filename in $(cat bloglist-fixed)
             do
             cat $bloglist > cfn

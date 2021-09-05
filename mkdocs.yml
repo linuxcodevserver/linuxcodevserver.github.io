@@ -24,8 +24,3 @@ theme:
 repo_name: linuxcodevserver/linuxcodevserver.github.io
 repo_url: https://github.com/linuxcodevserver/linuxcodevserver.github.io
 edit_uri: ""
-nav:
-    - ホーム: index.md
-    - プロジェクト一覧: projects.md
-    - 寄付: donate.md
-    - ブログ: https://linuxcodevserver.github.io/linuxcodevblog/

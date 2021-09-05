@@ -29,7 +29,7 @@ jobs:
             echo "url :$url"
             title=$(cat $filename | grep "title: " | sed "s/title:\ //g")
             echo "title: $title"
-            echo '<a href="'$url'"><h2>'"${title}"'</h2><br>' >> docs/blogs.md
+            echo '<a href="'$url'"><h2>'"${title}"'</h2></a>' >> docs/blogs.md
             categories=$(cat $filename | grep "categories: " | sed -e "s/categories:\ //g")
             author=$(cat $filename | grep "author: " | sed "s/author:\ //g")
             echo "categories: $categories"

@@ -31,3 +31,4 @@ plugins:
         text-align: "right"
         articles: 5
         display-article-date: False
+        display-more-articles: False

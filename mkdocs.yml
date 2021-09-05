@@ -24,3 +24,9 @@ theme:
 repo_name: linuxcodevserver/linuxcodevserver.github.io
 repo_url: https://github.com/linuxcodevserver/linuxcodevserver.github.io
 edit_uri: ""
+
+plugins:
+    - blog:
+        format: "(%Y/%m/%d)"
+        text-align: "right"
+        articles: 5

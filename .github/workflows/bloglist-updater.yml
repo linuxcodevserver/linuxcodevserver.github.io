@@ -20,8 +20,7 @@ jobs:
           ---
           <h1>ブログ一覧</h1>
           EOF
-          sed -e "s/
-          /\ /g" bloglist >> bloglist-fixed
+          cat bloglist | tr '\n' ' ' > bloglist-fixed
           for filename in $(cat bloglist-fixed)
             do
             cat $bloglist > cfn
@@ -35,6 +34,7 @@ jobs:
             description=$(cat cfn | grep "description: " | sed "s/description:\ //g")
             echo '<p style="width: 80%; height: 80%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
             done
+          rm bloglist-fixed
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映
         run: |

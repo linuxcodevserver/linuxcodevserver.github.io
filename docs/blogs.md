@@ -4,5 +4,5 @@ description: ブログ一覧
 ---
 <h1>ブログ一覧</h1>
 <a href="https://linuxcodevserver.github.io/blog/2021/06/28/Hello-World.md"><h2>Hello World!</h2></a>
-<p>categories: <b>hello-world</b>, author: okaits</p><br>
-<p style="width: 80%; height: 80%; color: gray;">hello world</p>
+<span>categories: <b>hello-world</b>, author: okaits</span><br>
+<span style="width: 80%; height: 80%; color: gray;">hello world</span>

@@ -24,7 +24,7 @@ jobs:
           for filename in $(cat bloglist-fixed)
             do
             echo $filename
-            url=$(echo ${filename} | sed "s/docs\///g")
+            url=$(echo ${filename} | sed "s/docs\///g" | sed "s/.md//g")
             url="https://linuxcodevserver.github.io/${url}"
             echo "url :$url"
             title=$(cat $filename | grep "title: " | sed "s/title:\ //g")

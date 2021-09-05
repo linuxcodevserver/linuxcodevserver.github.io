@@ -37,7 +37,7 @@ jobs:
             description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
             echo "<span><b>${categories}</b></span>" >> docs/blogs.md
             echo "<span>${author}</span>"
-            echo '<p style="width: 70%, height: 70%; color: gray;">${description}</p>
+            echo '<p style="width: 70%, height: 70%; color: gray;">${description}</p>'
             echo "description: $description"
             done
           rm bloglist-fixed

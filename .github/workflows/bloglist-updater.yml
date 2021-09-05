@@ -24,7 +24,7 @@ jobs:
           for filename in $(cat bloglist-fixed)
             do
             cat $bloglist > cfn
-            url=$(echo ${bloglist} | sed "s/docs\///d")
+            url=$(echo ${bloglist} | sed "s/docs\///g")
             url="https://linuxcodevserver.github.io/${url}"
             title=$(cat cfn | grep "title: " | sed "s/title:\ //g")
             echo '<a href="'$url'"><h2>'"${title}"'</h2><br>' >> docs/blogs.md

@@ -20,6 +20,7 @@ jobs:
 
       - name: Configure Git
         run: |
+          sleep 3s # wait for bloglist updater
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
           git fetch origin gh-pages

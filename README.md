@@ -10,3 +10,5 @@
 - remove：削除（ファイル）
 - upgrade：バージョンアップ
 - revert：変更取り消し
+# 新しいブログを投稿するときはbloglistにファイル名を追加してください!
+例：docs/blog/2021/09/05/index.md

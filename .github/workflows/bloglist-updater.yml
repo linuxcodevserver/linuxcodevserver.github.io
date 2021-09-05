@@ -35,7 +35,9 @@ jobs:
             echo "categories: $categories"
             echo "author: $author"
             description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
-            echo "<span>カテゴリ: <b>${categories}</b>, 筆者: ${author}, 概要: $description</span>" >> docs/blogs.md
+            echo "<span><b>${categories}</b></span>" >> docs/blogs.md
+            echo "<span>${author}</span>"
+            echo '<p style="width: 70%, height: 70%; color: gray;">${description}</p>
             echo "description: $description"
             done
           rm bloglist-fixed

@@ -1,0 +1,46 @@
+name: bloglist updater
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - docs/blog/**
+jobs:
+  build:
+    runs-on: ubuntu-latest # 最新のubuntu環境で下記のジョブを実行
+    steps:
+      - uses: actions/checkout@v2 # おまじない
+      - name: Add Blog Title and Categories and Description and Author to index.md
+        run: |
+          cat << "EOF" > docs/blogs.md
+          ---
+          title: ブログ一覧 
+          description: ブログ一覧
+          ---
+          <h1>ブログ一覧</h1>
+          EOF
+          sed -e "s/
+          /\ /d" bloglist >> bloglist-fixed
+          for filename in $(cat bloglist-fixed)
+            do
+            cat $bloglist > cfn
+            url=$(echo ${bloglist} | sed -e "s/docs\///d")
+            url="https://linuxcodevserver.github.io/${url}"
+            title=$(cat cfn | grep "title: " | sed -e "s/title:\ //g")
+            echo '<a href="'$url'"><h2>'"${title}"'</h2><br>' >> docs/blogs.md
+            categories=$(cat cfn | grep "categories: " | sed -e "s/categories:\ //g")
+            author=$(cat cfn | grep "author: " | sed -e "s/author:\ //g")
+            echo "<p>categories: <b>${categories}</b>, author: ${author}</p><br>" >> docs/blogs.md
+            description=$(cat cfn | grep "description: " | sed -e "s/description:\ //g")
+            echo '<p style="width: 80%; height: 80%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
+            done
+
+      - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映
+        run: |
+          git config user.name "Github Action"
+          git config user.email "action@github.com"
+          git add .
+          git commit -m "[update] bloglist.md"
+          git pull
+          git push origin master

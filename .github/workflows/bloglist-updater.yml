@@ -34,10 +34,10 @@ jobs:
             author=$(cat $filename | grep "author: " | sed "s/author:\ //g")
             echo "categories: $categories"
             echo "author: $author"
-            echo "<p>categories: <b>${categories}</b>, author: ${author}</p><br>" >> docs/blogs.md
+            echo "<span>categories: <b>${categories}</b>, author: ${author}</span><br>" >> docs/blogs.md
             description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
             echo "description: $description"
-            echo '<p style="width: 80%; height: 80%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
+            echo '<span style="width: 80%; height: 80%; color: gray;">'"${description}"'</span>' >> docs/blogs.md
             done
           rm bloglist-fixed
 

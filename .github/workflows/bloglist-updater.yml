@@ -26,12 +26,17 @@ jobs:
             cat $bloglist > cfn
             url=$(echo ${bloglist} | sed "s/docs\///g")
             url="https://linuxcodevserver.github.io/${url}"
+            echo "url :$url"
             title=$(cat cfn | grep "title: " | sed "s/title:\ //g")
+            echo "title: $title"
             echo '<a href="'$url'"><h2>'"${title}"'</h2><br>' >> docs/blogs.md
             categories=$(cat cfn | grep "categories: " | sed -e "s/categories:\ //g")
             author=$(cat cfn | grep "author: " | sed "s/author:\ //g")
+            echo "categories: $categories"
+            echo "author: $author"
             echo "<p>categories: <b>${categories}</b>, author: ${author}</p><br>" >> docs/blogs.md
             description=$(cat cfn | grep "description: " | sed "s/description:\ //g")
+            echo "description: $description"
             echo '<p style="width: 80%; height: 80%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
             done
           rm bloglist-fixed

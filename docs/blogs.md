@@ -17,7 +17,7 @@ description: ブログ一覧
 <p style="width: 70%, height: 70%; color: gray;">今回は結構短いです。なんせ、インストールの仕方も実行の仕方もあんまり普通のソフトと変わらないんで。</p>
 <a href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072002"><h2>jekyllとGithub Pagesでブログを作る方法</h2></a>
 <span><b>Github Jekyll</b></span>
-<p style="width: 70%, height: 70%; color: gray;">ちなみにが<a href\=\"https://linuxcodevserver.github.io/linuxcodevblog\">okaitsが前にやってたブログ</a>はJekyllで動いてます。今はもう編集不可だけど。ちなみにこの記事はこのブログから移植してきたやつです。</p>
+<p style="width: 70%, height: 70%; color: gray;">ちなみにが\<a href\=\"https://linuxcodevserver.github.io/linuxcodevblog\"\>okaitsが前にやってたブログ\</a\>はJekyllで動いてます。今はもう編集不可だけど。ちなみにこの記事はこのブログから移植してきたやつです。</p>
 <a href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072004"><h2>UbuntuにGithub Desktopをインストールする方法</h2></a>
 <span><b>Github Ubuntu</b></span>
 <p style="width: 70%, height: 70%; color: gray;">昔okaitsが躓いたんで書きました。</p>

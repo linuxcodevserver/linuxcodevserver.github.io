@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?自力で探してみてください（笑）">
+        <meta name="description" content="PRやコミット以外にも、Starやフォーク、ActionsやPagesなどについても通知してくれます。Discordで一緒のサーバーにいる友達や開発仲間などと一緒にGithubで開発する時に役に立ちます。">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>DiscordにGithubのPRやコミットの通知を表示させる方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -68,11 +68,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#tldr" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              DiscordにGithubのPRやコミットの通知を表示させる方法
             
           </span>
         </div>
@@ -215,7 +210,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../08/26/2021082601/" class="md-tabs__link md-tabs__link--active">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -355,11 +350,19 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../08/26/2021082601/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         DiscordにGithubのPRやコミットの通知を表示させる方法
       </a>
+      
     </li>
   
 
@@ -369,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/14/2021081401/" class="md-nav__link">
+      <a href="../../14/2021081401/" class="md-nav__link">
         Android11（LineageOS18.1）をビルドする方法
       </a>
     </li>
@@ -381,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/10/2021081001/" class="md-nav__link">
+      <a href="../../10/2021081001/" class="md-nav__link">
         ChromiumOSをビルドする方法
       </a>
     </li>
@@ -393,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/09/2021080901/" class="md-nav__link">
+      <a href="../../09/2021080901/" class="md-nav__link">
         htmlの裏技
       </a>
     </li>
@@ -405,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/06/2021080601/" class="md-nav__link">
+      <a href="../../06/2021080601/" class="md-nav__link">
         Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法
       </a>
     </li>
@@ -425,62 +428,23 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="tldr">TL;DR</h1>
-<p><br>
-今回は(初投稿）、iSCSIターゲットを構築する方法を書きます！<br></p>
-<h1 id="_1">作業</h1>
-<p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h2 id="step-2-omv">Step 2 OMVのインストール</h2>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint">
-wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
-</code></pre>
-<p>これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local"></a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+                <p>Discord側の設定です。<br>
+まず、右上のサーバー名が書いてある所をクリックし、サーバー設定をクリックします。<br>
+そしたら、右側の連携サービスをクリックして、ウェブフックをクリックします。<br>
+クリックしたら、新しいウェブフックボタンを押します。<br>
+すると、「Captain Hook」が出てくるので、「お名前」に「github」、「チャンネル」に通知させるチャンネルを指定して保存してください。<br>
+保存したら、ウェブフックURLをコピーボタンを押してください。<br></p>
+<h1>Github側の設定</h1>
+<p>Github側の設定です。<br>
+まず、レポジトリのSettingsを開いて、Webhookをクリックして、Add webhookボタンを押してください。<br>
+そしたら、Payload URLにコピーしたURLを貼り付け、<b>最後に「/github」を付け足し、</b>Content typeはapplication/jsonにし、Send me everything.を選択し、Add webhookボタンを押してください。<br>
+これだけでできます。<br></p>
                 
                   
                 
@@ -518,7 +482,7 @@ Service <br>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../../28/2021062801/" class="md-footer__link md-footer__link--prev" aria-label="前: Hello World!" rel="prev">
+        <a href="../../14/2021081401/" class="md-footer__link md-footer__link--prev" aria-label="前: Android11（LineageOS18.1）をビルドする方法" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -527,26 +491,11 @@ Service <br>
               <span class="md-footer__direction">
                 前
               </span>
-              Hello World!
+              Android11（LineageOS18.1）をビルドする方法
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../../../07/01/2021070101/" class="md-footer__link md-footer__link--next" aria-label="次: Folding@homeを使って新型コロナウイルスやガンを解析する方法" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                次
-              </span>
-              Folding@homeを使って新型コロナウイルスやガンを解析する方法
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

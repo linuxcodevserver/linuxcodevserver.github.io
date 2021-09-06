@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?自力で探してみてください（笑）">
+        <meta name="description" content="有線のアクセスをそのままWifiに流すということです。記事の中に図（？）があります。">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>Wifiを有線に共有する方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -68,11 +68,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#tldr" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              Wifiを有線に共有する方法
             
           </span>
         </div>
@@ -425,62 +420,38 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="tldr">TL;DR</h1>
+                <h1>図</h1>
 <p><br>
-今回は(初投稿）、iSCSIターゲットを構築する方法を書きます！<br></p>
-<h1 id="_1">作業</h1>
+今回は、こんなかんじで無線から有線にインターネットを共有します。<br></p>
+<pre>ルーター
+  ↓無線
+  PC
+  ↓有線
+  RPi
+</pre>
 <p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h2 id="step-2-omv">Step 2 OMVのインストール</h2>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint">
-wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
-</code></pre>
-<p>これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local"></a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+<h1>早速</h1>
+<p><br>
+早速やってみましょう。<br>
+まず、<br>
+nm-connection-editor<br>
+を実行してください。<br>
+実行したら、「ネットワーク接続」というウィンドウが出てきます。<br>
+Ethernetをクリックして、下の+ボタンを押してください。<br>
+押したら、確認ウィンドウが出てくるので、作成ボタンを押してください。<br>
+そしたら今度は、「Ethernet 接続 1の編集」というウィンドウが出てくるので、<br>
+Ethernet =&gt; Deviceを有線のインターフェースにして、<br>
+IPv4設定 =&gt; Methodを「他のコンピュータへ共有」、<br>
+IPv6設定 =&gt; Methodを「他のコンピュータへ共有」<br>
+に設定して、保存します。<br>
+そしたら有線をつないでください。<br>
+共有できているはずです。<br></p>
                 
                   
                 
@@ -518,7 +489,7 @@ Service <br>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../../28/2021062801/" class="md-footer__link md-footer__link--prev" aria-label="前: Hello World!" rel="prev">
+        <a href="../../26/2021072601/" class="md-footer__link md-footer__link--prev" aria-label="前: Amazonでサクラかどうかを確かめる方法" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -527,20 +498,20 @@ Service <br>
               <span class="md-footer__direction">
                 前
               </span>
-              Hello World!
+              Amazonでサクラかどうかを確かめる方法
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../../07/01/2021070101/" class="md-footer__link md-footer__link--next" aria-label="次: Folding@homeを使って新型コロナウイルスやガンを解析する方法" rel="next">
+        <a href="../../../08/06/2021080601/" class="md-footer__link md-footer__link--next" aria-label="次: Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Folding@homeを使って新型コロナウイルスやガンを解析する方法
+              Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法
             </div>
           </div>
           <div class="md-footer__button md-icon">

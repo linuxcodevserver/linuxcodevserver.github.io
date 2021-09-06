@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?自力で探してみてください（笑）">
+        <meta name="description" content="x86も対応してます。動かせるかどうかは検証してません。なんでかって？PCが処理落ちしたからです。（）あれ？なんか見たことあるような...？">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>Android11（LineageOS18.1）をビルドする方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -68,11 +68,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#tldr" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              Android11（LineageOS18.1）をビルドする方法
             
           </span>
         </div>
@@ -215,7 +210,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../08/26/2021082601/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../26/2021082601/" class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -357,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/26/2021082601/" class="md-nav__link">
+      <a href="../../26/2021082601/" class="md-nav__link">
         DiscordにGithubのPRやコミットの通知を表示させる方法
       </a>
     </li>
@@ -367,11 +362,19 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../08/14/2021081401/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Android11（LineageOS18.1）をビルドする方法
       </a>
+      
     </li>
   
 
@@ -381,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/10/2021081001/" class="md-nav__link">
+      <a href="../../10/2021081001/" class="md-nav__link">
         ChromiumOSをビルドする方法
       </a>
     </li>
@@ -393,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/09/2021080901/" class="md-nav__link">
+      <a href="../../09/2021080901/" class="md-nav__link">
         htmlの裏技
       </a>
     </li>
@@ -405,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/06/2021080601/" class="md-nav__link">
+      <a href="../../06/2021080601/" class="md-nav__link">
         Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法
       </a>
     </li>
@@ -425,62 +428,101 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="tldr">TL;DR</h1>
-<p><br>
-今回は(初投稿）、iSCSIターゲットを構築する方法を書きます！<br></p>
-<h1 id="_1">作業</h1>
-<p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h2 id="step-2-omv">Step 2 OMVのインストール</h2>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint">
-wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
+                <h1>作業フォルダ作成</h1>
+<p>作業フォルダの作成です。<br></p>
+<pre class="prettyprint"><code class="prettyprint lang-bash">mkdir -p ${HOME}/google/android/lineageos/18.1/bin
+cd ${HOME}/google/android/lineageos/18.1
+echo 'export PATH="${PATH}:${HOME}/google/android/lineageos/18.1/bin"' >> ${HOME}/.bashrc
+source ${HOME}/.bashrc
 </code></pre>
-<p>これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local"></a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+<p><br></p>
+<h1>依存ソフトのインストール</h1>
+<p>ビルドに必要なソフトのインストールです。<br></p>
+<pre class="prettyprint"><code class="prettyprint lang-bash">sudo apt install build-essential ccache libncurses5 libssl-dev m4 unzip zip -y
+if ls ${HOME}/google/depot_tools >/dev/null 2>&1
+  then
+  true
+  else
+  cd ${HOME}/google/
+  git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+  echo 'export PATH="${HOME}/google/depot_tools:${PATH}"' >> ${HOME}/.bashrc
+  source ${HOME}/.bashrc
+  cd ${HOME}/google/android/lineageos/18.1
+fi
+</code></pre>
+<p><br></p>
+<h1>ソースコードのダウンロード</h1>
+<p>ソースコードのダウンロードです。<br>
+ちなみに編集可能になってます。<br>
+なお、<br></p>
+<pre class="prettyprint"><code class="prettyprint">Testing colorized output (for 'repo diff', 'repo status'):
+  black    red      green    yellow   blue     magenta   cyan     white
+  bold     dim      ul       reverse
+Enable color display in this user account (y/N)?
+</code></pre>
+<p><br>
+と質問されたら、yと答えてください。<br>
+また、名前とメールアドレスを聞かれますが、ビルドしている人の名前（ニックネームでも可）とメールアドレスを入力してください。<br></p>
+<pre class="prettyprint"><code class="prettyprint lang-bash">
+repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 --depth=1 --config-name
+repo sync -j4
+</code></pre>
+<h1>Google APIの設定</h1>
+<p>Google APIを設定してChromium OSからログインできるようにします。<br>
+まず、<a href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev">ここ</a>に参加します。<br>
+参加したら、<a href="https://cloud.google.com/console">ここ</a>へ行って、左上の「My First Project」をクリックします。<br>
+そしたら、右上の「新しいプロジェクト」をクリックして、適当に名前をつけて作成してください。<br>
+それができたら、左上の「My First Project」をもう一度クリックして、自分でつけた名前が表示されているところの読み込みが終わるまで待ちます。<br>
+読み込みが終わったら、そこをクリックしてください。<br>
+そしたら、上の検索ボックスに、次の文字例をいれ、有効化してください。<br></p>
+<ul>
+<li>Cloud Search API<br></li>
+<li>Geolocation API<br></li>
+<li>Google Drive API<br></li>
+<li>Safe Browsing API<br></li>
+<li>Time Zone API<br></li>
+<li>Admin SDK API<br></li>
+<li>Geocoding API<br></li>
+<li>Google Assistant API<br></li>
+<li>Google Calendar API<br></li>
+<li>Nearby Messages API<br></li>
+</ul>
+<p>終わったら、左のメニューの「APIとサービス」、「認証情報」の順にクリックしてください。<br>
+そして、「+ 認証情報を作成」、「OAuth クライアントID」、「同意画面の設定」の順にクリックし、<br>
+「外部」を選択し、「作成」をクリックしてください。<br>
+そして、アプリ名に適当な名前を入力し、ユーザーサポートメールとデベロッパーの連絡先情報に自分のメールアドレスを選択し、「保存して次へ」をクリックします。<br>
+そして、「スコープを追加または削除」ボタンを押し、すべてにチェックをつけ、「更新」を押します。<br>
+そして、「保存して次へ」を押します。<br>
+そして、「+ ADD USERS」ボタンを押し、Chromium OSにログインするユーザーのメールアドレスを入力して、「追加」ボタンを押してください。<br>
+そして、「保存して次へ」を押し、「ダッシュボードに戻る」ボタンを押してください。<br>
+そしたらまた、「+ 認証情報を作成」、「OAuth クライアント ID」の順にクリックし、<br>
+アプリケーションの種類に「デスクトップ アプリ」、名前に適当な名前をつけて作成してください。<br>
+そしたら、クライアントIDとクライアントシークレットが出るので、どこかに保存してください。<br>
+そしたらまた「+ 認証情報を作成」、「API キー」の順にクリックしてください。<br>
+そしたら、APIキーが出てくるので、保存してください。<br>
+そしたら、これを実行してください。<br></p>
+<pre class="prettyprint"><code class="prettyprint lang-bash" contenteditable>api=[メモしておいたAPIキー]
+clientId=メモしておいたクライアントID
+clientSecret=メモしておいたクライアントシークレット
+echo "'google_api_key': '"${api}"'," > ${HOME}/.googleapikeys
+echo "'google_default_client_id: '"${clientId}"'," >> ${HOME}/.googleapikeys
+echo "'google_default_client_secret': '"${clientSecret}"'," >> ${HOME}/.googleapikeys
+</code></pre>
+<p>&uarr; 編集できるようになってます。コピーする前に最初のところのAPIキーとクライアントID,シークレットだけ書き換えたほうがいいと思います。<br></p>
+<h1>ビルド</h1>
+<p>いよいよビルドです。<br></p>
+<pre class="prettyprint"><code class="prettyprint lang-bash contenteditable">source build/envsetup.sh
+breakfast [デバイス名]
+croot
+brunch [デバイス名]
+</code></pre>
+<p>これでoutフォルダに完成品がある...はず。（）<br></p>
                 
                   
                 
@@ -518,7 +560,7 @@ Service <br>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../../28/2021062801/" class="md-footer__link md-footer__link--prev" aria-label="前: Hello World!" rel="prev">
+        <a href="../../10/2021081001/" class="md-footer__link md-footer__link--prev" aria-label="前: ChromiumOSをビルドする方法" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -527,20 +569,20 @@ Service <br>
               <span class="md-footer__direction">
                 前
               </span>
-              Hello World!
+              ChromiumOSをビルドする方法
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../../07/01/2021070101/" class="md-footer__link md-footer__link--next" aria-label="次: Folding@homeを使って新型コロナウイルスやガンを解析する方法" rel="next">
+        <a href="../../26/2021082601/" class="md-footer__link md-footer__link--next" aria-label="次: DiscordにGithubのPRやコミットの通知を表示させる方法" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Folding@homeを使って新型コロナウイルスやガンを解析する方法
+              DiscordにGithubのPRやコミットの通知を表示させる方法
             </div>
           </div>
           <div class="md-footer__button md-icon">

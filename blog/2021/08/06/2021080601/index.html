@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?自力で探してみてください（笑）">
+        <meta name="description" content="今回はBashのシェルスクリプトを使います。少し改造すれば他のシェルスクリプトも使えます。">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -68,11 +68,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#tldr" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法
             
           </span>
         </div>
@@ -215,7 +210,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../08/26/2021082601/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../26/2021082601/" class="md-tabs__link md-tabs__link--active">
         Blog
       </a>
     </li>
@@ -357,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/26/2021082601/" class="md-nav__link">
+      <a href="../../26/2021082601/" class="md-nav__link">
         DiscordにGithubのPRやコミットの通知を表示させる方法
       </a>
     </li>
@@ -369,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/14/2021081401/" class="md-nav__link">
+      <a href="../../14/2021081401/" class="md-nav__link">
         Android11（LineageOS18.1）をビルドする方法
       </a>
     </li>
@@ -381,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/10/2021081001/" class="md-nav__link">
+      <a href="../../10/2021081001/" class="md-nav__link">
         ChromiumOSをビルドする方法
       </a>
     </li>
@@ -393,7 +388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08/09/2021080901/" class="md-nav__link">
+      <a href="../../09/2021080901/" class="md-nav__link">
         htmlの裏技
       </a>
     </li>
@@ -403,11 +398,19 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../08/06/2021080601/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法
       </a>
+      
     </li>
   
 
@@ -425,62 +428,147 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="tldr">TL;DR</h1>
-<p><br>
-今回は(初投稿）、iSCSIターゲットを構築する方法を書きます！<br></p>
-<h1 id="_1">作業</h1>
-<p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h2 id="step-2-omv">Step 2 OMVのインストール</h2>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint">
-wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
+                <h1>初期設定</h1>
+<p>まず、Apache2をインストールしていなければインストールします。<br></p>
+<pre class="prettyprint"><code class="prettyprint">if apache2 -h > /dev/null 2>&1
+    then
+    sudo apt install apache2
+    else
+    echo "already installed."
+fi
 </code></pre>
-<p>これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local"></a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+<p><br>
+そしたら、cgi-binフォルダを作成し、Apache2でmod_cgidを有効化します。<br></p>
+<pre class="prettyprint"><code class="prettyprint">sudo mkdir /var/www/cgi-bin -p
+sudo chown www-data /var/www/cgi-bin -R
+sudo chmod a+r /var/www/cgi-bin -R
+sudo chmod g+x /var/www/cgi-bin -R
+sudo chmod u+w /var/www/cgi-bin -R
+sudo a2enmod cgid
+cat << "EOF" | sudo tee /etc/apache2/apache2.conf -a
+LoadModule cgid_module modules/mod_cgid.so
+AddHandler cgi-script .cgi
+Alias /cgi-bin/ "/var/www/cgi-bin/"
+&lt;Directory /var/www/cgi&gt;
+        Options FollowSymLinks ExecCGI
+        AllowOverride None
+        Require all granted
+&lt;/Directory&gt;
+EOF
+</code></pre>
+<p><br>
+そして、<br></p>
+<pre class="prettyprint"><code class="prettyprint">sudo nano /etc/apache2/apache2.conf</code></pre>
+<p><br>
+で、apache2の設定を編集します。
+<strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからである。（笑）</strike><br></p>
+<pre class="prettyprint"><code class="prettyprint">&lt;Directory /var/www/&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+&lt;/Directory&gt;
+</code></pre>
+<p><br>
+を探して、その中の<br></p>
+<pre class="prettyprint"><code class="prettyprint">Options Indexes FollowSymLinks</code></pre>
+<p><br>
+を</p>
+<pre class="prettyprint"><code class="prettyprint">Options FollowSymLinks ExecCGI</code></pre>
+<p><br>
+にして、<br>
+nanoを保存して終了します。<br>
+なお、nanoの操作方法は下に書いてあります。<br>
+それがおわったら、<br></p>
+<pre class="prettyprint"><code class="prettyprint">sudo systemctl reload apache2
+sudo systemctl restart apache2
+</code></pre>
+<p><br>
+でapache2を再起動させてください。<br></p>
+<h1>シェルスクリプトを入れる方法</h1>
+<p>まず、/var/www/cgi-bin/の中に、ファイル名.cgiという名前のファイルを作ります。<br>
+または、すでにあるシェルスクリプトを/var/www/cgi-bin/にコピーし、拡張子をcgiにしてください。<br>
+作った/コピーしたファイルの先頭に、<br></p>
+<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
+echo "Content-type: text/plain"
+echo
+</code></pre>
+<p><br>
+と入れてください。<br>
+なお、<br></p>
+<pre class="prettyprint"><code class="prettyprint">echo "Content-type: text/plain"</code></pre>
+<p><br>
+を</p>
+<pre class="prettyprint"><code class="prettyprint">echo "Content-type: text/html"</code></pre>
+<p><br>
+に置き換えるとただのtxtファイルからhtmlファイルになります。<br>
+cgiでは、コマンドの実行結果がソースコードとして認識されます。<br>
+つまり、<br></p>
+<pre class="prettyprint"><code class="prettyprint">echo '&lt;p class="container"&gt;ABC&lt;/p&gt;'</code></pre>
+<p><br>
+をcgiファイルに書いてアクセスすると、<br></p>
+<pre class="prettyprint"><code class="prettyprint">&lt;p class="container"&gt;ABC&lt;/p&gt;</code></pre>
+<p><br>
+と解釈され、ABCと表示されます。<br></p>
+<h2>例</h2>
+<p><label>suspend.cgi</label></p>
+<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
+echo "Content-type: text/plain"
+echo
+echo "Suspended."
+sudo /usr/bin/systemctl suspend
+</code></pre>
+<p><br>
+これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
+BASIC認証など、絶対に他人に突破されない方法をつかってアクセスを制限してください。<br>
+なお、これはcurlでも反応するので、このsuspend.cgiを使って、こんなこともできます。<br>
+<label>suspend-after-push-to-github.cgi</label></p>
+<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
+echo "Content-type: text/plain"
+echo
+echo "pushing to github..."
+cd /github/repo/
+git push
+echo "suspending..."
+curl localhost/cgi-bin/suspend.cgi
+</code></pre>
+<p><br>
+これはGithubにPushしてからサスペンドするというプログラムです。<br>
+Jekyllでブログやってる人は、書き終えてからCommit&amp;Pushしないと反映されないので、Pushの手間が省けます。<br>
+...っていっても、サスペンドされるので書き終えてから少し休憩するときや、書き終えたから今日はもう寝ようとかそういうことが多いひとはこれをつくったほうがいいと思います。<br>
+このコマンドが実行されるのはサーバーの上なので、<br>
+<label>get-blog-feed.cgi</label></p>
+<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
+echo "Content-type: text/plain"
+echo
+sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-feed.xml
+</code></pre>
+<p><br>
+これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
+まあ、sudoは動かないんですけどね。<br></p>
+<hr>
+<p style="color: gray; height: 0.25cm;">なお、cgi上でsudoを動かす方法は、NOPASSWDしかありません。が、okaitsのようにwww-data ALL=(ALL) NOPASSWD: ALLとかじゃなくて、せめてwww-data ALL=(ALL) NOPASSWD: /usr/bin/systemctl suspend というふうに特定のコマンドだけを許可したほうがいいです。</p>
+<p><br></p>
+<hr>
+<p>ちなみにこれ、htmlにもできます。<br>
+<label>turn-on-pc.cgi</label></p>
+<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
+echo "Content-type: text/html"
+echo
+echo '&lt;head&gt;&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"&gt;&lt;title&gt;Turning on PC with WOL...&lt;/title&gt;&lt;/head&gt;'
+echo '&lt;div class="container"&gt;'
+echo '&lt;h1&gt;WakeOnLan Running...&lt;/h1&gt;&lt;hr&gt;'
+echo '&lt;p&gt;Turning on your computer With WOR, etherwake...&lt;br&gt;&lt;/p&gt;'
+sudo etherwake [コンピューターのmacアドレス]
+echo '&lt;/div&gt;'
+</code></pre>
+<p><br>
+のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
                 
                   
                 
@@ -518,7 +606,7 @@ Service <br>
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../../28/2021062801/" class="md-footer__link md-footer__link--prev" aria-label="前: Hello World!" rel="prev">
+        <a href="../../../07/28/2021072801/" class="md-footer__link md-footer__link--prev" aria-label="前: Wifiを有線に共有する方法" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -527,20 +615,20 @@ Service <br>
               <span class="md-footer__direction">
                 前
               </span>
-              Hello World!
+              Wifiを有線に共有する方法
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../../07/01/2021070101/" class="md-footer__link md-footer__link--next" aria-label="次: Folding@homeを使って新型コロナウイルスやガンを解析する方法" rel="next">
+        <a href="../../09/2021080901/" class="md-footer__link md-footer__link--next" aria-label="次: htmlの裏技" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 次
               </span>
-              Folding@homeを使って新型コロナウイルスやガンを解析する方法
+              htmlの裏技
             </div>
           </div>
           <div class="md-footer__button md-icon">

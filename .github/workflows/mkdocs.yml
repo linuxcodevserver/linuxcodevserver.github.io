@@ -9,6 +9,7 @@ on:
       - docs/**
       - custom_dir/**
       - overrides/**
+      - .github/workflows/**
     workflow_dispatch:
 
 jobs:
@@ -32,8 +33,9 @@ jobs:
           python3 -m pip install -r requirements.txt
           git clone https://github.com/facelessuser/pymdown-extensions/
           cd pymdown-extensions
-          python3 setup.py build
-          python3 setup.py install
+          python3 -m pip install .
+          cd ..
+          rm -rf pymdown-extensions
           
       - name: Deploy HTML files
         run: python3 -m mkdocs gh-deploy

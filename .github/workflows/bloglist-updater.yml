@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - docs/blog/**
 jobs:
   build:
     runs-on: ubuntu-latest # 最新のubuntu環境で下記のジョブを実行

@@ -37,3 +37,21 @@ description: ブログ目次
 <a href="https://linuxcodevserver.github.io/blog/2021/07/26/2021072601"><h2>Amazonでサクラかどうかを確かめる方法</h2></a>
 <span><b>Amazon</b></span>
 <p style="width: 70%, height: 70%; color: gray;">ちなみにこれ、確か日経PC21に載ってたかもしれん。</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/07/28/2021072801"><h2>Wifiを有線に共有する方法</h2></a>
+<span><b>lan</b></span>
+<p style="width: 70%, height: 70%; color: gray;">有線のアクセスをそのままWifiに流すということです。記事の中に図（？）があります。</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/08/06/2021080601"><h2>Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法</h2></a>
+<span><b>apache2</b></span>
+<p style="width: 70%, height: 70%; color: gray;">今回はBashのシェルスクリプトを使います。少し改造すれば他のシェルスクリプトも使えます。</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/08/09/2021080901"><h2>htmlの裏技</h2></a>
+<span><b>html</b></span>
+<p style="width: 70%, height: 70%; color: gray;">htmlの裏技です。このサイトでもたまーに使われてます。</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/08/10/2021081001"><h2>ChromiumOSをビルドする方法</h2></a>
+<span><b>google</b></span>
+<p style="width: 70%, height: 70%; color: gray;">通常よりダウンロードが早くなってます。ちなみに、okaitsのPCは処理能力が足りずにフリーズしてしまったので、成功の保証はできません。</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/08/14/2021081401"><h2>Android11（LineageOS18.1）をビルドする方法</h2></a>
+<span><b>google</b></span>
+<p style="width: 70%, height: 70%; color: gray;">x86も対応してます。動かせるかどうかは検証してません。なんでかって？PCが処理落ちしたからです。（）あれ？なんか見たことあるような...？</p>
+<a href="https://linuxcodevserver.github.io/blog/2021/08/26/2021081401"><h2></h2></a>
+<span><b></b></span>
+<p style="width: 70%, height: 70%; color: gray;"></p>

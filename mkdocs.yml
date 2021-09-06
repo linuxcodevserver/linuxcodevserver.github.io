@@ -49,4 +49,4 @@ extra:
     analytics:
         provider: google
         property: G-Z4J13YP1PJ
-    disqus: linuxcodevserver.disqus.com
+    disqus: linuxcodevserver

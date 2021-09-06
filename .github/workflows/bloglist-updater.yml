@@ -40,8 +40,6 @@ jobs:
             echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blog.md
             echo "description: $description"
             done
-          echo "<h2>タグ一覧</h2>" >> docs/blog.md
-          echo "" >> docs/blog.md
           rm bloglist-fixed
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映

@@ -32,3 +32,5 @@ plugins:
         articles: 5
         display-article-date: False
         display-more-articles: False
+    - tags:
+        tags_file: docs/blogs.md

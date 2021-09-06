@@ -15,10 +15,11 @@ jobs:
         run: |
           cat << "EOF" > docs/blogs.md
           ---
-          title: ブログ一覧 
-          description: ブログ一覧
+          title: ブログ目次
+          description: ブログ目次
           ---
-          <h1>ブログ一覧</h1>
+          <h1>ブログ目次</h1>
+          <h2>ブログ一覧</h2>
           EOF
           cat bloglist | tr '\n' ' ' > bloglist-fixed
           for filename in $(cat bloglist-fixed)
@@ -38,14 +39,17 @@ jobs:
             echo "<span><b>${categories}</b></span>" >> docs/blogs.md
             echo "<span>${author}</span>"
             echo '<p style="width: 70%, height: 70%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
+            echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blog.md
             echo "description: $description"
             done
+          echo "<h2>タグ一覧</h2>" >> docs/blog.md
+          echo "[TAGS]" >> docs/blog.md
           rm bloglist-fixed
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映
         run: |
-          git config user.name "Github Action"
-          git config user.email "action@github.com"
+          git config --global user.name "Github Action"
+          git config --global user.email "action@github.com"
           git add .
           git commit -m "[update] bloglist.md"
           git pull

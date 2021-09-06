@@ -36,7 +36,7 @@ description: ブログ目次
 <p style="width: 70%, height: 70%; color: gray;">基本中の基本です。書いてる途中に、この機能はGithubの機能なのかGitの機能なのか迷いました。</p>
 <a href="https://linuxcodevserver.github.io/blog/2021/07/26/2021072601"><h2>Amazonでサクラかどうかを確かめる方法</h2></a>
 <span><b>Amazon</b></span>
-<p style="width: 70%, height: 70%; color: gray;">ちなみにこれ、確か日経PC21に載ってたかもしれん。</p>
+<p style="width: 70%, height: 70%; color: gray;">ちなみにこれ、確か日経PC21に載ってたかもしれん。いつもはPC関連のことを書いていますが、今回はAmazonについてです。</p>
 <a href="https://linuxcodevserver.github.io/blog/2021/07/28/2021072801"><h2>Wifiを有線に共有する方法</h2></a>
 <span><b>lan</b></span>
 <p style="width: 70%, height: 70%; color: gray;">有線のアクセスをそのままWifiに流すということです。記事の中に図（？）があります。</p>

@@ -42,10 +42,6 @@ plugins:
         lang:
             - en
             - ja
-    - social:
-        cards_color:
-            fill: "#0FF1CE"
-            text: "#FFFFFF"
     - tags:
         tags_folder: docs/
         tags_template: tags.md.template

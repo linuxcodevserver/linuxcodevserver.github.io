@@ -39,8 +39,9 @@ plugins:
         display-article-date: False
         display-more-articles: False
     - search:
-        - ja
-        - ru
+        lang:
+            - en
+            - ja
     - social:
       cards_color:
         fill: "#0FF1CE"

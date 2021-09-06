@@ -1,8 +1,9 @@
 ---
-title: ブログ一覧 
-description: ブログ一覧
+title: ブログ目次
+description: ブログ目次
 ---
-<h1>ブログ一覧</h1>
+<h1>ブログ目次</h1>
+<h2>ブログ一覧</h2>
 <a href="https://linuxcodevserver.github.io/blog/2021/06/28/2021062801"><h2>Hello World!</h2></a>
 <span><b>helloworld</b></span>
 <p style="width: 70%, height: 70%; color: gray;">hello world</p>

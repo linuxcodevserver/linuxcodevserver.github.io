@@ -9,6 +9,7 @@ on:
       - docs/**
       - custom_dir/**
       - overrides/**
+    workflow_dispatch:
 
 jobs:
   deploy:

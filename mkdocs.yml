@@ -50,3 +50,7 @@ extra:
         provider: google
         property: G-Z4J13YP1PJ
     disqus: linuxcodevserver
+
+markdown_extentions:
+    - pymdownx.highlight
+    - pymdownx.superfences

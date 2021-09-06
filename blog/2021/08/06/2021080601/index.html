@@ -539,7 +539,9 @@
               
                 
                 
-                <h1>初期設定</h1>
+                  <h1>Apache2でcgiを使いアクセスされたときに自動的にサーバーでコマンドを実行する方法</h1>
+                
+                <h2>初期設定</h2>
 <p>まず、Apache2をインストールしていなければインストールします。<br></p>
 <pre class="prettyprint"><code class="prettyprint">if apache2 -h > /dev/null 2>&1
     then
@@ -595,7 +597,7 @@ sudo systemctl restart apache2
 </code></pre>
 <p><br>
 でapache2を再起動させてください。<br></p>
-<h1>シェルスクリプトを入れる方法</h1>
+<h2>シェルスクリプトを入れる方法</h2>
 <p>まず、/var/www/cgi-bin/の中に、ファイル名.cgiという名前のファイルを作ります。<br>
 または、すでにあるシェルスクリプトを/var/www/cgi-bin/にコピーし、拡張子をcgiにしてください。<br>
 作った/コピーしたファイルの先頭に、<br></p>

@@ -539,7 +539,7 @@
               
                 
                 
-                <h1>作業フォルダ作成</h1>
+                <h2>作業フォルダ作成</h2>
 <p>作業フォルダの作成です。<br></p>
 <pre class="prettyprint"><code class="prettyprint lang-bash">mkdir -p ${HOME}/google/android/lineageos/18.1/bin
 cd ${HOME}/google/android/lineageos/18.1
@@ -547,7 +547,7 @@ echo 'export PATH="${PATH}:${HOME}/google/android/lineageos/18.1/bin"' >> ${HOME
 source ${HOME}/.bashrc
 </code></pre>
 <p><br></p>
-<h1>依存ソフトのインストール</h1>
+<h2>依存ソフトのインストール</h2>
 <p>ビルドに必要なソフトのインストールです。<br></p>
 <pre class="prettyprint"><code class="prettyprint lang-bash">sudo apt install build-essential ccache libncurses5 libssl-dev m4 unzip zip -y
 if ls ${HOME}/google/depot_tools >/dev/null 2>&1
@@ -562,7 +562,7 @@ if ls ${HOME}/google/depot_tools >/dev/null 2>&1
 fi
 </code></pre>
 <p><br></p>
-<h1>ソースコードのダウンロード</h1>
+<h2>ソースコードのダウンロード</h2>
 <p>ソースコードのダウンロードです。<br>
 ちなみに編集可能になってます。<br>
 なお、<br></p>
@@ -578,7 +578,7 @@ Enable color display in this user account (y/N)?
 repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 --depth=1 --config-name
 repo sync -j4
 </code></pre>
-<h1>Google APIの設定</h1>
+<h2>Google APIの設定</h2>
 <p>Google APIを設定してChromium OSからログインできるようにします。<br>
 まず、<a href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev">ここ</a>に参加します。<br>
 参加したら、<a href="https://cloud.google.com/console">ここ</a>へ行って、左上の「My First Project」をクリックします。<br>

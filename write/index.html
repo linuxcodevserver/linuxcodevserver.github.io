@@ -228,18 +228,6 @@
 
 
   <li class="md-tabs__item">
-    <a href="../blog/" class="md-tabs__link">
-      Blog
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
     <a href="../blogs/" class="md-tabs__link">
       ブログ目次
     </a>
@@ -382,21 +370,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../blog/" class="md-nav__link">
-        Blog
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../blogs/" class="md-nav__link">
         ブログ目次
       </a>
@@ -468,14 +441,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
-      <label class="md-nav__link" for="__nav_8">
+      <label class="md-nav__link" for="__nav_7">
         Blog
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Blog" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Blog
         </label>
@@ -567,27 +540,27 @@
   <label>
     メールアドレス
     <input type="email" name="_replyto">
-  </label>
+  </label><br>
   <label>
     Discordユーザー名
     <input type="text" name="discordusername"></input>
-  </label>
+  </label><br>
   <label>
     記事のタイトル
     <input type="text" name="title"></input>
-  </label>
+  </label><br>
   <label>
     記事の概要・導入文
     <input type="text" name="description">
-  </label>
+  </label><br>
   <label>
     記事のタグ（スペースで区切る）
     <input type="text" name="tags">
-  </label>
+  </label><br>
   <label>
     記事のカテゴリ
     <input type="text" name="categories">
-  </label>
+  </label><br>
   <label>
     申請ID
     <input type="number" id="contentid" name="contentid" readonly>
@@ -595,14 +568,15 @@
       var contentid = Math.floor( Math.random() * (9999999 + 1 - 1000000) ) + 1000000 ;
       document.getElementById("contentid").setAttribute('value', contentid)
     </script>
+  </label><br>
   <label>
     投稿日時
     <input type="date" name="date"></input>
-  </label>
+  </label><br>
   <label>
     本文
     <textarea name="main"></textarea>
-  </label>
+  </label><br>
   <!-- your other form fields go here -->
   <button type="submit">申請</button>
 </form>

@@ -8,7 +8,6 @@ title: ブログ投稿
     padding: 0.5em;          /* 内側の余白量 */
     background-color: snow;  /* 背景色 */
     width: 20em;             /* 横幅 */
-    height: 120px;           /* 高さ */
     font-size: 1em;          /* 文字サイズ */
     line-height: 1.2;        /* 行の高さ */
     }

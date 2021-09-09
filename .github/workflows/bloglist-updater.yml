@@ -37,7 +37,7 @@ jobs:
             echo "<span><b>${categories}</b></span>" >> docs/blogs.md
             echo "<span>${author}</span>"
             echo '<p style="width: 70%, height: 70%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
-            echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blog.md
+            echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blogs.md
             echo "description: $description"
             done
           rm bloglist-fixed

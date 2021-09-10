@@ -1,5 +1,5 @@
 site_name: 皆の意見交流所サーバー公式ホームページ
-
+site_url: https://linuxcodevserver.github.io/
 theme:
     custom_dir: overrides
     name: material

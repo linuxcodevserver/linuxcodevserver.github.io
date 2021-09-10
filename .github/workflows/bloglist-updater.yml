@@ -22,6 +22,7 @@ jobs:
           cat bloglist | tr '\n' ' ' > bloglist-fixed
           for filename in $(cat bloglist-fixed)
             do
+            echo '<hr>' >> docs/blogs.md
             echo $filename
             url=$(echo ${filename} | sed "s/docs\///g" | sed "s/.md//g")
             url="https://linuxcodevserver.github.io/${url}"

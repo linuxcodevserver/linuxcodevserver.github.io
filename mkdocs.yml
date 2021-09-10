@@ -35,9 +35,6 @@ plugins:
     - blog:
         format: "(%Y/%m/%d)"
         text-align: "right"
-        articles: 5
-        display-article-date: False
-        display-more-articles: False
     - search:
         lang:
             - en

@@ -38,7 +38,7 @@ jobs:
           rm -rf pymdown-extensions
           git clone https://github.com/jackjt8/mkdocs-responsive-image/
           cd mkdocs-responsive-image/
-          python3 ./setup.py develop
+          python3 -m pip install .
           cd ..
           rm -rf mkdocs-responsive-image
           

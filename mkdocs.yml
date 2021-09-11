@@ -43,7 +43,6 @@ plugins:
         tags_folder: docs/
         tags_template: tags.md.template
     - responsive-image
-    - rss
 extra:
     analytics:
         provider: google

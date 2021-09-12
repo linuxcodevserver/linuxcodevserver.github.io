@@ -94,3 +94,4 @@ description: ブログ目次
 <span><b>alpha</b></span>
 <p style="width: 70%, height: 70%; color: gray;">前に自分のウェブサイトを宣伝する方法を載せましたが、それはここにきてます。ちなみに報酬は「仮想通貨」か「広告配信に必要なポイント（ADP）」なので、無限ループさせることもできます。ちなみに、表示させただけで貯まります。</p>
 <p style="width: 70%, height: 70%, color: black:"></p>
+<hr>

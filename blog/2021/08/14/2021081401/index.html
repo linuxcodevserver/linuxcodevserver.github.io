@@ -819,93 +819,94 @@
                 
                 <h2>作業フォルダ作成</h2>
 <p>作業フォルダの作成です。<br></p>
-<pre class="prettyprint"><code class="prettyprint lang-bash">mkdir -p ${HOME}/google/android/lineageos/18.1/bin
+<pre><code class="language-bash">mkdir -p ${HOME}/google/android/lineageos/18.1/bin
 cd ${HOME}/google/android/lineageos/18.1
-echo 'export PATH="${PATH}:${HOME}/google/android/lineageos/18.1/bin"' >> ${HOME}/.bashrc
+echo 'export PATH=&quot;${PATH}:${HOME}/google/android/lineageos/18.1/bin&quot;' &gt;&gt; ${HOME}/.bashrc
 source ${HOME}/.bashrc
 </code></pre>
-<p><br></p>
 <h2>依存ソフトのインストール</h2>
 <p>ビルドに必要なソフトのインストールです。<br></p>
-<pre class="prettyprint"><code class="prettyprint lang-bash">sudo apt install build-essential ccache libncurses5 libssl-dev m4 unzip zip -y
-if ls ${HOME}/google/depot_tools >/dev/null 2>&1
+<pre><code class="language-bash">sudo apt install build-essential ccache libncurses5 libssl-dev m4 unzip zip -y
+if ls ${HOME}/google/depot_tools &gt;/dev/null 2&gt;&amp;1
   then
   true
   else
   cd ${HOME}/google/
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-  echo 'export PATH="${HOME}/google/depot_tools:${PATH}"' >> ${HOME}/.bashrc
+  echo 'export PATH=&quot;${HOME}/google/depot_tools:${PATH}&quot;' &gt;&gt; ${HOME}/.bashrc
   source ${HOME}/.bashrc
   cd ${HOME}/google/android/lineageos/18.1
 fi
 </code></pre>
-<p><br></p>
 <h2>ソースコードのダウンロード</h2>
 <p>ソースコードのダウンロードです。<br>
 ちなみに編集可能になってます。<br>
 なお、<br></p>
-<pre class="prettyprint"><code class="prettyprint">Testing colorized output (for 'repo diff', 'repo status'):
+<pre><code>Testing colorized output (for 'repo diff', 'repo status'):
   black    red      green    yellow   blue     magenta   cyan     white
   bold     dim      ul       reverse
 Enable color display in this user account (y/N)?
 </code></pre>
-<p><br>
-と質問されたら、yと答えてください。<br>
+<p>と質問されたら、yと答えてください。<br>
 また、名前とメールアドレスを聞かれますが、ビルドしている人の名前（ニックネームでも可）とメールアドレスを入力してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint lang-bash">
-repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 --depth=1 --config-name
+<pre><code class="language-bash">repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 --depth=1 --config-name
 repo sync -j4
-</code></pre>
-<h2>Google APIの設定</h2>
-<p>Google APIを設定してChromium OSからログインできるようにします。<br>
-まず、<a href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev">ここ</a>に参加します。<br>
-参加したら、<a href="https://cloud.google.com/console">ここ</a>へ行って、左上の「My First Project」をクリックします。<br>
-そしたら、右上の「新しいプロジェクト」をクリックして、適当に名前をつけて作成してください。<br>
-それができたら、左上の「My First Project」をもう一度クリックして、自分でつけた名前が表示されているところの読み込みが終わるまで待ちます。<br>
-読み込みが終わったら、そこをクリックしてください。<br>
-そしたら、上の検索ボックスに、次の文字例をいれ、有効化してください。<br></p>
-<ul>
-<li>Cloud Search API<br></li>
-<li>Geolocation API<br></li>
-<li>Google Drive API<br></li>
-<li>Safe Browsing API<br></li>
-<li>Time Zone API<br></li>
-<li>Admin SDK API<br></li>
-<li>Geocoding API<br></li>
-<li>Google Assistant API<br></li>
-<li>Google Calendar API<br></li>
-<li>Nearby Messages API<br></li>
-</ul>
-<p>終わったら、左のメニューの「APIとサービス」、「認証情報」の順にクリックしてください。<br>
-そして、「+ 認証情報を作成」、「OAuth クライアントID」、「同意画面の設定」の順にクリックし、<br>
-「外部」を選択し、「作成」をクリックしてください。<br>
-そして、アプリ名に適当な名前を入力し、ユーザーサポートメールとデベロッパーの連絡先情報に自分のメールアドレスを選択し、「保存して次へ」をクリックします。<br>
-そして、「スコープを追加または削除」ボタンを押し、すべてにチェックをつけ、「更新」を押します。<br>
-そして、「保存して次へ」を押します。<br>
-そして、「+ ADD USERS」ボタンを押し、Chromium OSにログインするユーザーのメールアドレスを入力して、「追加」ボタンを押してください。<br>
-そして、「保存して次へ」を押し、「ダッシュボードに戻る」ボタンを押してください。<br>
-そしたらまた、「+ 認証情報を作成」、「OAuth クライアント ID」の順にクリックし、<br>
-アプリケーションの種類に「デスクトップ アプリ」、名前に適当な名前をつけて作成してください。<br>
-そしたら、クライアントIDとクライアントシークレットが出るので、どこかに保存してください。<br>
-そしたらまた「+ 認証情報を作成」、「API キー」の順にクリックしてください。<br>
-そしたら、APIキーが出てくるので、保存してください。<br>
-そしたら、これを実行してください。<br></p>
-<pre class="prettyprint"><code class="prettyprint lang-bash" contenteditable>api=[メモしておいたAPIキー]
+```bash
+&lt;h2&gt;Google APIの設定&lt;/h2&gt;
+Google APIを設定してChromium OSからログインできるようにします。&lt;br&gt;
+まず、&lt;a href=&quot;https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev&quot;&gt;ここ&lt;/a&gt;に参加します。&lt;br&gt;
+参加したら、&lt;a href=&quot;https://cloud.google.com/console&quot;&gt;ここ&lt;/a&gt;へ行って、左上の「My First Project」をクリックします。&lt;br&gt;
+そしたら、右上の「新しいプロジェクト」をクリックして、適当に名前をつけて作成してください。&lt;br&gt;
+それができたら、左上の「My First Project」をもう一度クリックして、自分でつけた名前が表示されているところの読み込みが終わるまで待ちます。&lt;br&gt;
+読み込みが終わったら、そこをクリックしてください。&lt;br&gt;
+そしたら、上の検索ボックスに、次の文字例をいれ、有効化してください。&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloud Search API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Geolocation API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Google Drive API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Safe Browsing API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Time Zone API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Admin SDK API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Geocoding API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Google Assistant API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Google Calendar API&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;Nearby Messages API&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+終わったら、左のメニューの「APIとサービス」、「認証情報」の順にクリックしてください。&lt;br&gt;
+そして、「+ 認証情報を作成」、「OAuth クライアントID」、「同意画面の設定」の順にクリックし、&lt;br&gt;
+「外部」を選択し、「作成」をクリックしてください。&lt;br&gt;
+そして、アプリ名に適当な名前を入力し、ユーザーサポートメールとデベロッパーの連絡先情報に自分のメールアドレスを選択し、「保存して次へ」をクリックします。&lt;br&gt;
+そして、「スコープを追加または削除」ボタンを押し、すべてにチェックをつけ、「更新」を押します。&lt;br&gt;
+そして、「保存して次へ」を押します。&lt;br&gt;
+そして、「+ ADD USERS」ボタンを押し、Chromium OSにログインするユーザーのメールアドレスを入力して、「追加」ボタンを押してください。&lt;br&gt;
+そして、「保存して次へ」を押し、「ダッシュボードに戻る」ボタンを押してください。&lt;br&gt;
+そしたらまた、「+ 認証情報を作成」、「OAuth クライアント ID」の順にクリックし、&lt;br&gt;
+アプリケーションの種類に「デスクトップ アプリ」、名前に適当な名前をつけて作成してください。&lt;br&gt;
+そしたら、クライアントIDとクライアントシークレットが出るので、どこかに保存してください。&lt;br&gt;
+そしたらまた「+ 認証情報を作成」、「API キー」の順にクリックしてください。&lt;br&gt;
+そしたら、APIキーが出てくるので、保存してください。&lt;br&gt;
+そしたら、これを実行してください。&lt;br&gt;
+&lt;span contenteditable&gt;
+```bash
+api=[メモしておいたAPIキー]
 clientId=メモしておいたクライアントID
 clientSecret=メモしておいたクライアントシークレット
-echo "'google_api_key': '"${api}"'," > ${HOME}/.googleapikeys
-echo "'google_default_client_id: '"${clientId}"'," >> ${HOME}/.googleapikeys
-echo "'google_default_client_secret': '"${clientSecret}"'," >> ${HOME}/.googleapikeys
+echo &quot;'google_api_key': '&quot;${api}&quot;',&quot; &gt; ${HOME}/.googleapikeys
+echo &quot;'google_default_client_id: '&quot;${clientId}&quot;',&quot; &gt;&gt; ${HOME}/.googleapikeys
+echo &quot;'google_default_client_secret': '&quot;${clientSecret}&quot;',&quot; &gt;&gt; ${HOME}/.googleapikeys
 </code></pre>
-<p>&uarr; 編集できるようになってます。コピーする前に最初のところのAPIキーとクライアントID,シークレットだけ書き換えたほうがいいと思います。<br></p>
+<p></span>
+&uarr; 編集できるようになってます。コピーする前に最初のところのAPIキーとクライアントID,シークレットだけ書き換えたほうがいいと思います。<br></p>
 <h1>ビルド</h1>
-<p>いよいよビルドです。<br></p>
-<pre class="prettyprint"><code class="prettyprint lang-bash contenteditable">source build/envsetup.sh
+<p>いよいよビルドです。<br>
+<span contenteditable></p>
+<pre><code class="language-bash">source build/envsetup.sh
 breakfast [デバイス名]
 croot
 brunch [デバイス名]
 </code></pre>
-<p>これでoutフォルダに完成品がある...はず。（）<br></p>
+<p></span>
+これでoutフォルダに完成品がある...はず。（）<br></p>
                 
                   
                 

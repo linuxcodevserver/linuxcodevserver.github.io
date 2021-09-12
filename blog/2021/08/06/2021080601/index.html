@@ -821,120 +821,113 @@
                 
                 <h2>初期設定</h2>
 <p>まず、Apache2をインストールしていなければインストールします。<br></p>
-<pre class="prettyprint"><code class="prettyprint">if apache2 -h > /dev/null 2>&1
+<pre><code class="language-bash">if apache2 -h &gt; /dev/null 2&gt;&amp;1
     then
     sudo apt install apache2
     else
-    echo "already installed."
+    echo &quot;already installed.&quot;
 fi
 </code></pre>
-<p><br>
+<p></code></pre><br>
 そしたら、cgi-binフォルダを作成し、Apache2でmod_cgidを有効化します。<br></p>
-<pre class="prettyprint"><code class="prettyprint">sudo mkdir /var/www/cgi-bin -p
+<pre><code class="language-bash">sudo mkdir /var/www/cgi-bin -p
 sudo chown www-data /var/www/cgi-bin -R
 sudo chmod a+r /var/www/cgi-bin -R
 sudo chmod g+x /var/www/cgi-bin -R
 sudo chmod u+w /var/www/cgi-bin -R
 sudo a2enmod cgid
-cat << "EOF" | sudo tee /etc/apache2/apache2.conf -a
+cat &lt;&lt; &quot;EOF&quot; | sudo tee /etc/apache2/apache2.conf -a
 LoadModule cgid_module modules/mod_cgid.so
 AddHandler cgi-script .cgi
-Alias /cgi-bin/ "/var/www/cgi-bin/"
-&lt;Directory /var/www/cgi&gt;
+Alias /cgi-bin/ &quot;/var/www/cgi-bin/&quot;
+&amp;lt;Directory /var/www/cgi&amp;gt;
         Options FollowSymLinks ExecCGI
         AllowOverride None
         Require all granted
-&lt;/Directory&gt;
+&amp;lt;/Directory&amp;gt;
 EOF
 </code></pre>
-<p><br>
-そして、<br></p>
-<pre class="prettyprint"><code class="prettyprint">sudo nano /etc/apache2/apache2.conf</code></pre>
-<p><br>
-で、apache2の設定を編集します。
+<p>そして、<br></p>
+<pre><code class="language-bash">sudo nano /etc/apache2/apache2.conf
+</code></pre>
+<p>で、apache2の設定を編集します。
 <strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからである。（笑）</strike><br></p>
-<pre class="prettyprint"><code class="prettyprint">&lt;Directory /var/www/&gt;
+<pre><code>&amp;lt;Directory /var/www/&amp;gt;
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
-&lt;/Directory&gt;
+&amp;lt;/Directory&amp;gt;
 </code></pre>
-<p><br>
-を探して、その中の<br></p>
-<pre class="prettyprint"><code class="prettyprint">Options Indexes FollowSymLinks</code></pre>
-<p><br>
-を</p>
-<pre class="prettyprint"><code class="prettyprint">Options FollowSymLinks ExecCGI</code></pre>
-<p><br>
-にして、<br>
+<p>を探して、その中の<br></p>
+<pre><code>Options Indexes FollowSymLinks
+</code></pre>
+<p>を</p>
+<pre><code>Options FollowSymLinks ExecCGI
+</code></pre>
+<p>にして、<br>
 nanoを保存して終了します。<br>
 なお、nanoの操作方法は下に書いてあります。<br>
 それがおわったら、<br></p>
-<pre class="prettyprint"><code class="prettyprint">sudo systemctl reload apache2
+<pre><code class="language-bash">sudo systemctl reload apache2
 sudo systemctl restart apache2
 </code></pre>
-<p><br>
-でapache2を再起動させてください。<br></p>
+<p>でapache2を再起動させてください。<br></p>
 <h2>シェルスクリプトを入れる方法</h2>
 <p>まず、/var/www/cgi-bin/の中に、ファイル名.cgiという名前のファイルを作ります。<br>
 または、すでにあるシェルスクリプトを/var/www/cgi-bin/にコピーし、拡張子をcgiにしてください。<br>
 作った/コピーしたファイルの先頭に、<br></p>
-<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
-echo "Content-type: text/plain"
+<pre><code class="language-bash">#!/bin/bash
+echo &quot;Content-type: text/plain&quot;
 echo
 </code></pre>
-<p><br>
-と入れてください。<br>
+<p>と入れてください。<br>
 なお、<br></p>
-<pre class="prettyprint"><code class="prettyprint">echo "Content-type: text/plain"</code></pre>
-<p><br>
-を</p>
-<pre class="prettyprint"><code class="prettyprint">echo "Content-type: text/html"</code></pre>
-<p><br>
-に置き換えるとただのtxtファイルからhtmlファイルになります。<br>
+<pre><code class="language-bash">echo &quot;Content-type: text/plain&quot;
+</code></pre>
+<p>を</p>
+<pre><code class="language-bash">echo &quot;Content-type: text/html&quot;
+</code></pre>
+<p>に置き換えるとただのtxtファイルからhtmlファイルになります。<br>
 cgiでは、コマンドの実行結果がソースコードとして認識されます。<br>
 つまり、<br></p>
-<pre class="prettyprint"><code class="prettyprint">echo '&lt;p class="container"&gt;ABC&lt;/p&gt;'</code></pre>
-<p><br>
-をcgiファイルに書いてアクセスすると、<br></p>
-<pre class="prettyprint"><code class="prettyprint">&lt;p class="container"&gt;ABC&lt;/p&gt;</code></pre>
-<p><br>
-と解釈され、ABCと表示されます。<br></p>
+<pre><code class="language-bash">echo '&amp;lt;p class=&quot;container&quot;&amp;gt;ABC&amp;lt;/p&amp;gt;'
+</code></pre>
+<p>をcgiファイルに書いてアクセスすると、<br></p>
+<pre><code class="language-html">&amp;lt;p class=&quot;container&quot;&amp;gt;ABC&amp;lt;/p&amp;gt;
+</code></pre>
+<p>と解釈され、ABCと表示されます。<br></p>
 <h2>例</h2>
 <p><label>suspend.cgi</label></p>
-<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
-echo "Content-type: text/plain"
+<pre><code class="language-bash">#!/bin/bash
+echo &quot;Content-type: text/plain&quot;
 echo
-echo "Suspended."
+echo &quot;Suspended.&quot;
 sudo /usr/bin/systemctl suspend
 </code></pre>
-<p><br>
-これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
+<p>これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
 BASIC認証など、絶対に他人に突破されない方法をつかってアクセスを制限してください。<br>
 なお、これはcurlでも反応するので、このsuspend.cgiを使って、こんなこともできます。<br>
 <label>suspend-after-push-to-github.cgi</label></p>
-<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
-echo "Content-type: text/plain"
+<pre><code class="language-bash">#!/bin/bash
+echo &quot;Content-type: text/plain&quot;
 echo
-echo "pushing to github..."
+echo &quot;pushing to github...&quot;
 cd /github/repo/
 git push
-echo "suspending..."
+echo &quot;suspending...&quot;
 curl localhost/cgi-bin/suspend.cgi
 </code></pre>
-<p><br>
-これはGithubにPushしてからサスペンドするというプログラムです。<br>
+<p>これはGithubにPushしてからサスペンドするというプログラムです。<br>
 Jekyllでブログやってる人は、書き終えてからCommit&amp;Pushしないと反映されないので、Pushの手間が省けます。<br>
 ...っていっても、サスペンドされるので書き終えてから少し休憩するときや、書き終えたから今日はもう寝ようとかそういうことが多いひとはこれをつくったほうがいいと思います。<br>
 このコマンドが実行されるのはサーバーの上なので、<br>
 <label>get-blog-feed.cgi</label></p>
-<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
-echo "Content-type: text/plain"
+<pre><code class="language-bash">#!/bin/bash
+echo &quot;Content-type: text/plain&quot;
 echo
 sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-feed.xml
 </code></pre>
-<p><br>
-これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
+<p>これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
 まあ、sudoは動かないんですけどね。<br></p>
 <hr>
 <p style="color: gray; height: 0.25cm;">なお、cgi上でsudoを動かす方法は、NOPASSWDしかありません。が、okaitsのようにwww-data ALL=(ALL) NOPASSWD: ALLとかじゃなくて、せめてwww-data ALL=(ALL) NOPASSWD: /usr/bin/systemctl suspend というふうに特定のコマンドだけを許可したほうがいいです。</p>
@@ -942,18 +935,17 @@ sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-f
 <hr>
 <p>ちなみにこれ、htmlにもできます。<br>
 <label>turn-on-pc.cgi</label></p>
-<pre class="prettyprint"><code class="prettyprint">#!/bin/bash
-echo "Content-type: text/html"
+<pre><code class="language-bash">#!/bin/bash
+echo &quot;Content-type: text/html&quot;
 echo
-echo '&lt;head&gt;&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"&gt;&lt;title&gt;Turning on PC with WOL...&lt;/title&gt;&lt;/head&gt;'
-echo '&lt;div class="container"&gt;'
-echo '&lt;h1&gt;WakeOnLan Running...&lt;/h1&gt;&lt;hr&gt;'
-echo '&lt;p&gt;Turning on your computer With WOR, etherwake...&lt;br&gt;&lt;/p&gt;'
+echo '&amp;lt;head&amp;gt;&amp;lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC&quot; crossorigin=&quot;anonymous&quot;&amp;gt;&amp;lt;title&amp;gt;Turning on PC with WOL...&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;'
+echo '&amp;lt;div class=&quot;container&quot;&amp;gt;'
+echo '&amp;lt;h1&amp;gt;WakeOnLan Running...&amp;lt;/h1&amp;gt;&amp;lt;hr&amp;gt;'
+echo '&amp;lt;p&amp;gt;Turning on your computer With WOR, etherwake...&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;'
 sudo etherwake [コンピューターのmacアドレス]
-echo '&lt;/div&gt;'
+echo '&amp;lt;/div&amp;gt;'
 </code></pre>
-<p><br>
-のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
+<p>のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
                 
                   
                 

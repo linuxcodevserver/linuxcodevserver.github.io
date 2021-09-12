@@ -823,14 +823,20 @@
 contenteditable属性とは、その名の通り内容を編集できるようにすることです。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<pre class="prettyprint"><code class="prettyprint">&lt;p contenteditable&gt;abc&lt;/p&gt;</code></pre><br>
+
+<pre><code class="language-html">&amp;lt;p contenteditable&amp;gt;abc&amp;lt;/p&amp;gt;
+</code></pre>
+
 <h4>結果</h4>
 <p contenteditable>abc</p><br>
 <h2>隠しリンク</h2>
 隠しリンクとは、その名の通りリンクだけど上にマウスをおいても何もおこらないリンクのことです。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<pre class="prettyprint"><code class="prettyprint">&lt;p onclick="location.href='https://okaitslinblog.github.io';"&gt;abc&lt;/p&gt;</code></pre><br>
+
+<pre><code class="language-html">&amp;lt;p onclick=&quot;location.href='https://okaitslinblog.github.io';&quot;&amp;gt;abc&amp;lt;/p&amp;gt;
+</code></pre>
+
 <h4>結果</h4>
 <p onclick="location.href='https://okaitslinblog.github.io';">abc</p><br>
 <h2>httpステータスコードを指定</h2>
@@ -841,12 +847,14 @@ cgiの設定方法は、<a href="https://linuxcodevserver.github.io/blog/2021/08
 <h3>例</h3>
 <h4>コード</h4>
 <label>http404.cgi</label>
-<pre class="prettyprint"><code class="prettyprint lang-bash">#!/bin/bash
+
+<pre><code class="language-bash">#!/bin/bash
 echo 'Status: 404 Not Found'
 echo 'Content-type: text/html'
 echo
-echo '&lt;h1&gt;404 Not Found&lt;/h1&gt;'
+echo '&amp;lt;h1&amp;gt;404 Not Found&amp;lt;/h1&amp;gt;'
 </code></pre>
+
 <label>http404.html</label>
 <pre class="prettyprint"><code class="prettyprint lang-html">&lt;script&gt;location.href('/http404.cgi')&lt;/script&gt;</code></pre>
 ちなみに、ファイル名の「http404.cgi」と「http418.html」を変えて「http418.cgi」と「http418.html」にして、<code class="prettyprint lang-bash">echo 'Status: 404 Not Found'</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http404.cgi')&lt;/script&gt;</code>を変えて<code class="prettyprint lang-bash">echo "Status: 418 I'm a teapot"</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http418.cgi')&lt;/script&gt;</code>にして、<code class="prettyprint lang-bash">echo '&lt;h1&gt;404 Not Found&lt;/h1&gt;'</code>を<code class="prettyprint lang-bash">echo "&lt;h1&gt;418 I'm a teapot&lt;/h1&gt;"</code>にすれば、、418番「I'm a teapot」のエラーも出せます。（ジョークのステータスコード。）

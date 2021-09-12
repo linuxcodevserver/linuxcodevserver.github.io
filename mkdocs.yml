@@ -52,3 +52,4 @@ extra:
 markdown_extentions:
     - pymdownx.highlight
     - pymdownx.superfences
+    - footnotes

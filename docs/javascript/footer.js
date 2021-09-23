@@ -16,7 +16,7 @@ if (!(ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('Mobil
     var ads = document.createElement("script");
     ads.setAttribute("src", "https://aas.information-portal.net/tag.php?invid=20");
     footerspan.appendChild(ads);
-    footerspan.insertAdjacentElement('beforeend', '</li></ul></div>');
+    footerspan.insertAdjacentHTML('beforeend', '</li></ul></div>');
 };
 // For SmartPhone
 if (ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0){
@@ -29,7 +29,7 @@ if (ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0){
     var ads = document.createElement("script");
     ads.setAttribute("src", "https://aas.information-portal.net/tag.php?invid=20");
     footerspan.appendChild(ads);
-    footerspan.insertAdjacentElement("</li></ul></div")
+    footerspan.insertAdjacentHTML("</li></ul></div")
 };
 
 });

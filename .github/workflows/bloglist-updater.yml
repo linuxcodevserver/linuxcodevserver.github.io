@@ -51,4 +51,4 @@ jobs:
           git add .
           git commit -m "[update] bloglist.md"
           git pull
-          git push origin master
+          git push origin master || echo 'Nothing changed."

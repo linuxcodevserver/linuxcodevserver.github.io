@@ -43,6 +43,8 @@ jobs:
             done
           echo '<hr>' >> docs/blogs.md
           rm bloglist-fixed
+          version=$(($(cat version)+1))
+          echo $version > version
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映
         run: |

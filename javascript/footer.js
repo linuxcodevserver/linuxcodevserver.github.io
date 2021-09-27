@@ -1,3 +1,5 @@
+/*
+// Disabled: Broken
 // Wait loading
 window.addEventListener('DOMContentLoaded', ()=>{
 
@@ -29,7 +31,8 @@ if (ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0){
     var ads = document.createElement("script");
     ads.setAttribute("src", "https://aas.information-portal.net/tag.php?invid=20");
     footerspan.appendChild(ads);
-    footerspan.insertAdjacentHTML("</li></ul></div")
+    footerspan.insertAdjacentHTML("</li></ul></div>")
 };
 
 });
+*/

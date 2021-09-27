@@ -62,7 +62,7 @@ extra:
       social: 
         - icon: fontawesome/brands/discord
           link: "https://discord.com/invite/sUdAE64Zc7"
-        - icon: "https://toppng.com/uploads/preview/mattermost-logo-11609368489plncpdfdq9.png"
+        - icon: custom/mattermost
           link: "http://linuxcodevserver.ddns.net:6896/"
 
 markdown_extentions:
@@ -72,4 +72,5 @@ markdown_extentions:
         linenums: true
     - pymdownx.superfences
     - footnotes
+
 copyright: "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/."

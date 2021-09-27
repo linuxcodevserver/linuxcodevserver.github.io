@@ -1,5 +1,5 @@
 site_name: 皆の意見交流所サーバー公式ホームページ
-site_url: https://linuxcodevserver.github.io/
+site_url: "https://linuxcodevserver.github.io/"
 theme:
     custom_dir: overrides
     name: material
@@ -30,7 +30,7 @@ theme:
     icon:
         repo: fontawesome/brands/github
 repo_name: linuxcodevserver/linuxcodevserver.github.io
-repo_url: https://github.com/linuxcodevserver/linuxcodevserver.github.io
+repo_url: "https://github.com/linuxcodevserver/linuxcodevserver.github.io"
 edit_uri: ""
 
 nav:
@@ -61,9 +61,9 @@ extra:
       disqus: linuxcodevserver
       social: 
         - icon: fontawesome/brands/discord
-          link: https://discord.com/invite/sUdAE64Zc7
-        - icon: https://toppng.com/uploads/preview/mattermost-logo-11609368489plncpdfdq9.png
-          link: http://linuxcodevserver.ddns.net:6896/
+          link: "https://discord.com/invite/sUdAE64Zc7"
+        - icon: "https://toppng.com/uploads/preview/mattermost-logo-11609368489plncpdfdq9.png"
+          link: "http://linuxcodevserver.ddns.net:6896/"
 
 markdown_extentions:
     - codehilite:
@@ -72,5 +72,4 @@ markdown_extentions:
         linenums: true
     - pymdownx.superfences
     - footnotes
-copyright: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit
-http://creativecommons.org/licenses/by-sa/4.0/.
+copyright: "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/."

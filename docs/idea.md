@@ -36,22 +36,22 @@ description: ブログのアイデアの募集です。「これを書いてほ�
   <label>
     メールアドレス<br>
     <input type="email" name="_replyto" class="textlines">
-  </label>
+  </label><br>
   <label>
     Discordユーザー名
     <input type="text" name="discordusername" class="textlines">
-  <label>
+  <label><br>
     アイデア
     <textarea name="idea" class="textlines"></textarea>
   </label>
-  <label>
+  <label><br>
     申請ID
     <input type="number" id="iid" name="iid" readonly></input>
     <script>
       var iid = Math.floor( Math.random() * (9999999 + 1 - 1000000) ) + 1000000 ;
       document.getElementById("iid").setAttribute('value', iid)
     </script>
-  </label>
+  </label><br>
   <!-- your other form fields go here -->
   <button type="submit">送信</button>
 </form>

@@ -501,31 +501,31 @@
 <p>ブログに投稿したい人はこのフォームを使ってください。<br></p>
 <form action="https://formspree.io/f/xnqllyaw" method="POST">
   <label>
-    メールアドレス
+    メールアドレス<br>
     <input type="email" name="_replyto" class="textlines"></input>
   </label><br>
   <label>
-    Discordユーザー名
+    Discordユーザー名<br>
     <input type="text" name="discordusername" class="textlines"></input>
   </label><br>
   <label>
-    記事のタイトル
+    記事のタイトル<br>
     <input type="text" name="title" class="textlines"></input>
   </label><br>
   <label>
-    記事の概要・導入文
+    記事の概要・導入文<br>
     <input type="text" name="description" class="textlines"></input>
   </label><br>
   <label>
-    記事のタグ（スペースで区切る）
+    記事のタグ（スペースで区切る）<br>
     <input type="text" name="tags" class="textlines"></input>
   </label><br>
   <label>
-    記事のカテゴリ
+    記事のカテゴリ<br>
     <input type="text" name="categories" class="textlines"></input>
   </label><br>
   <label>
-    申請ID
+    申請ID<br>
     <input type="number" id="contentid" name="contentid" class="textlines" readonly></input>
     <script>
       var contentid = Math.floor( Math.random() * (9999999 + 1 - 1000000) ) + 1000000 ;
@@ -533,11 +533,11 @@
     </script>
   </label><br>
   <label>
-    投稿日時
+    書いた日<br>
     <input type="date" name="date" class="textlines"></input>
   </label><br>
   <label>
-    本文
+    本文<br>
     <textarea name="main" class="textlines"></textarea>
   </label><br>
   <!-- your other form fields go here -->

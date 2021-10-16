@@ -10,6 +10,7 @@ title: ブログ投稿
     width: 20em;             /* 横幅 */
     font-size: 1em;          /* 文字サイズ */
     line-height: 1.2;        /* 行の高さ */
+    size: 80%;
     }
     .submitbutton {
         padding: 0.5em 1em;

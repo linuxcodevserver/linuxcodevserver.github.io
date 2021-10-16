@@ -34,13 +34,14 @@ repo_url: "https://github.com/linuxcodevserver/linuxcodevserver.github.io"
 edit_uri: ""
 
 nav:
-    - Home: index.md
-    - Projects: a_projects.md
-    - Donate: donate.md
-    - Blog:
-        - Index: blogs.md
-        - Tag Index: tags.md
-        - Write: write.md
+    - ホーム: index.md
+    - プロジェクト: a_projects.md
+    - 寄付: donate.md
+    - ブログ:
+        - 目次: blogs.md
+        - タグ一覧: tags.md
+        - 投稿: write.md
+        - アイデア募集: idea.md
 
 plugins:
     - blog:

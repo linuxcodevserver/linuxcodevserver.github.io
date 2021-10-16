@@ -17,7 +17,7 @@ description: ブログのアイデアの募集です。「これを書いてほ�
         padding: 0.5em 1em;
         text-decoration: none;
         background: #668ad8;
-        color: #00bf00;
+        color: #FFF;
         border-bottom: solid 4px #627295
         border-radius: 3px;
     }

@@ -53,22 +53,22 @@ opacity: 0;
   <label>
     メールアドレス<br>
     <input type="email" name="_replyto" class="textlines">
-  </label><br>
+  </label><br><br>
   <label>
     Discordユーザー名<br>
     <input type="text" name="discordusername" class="textlines">
-  <label><br>
+  <label><br><br>
     アイデア<br>
     <textarea name="idea" class="textlines"></textarea>
-  </label><br>
+  </label><br><br>
   <label>
     申請ID<br>
-    <input type="number" id="iid" name="iid" readonly></input>
+    <input type="number" id="iid" name="iid" class="textlines" readonly></input>
     <script>
       var iid = Math.floor( Math.random() * (9999999 + 1 - 1000000) ) + 1000000 ;
       document.getElementById("iid").setAttribute('value', iid)
     </script>
-  </label><br>
+  </label><br><br>
   <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div>
   <!-- your other form fields go here -->
   <button type="submit">送信</button>

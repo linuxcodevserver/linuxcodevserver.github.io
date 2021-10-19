@@ -42,6 +42,7 @@ nav:
         - タグ一覧: tags.md
         - 投稿する: write.md
         - アイデア募集: idea.md
+        - 投稿＆アイデア募集状況: status.md
 
 plugins:
     - blog:

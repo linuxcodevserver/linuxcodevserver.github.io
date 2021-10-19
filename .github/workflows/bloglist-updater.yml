@@ -43,8 +43,7 @@ jobs:
             done
           echo '<hr>' >> docs/blogs.md
           rm bloglist-fixed
-          version=$(pwgen)
-          echo $version > Random
+          echo $RANDOM > Random
           
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映

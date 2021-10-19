@@ -27,6 +27,7 @@ title: ブログ投稿
         border-bottom: none;
     }
 </style>
+<!--
 <script>
   window.onload = function() { 
   var el = document.getElementById('g-recaptcha-response'); 
@@ -44,6 +45,7 @@ z-index: -999999;
 opacity: 0;
 }
 </style>
+-->
 ブログに投稿したい人はこのフォームを使ってください。<br>
 <form action="https://formspree.io/f/xnqllyaw" method="POST">
   <label>
@@ -87,6 +89,6 @@ opacity: 0;
     <textarea name="main" class="textlines"></textarea>
   </label><br><br>
   <!-- your other form fields go here -->
-  <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div>
+  <!-- <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div> -->
   <button type="submit" class="submitbutton">申請</button>
 </form>

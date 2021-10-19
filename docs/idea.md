@@ -17,7 +17,7 @@ description: ブログのアイデアの募集です。「これを書いてほ�
         padding: 0.5em 1em;
         text-decoration: none;
         background: #668ad8;
-        color: #FFF;
+        color: #FFF
         border-bottom: solid 4px #627295
         border-radius: 3px;
     }
@@ -28,6 +28,7 @@ description: ブログのアイデアの募集です。「これを書いてほ�
         border-bottom: none;
     }
 </style>
+<!--
 <script>
   window.onload = function() { 
   var el = document.getElementById('g-recaptcha-response'); 
@@ -45,6 +46,7 @@ z-index: -999999;
 opacity: 0;
 }
 </style>
+-->
 <h2>フォーム</h2>
 <form
   action="https://formspree.io/f/mqkwoagl"
@@ -69,7 +71,7 @@ opacity: 0;
       document.getElementById("iid").setAttribute('value', iid)
     </script>
   </label><br><br>
-  <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div>
+  <!-- <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div> -->
   <!-- your other form fields go here -->
   <button type="submit">送信</button>
 </form>

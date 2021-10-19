@@ -36,7 +36,7 @@ edit_uri: ""
 nav:
     - ホーム: index.md
     - プロジェクト: a_projects.md
-    - MPurseで寄付: donate.md
+    - MPurseで寄付: donate-mpurse.md
     - ブログ:
         - 目次: blogs.md
         - タグ一覧: tags.md

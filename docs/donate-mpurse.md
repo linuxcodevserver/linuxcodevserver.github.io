@@ -10,7 +10,7 @@ MPurseで寄付
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
   padding       : 12px 12px;   /* 余白       */
-  background    : rgba(89, 179, 0, 0.86);     /* 背景色     */
+  background    : rgba(0, 148, 133, 0.86);     /* 背景色     */
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */

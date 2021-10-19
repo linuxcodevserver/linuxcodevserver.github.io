@@ -1,5 +1,5 @@
 ---
-title: Test Page
+title: MPurseで寄付
 ---
 MPurseで寄付
 <style type="text/css">

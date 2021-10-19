@@ -1,5 +1,5 @@
 ---
-title: ブログ投稿
+title: 投稿する
 ---
 <style>
     .textlines {

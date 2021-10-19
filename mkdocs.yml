@@ -40,7 +40,7 @@ nav:
     - ブログ:
         - 目次: blogs.md
         - タグ一覧: tags.md
-        - 投稿: write.md
+        - 投稿する: write.md
         - アイデア募集: idea.md
 
 plugins:

@@ -1,7 +1,7 @@
 ---
 title: MPurseで寄付
 ---
-MPurseで寄付
+MPurseで寄付<br>
 <a class=".md-button" href="https://linuxcodevserver.github.io/javascript/mp-donatemona/hmp-donatemona0.1.html">0.1MONA</a>&emsp;
 <a class=".md-button" href="https://linuxcodevserver.github.io/javascript/mp-donatemona/hmp-donatemona0.01.html">0.01MONA</a>&emsp;
 <a class=".md-button" href="https://linuxcodevserver.github.io/javascript/mp-donatemona/hmp-donatemona01.html">1MONA</a><br><br>

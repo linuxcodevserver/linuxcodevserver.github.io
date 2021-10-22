@@ -13,20 +13,6 @@ description: ブログのアイデアの募集です。「これを書いてほ�
     line-height: 1.2;        /* 行の高さ */
     size: 80%;
     }
-    .submitbutton {
-        padding: 0.5em 1em;
-        text-decoration: none;
-        background: #668ad8;
-        color: #FFF
-        border-bottom: solid 4px #627295
-        border-radius: 3px;
-    }
-    .submitbutton:active {
-        -webkit-transform: translateY(4px;)
-        transform: translateY(4px;)
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-        border-bottom: none;
-    }
 </style>
 <!--
 <script>
@@ -73,5 +59,5 @@ opacity: 0;
   </label><br><br>
   <!-- <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div> -->
   <!-- your other form fields go here -->
-  <button type="submit" class="submitbutton">送信</button>
+  <button type="submit" class=".md-button .md-button--primary">送信</button>
 </form>

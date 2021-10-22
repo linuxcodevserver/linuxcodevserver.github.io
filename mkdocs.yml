@@ -43,6 +43,7 @@ nav:
         - 投稿する: write.md
         - アイデア募集: idea.md
         - 投稿＆アイデア募集状況: status.md
+    - お問い合わせ: contact.md
 
 plugins:
     - blog:
@@ -74,5 +75,6 @@ markdown_extentions:
         linenums: true
     - pymdownx.superfences
     - footnotes
+    - attr_list
 
 copyright: "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/."

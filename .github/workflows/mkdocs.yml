@@ -20,9 +20,44 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
+      - name: Update BlogList
+        run: |
+          cat << "EOF" > docs/blogs.md
+          ---
+          title: ブログ目次
+          description: ブログ目次
+          ---
+          <h1>ブログ目次</h1>
+          <h2>ブログ一覧</h2>
+          EOF
+          cat bloglist | tr '\n' ' ' > bloglist-fixed
+          for filename in $(cat bloglist-fixed)
+            do
+            echo '<hr>' >> docs/blogs.md
+            echo $filename
+            url=$(echo ${filename} | sed "s/docs\///g" | sed "s/.md//g")
+            url="https://linuxcodevserver.github.io/${url}"
+            echo "url :$url"
+            title=$(cat $filename | grep "title: " | sed "s/title:\ //g")
+            echo "title: $title"
+            echo '<a href="'$url'"><h2>'"${title}"'</h2></a>' >> docs/blogs.md
+            categories=$(cat $filename | grep "categories: " | sed -e "s/categories:\ //g")
+            author=$(cat $filename | grep "author: " | sed "s/author:\ //g")
+            echo "categories: $categories"
+            echo "author: $author"
+            description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
+            echo "<span><b>${categories}</b></span>" >> docs/blogs.md
+            echo "<span>${author}</span>"
+            echo '<p style="width: 70%, height: 70%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
+            echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blogs.md
+            echo "description: $description"
+            done
+          echo '<hr>' >> docs/blogs.md
+          rm bloglist-fixed
+          od -vAn --width=4 -tu4 -N4 < /dev/urandom > random
+
       - name: Configure Git
         run: |
-          sleep 5s # wait for bloglist updater
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
           git fetch origin gh-pages

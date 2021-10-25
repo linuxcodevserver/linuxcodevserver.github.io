@@ -29,3 +29,9 @@
 <!-- Add ReCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js"></script>
 {% endblock %}
+{% block header %}
+  {% include "partials/header.html" %}
+  {% if page and page.meta and page.meta.ads %}
+    {% include "ads.html" %}
+  {% endif %}
+{% endblock %}

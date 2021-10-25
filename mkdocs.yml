@@ -68,7 +68,7 @@ extra:
         - icon: custom/mattermost
           link: "http://linuxcodevserver.ddns.net:6896/"
 
-markdown_extentions:
+markdown_extensions:
     - codehilite:
         noclasses: true
         pygments_style: colorful

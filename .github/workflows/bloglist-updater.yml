@@ -43,7 +43,7 @@ jobs:
             done
           echo '<hr>' >> docs/blogs.md
           rm bloglist-fixed
-          echo $RANDOM > Random
+          od -vAn --width=4 -tu4 -N4 < /dev/urandom > random
           
 
       - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映

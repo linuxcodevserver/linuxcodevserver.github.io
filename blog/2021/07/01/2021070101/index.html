@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/07/01/2021070101/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.db9e7362.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.cdeb8541.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -84,7 +84,7 @@
       
     </div>
     
-      
+  
 
   
 
@@ -272,7 +272,8 @@
     
   
 </header>
-    
+  
+
     <div class="md-container" data-md-component="container">
       
       
@@ -523,10 +524,10 @@
 <h3>Ubuntuの場合</h3>
 <p>Ubuntuの場合、<a href="https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21_amd64.deb">ここ</a>からインストーラーをとってきます。<br>
 そしたら、CtrlとAltとTを同時に押し、ターミナルを開き、<br>
-cd ダウンロードしたディレクトリ<br></p>
-<pre><code class="language-bash">sudo apt install ./fahclient_7.6.21_amd64.deb
-</code></pre>
-<p>を実行します。<br>
+cd ダウンロードしたディレクトリ<br>
+<div class="highlight"><pre><span></span><code>sudo apt install ./fahclient_7.6.21_amd64.deb
+</code></pre></div>
+を実行します。<br>
 途中で質問されたら、全てEnterを押してください。</p>
 <h2>初期設定</h2>
 <p><br>
@@ -553,11 +554,11 @@ Team Number: 登録時に出てくる数字<br>
 で、登録してください。<br>
 登録が終わったら、自動的に貢献が開始されます。<br>
 なお、linuxでは、再起動時に貢献が自動的に開始されません。<br>
-開始されるようにしたい場合、<br></p>
-<pre><code class="language-bash">sudo systemctl enable FAHClient
+開始されるようにしたい場合、<br>
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> FAHClient
 sudo systemctl start FAHClient
-</code></pre>
-<p>を実行してください。</p>
+</code></pre></div>
+を実行してください。</p>
                 
                   
                 

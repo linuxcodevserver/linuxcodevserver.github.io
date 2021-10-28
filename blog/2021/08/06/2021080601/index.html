@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/08/06/2021080601/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.db9e7362.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.cdeb8541.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -84,7 +84,7 @@
       
     </div>
     
-      
+  
 
   
 
@@ -272,7 +272,8 @@
     
   
 </header>
-    
+  
+
     <div class="md-container" data-md-component="container">
       
       
@@ -512,132 +513,132 @@
                 
                 <p>今回はBashのシェルスクリプトを使います。少し改造すれば他のシェルスクリプトも使えます。<br></p>
 <h2>初期設定</h2>
-<p>まず、Apache2をインストールしていなければインストールします。<br></p>
-<pre><code class="language-bash">if apache2 -h &gt; /dev/null 2&gt;&amp;1
-    then
+<p>まず、Apache2をインストールしていなければインストールします。<br>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> apache2 -h &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+    <span class="k">then</span>
     sudo apt install apache2
-    else
-    echo &quot;already installed.&quot;
-fi
-</code></pre>
-<p></code></pre><br>
-そしたら、cgi-binフォルダを作成し、Apache2でmod_cgidを有効化します。<br></p>
-<pre><code class="language-bash">sudo mkdir /var/www/cgi-bin -p
+    <span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;already installed.&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+</code></pre><br>
+そしたら、cgi-binフォルダを作成し、Apache2でmod_cgidを有効化します。<br>
+<div class="highlight"><pre><span></span><code>sudo mkdir /var/www/cgi-bin -p
 sudo chown www-data /var/www/cgi-bin -R
 sudo chmod a+r /var/www/cgi-bin -R
 sudo chmod g+x /var/www/cgi-bin -R
 sudo chmod u+w /var/www/cgi-bin -R
 sudo a2enmod cgid
-cat &lt;&lt; &quot;EOF&quot; | sudo tee /etc/apache2/apache2.conf -a
+cat &lt;&lt; <span class="s2">&quot;EOF&quot;</span> <span class="p">|</span> sudo tee /etc/apache2/apache2.conf -a
 LoadModule cgid_module modules/mod_cgid.so
 AddHandler cgi-script .cgi
-Alias /cgi-bin/ &quot;/var/www/cgi-bin/&quot;
-&amp;lt;Directory /var/www/cgi&amp;gt;
+Alias /cgi-bin/ <span class="s2">&quot;/var/www/cgi-bin/&quot;</span>
+<span class="p">&amp;</span>lt<span class="p">;</span>Directory /var/www/cgi<span class="p">&amp;</span>gt<span class="p">;</span>
         Options FollowSymLinks ExecCGI
         AllowOverride None
         Require all granted
-&amp;lt;/Directory&amp;gt;
+<span class="p">&amp;</span>lt<span class="p">;</span>/Directory<span class="p">&amp;</span>gt<span class="p">;</span>
 EOF
-</code></pre>
-<p>そして、<br></p>
-<pre><code class="language-bash">sudo nano /etc/apache2/apache2.conf
-</code></pre>
-<p>で、apache2の設定を編集します。
-<strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからである。（笑）</strike><br></p>
-<pre><code>&amp;lt;Directory /var/www/&amp;gt;
+</code></pre></div>
+そして、<br>
+<div class="highlight"><pre><span></span><code>sudo nano /etc/apache2/apache2.conf
+</code></pre></div>
+で、apache2の設定を編集します。
+<strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからである。（笑）</strike><br>
+<div class="highlight"><pre><span></span><code>&amp;lt;Directory /var/www/&amp;gt;
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
 &amp;lt;/Directory&amp;gt;
-</code></pre>
-<p>を探して、その中の<br></p>
-<pre><code>Options Indexes FollowSymLinks
-</code></pre>
-<p>を</p>
-<pre><code>Options FollowSymLinks ExecCGI
-</code></pre>
-<p>にして、<br>
+</code></pre></div>
+を探して、その中の<br>
+<div class="highlight"><pre><span></span><code>Options Indexes FollowSymLinks
+</code></pre></div>
+を
+<div class="highlight"><pre><span></span><code>Options FollowSymLinks ExecCGI
+</code></pre></div>
+にして、<br>
 nanoを保存して終了します。<br>
 なお、nanoの操作方法は下に書いてあります。<br>
-それがおわったら、<br></p>
-<pre><code class="language-bash">sudo systemctl reload apache2
+それがおわったら、<br>
+<div class="highlight"><pre><span></span><code>sudo systemctl reload apache2
 sudo systemctl restart apache2
-</code></pre>
-<p>でapache2を再起動させてください。<br></p>
+</code></pre></div>
+でapache2を再起動させてください。<br></p>
 <h2>シェルスクリプトを入れる方法</h2>
 <p>まず、/var/www/cgi-bin/の中に、ファイル名.cgiという名前のファイルを作ります。<br>
 または、すでにあるシェルスクリプトを/var/www/cgi-bin/にコピーし、拡張子をcgiにしてください。<br>
-作った/コピーしたファイルの先頭に、<br></p>
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;Content-type: text/plain&quot;
-echo
-</code></pre>
-<p>と入れてください。<br>
-なお、<br></p>
-<pre><code class="language-bash">echo &quot;Content-type: text/plain&quot;
-</code></pre>
-<p>を</p>
-<pre><code class="language-bash">echo &quot;Content-type: text/html&quot;
-</code></pre>
-<p>に置き換えるとただのtxtファイルからhtmlファイルになります。<br>
+作った/コピーしたファイルの先頭に、<br>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
+<span class="nb">echo</span>
+</code></pre></div>
+と入れてください。<br>
+なお、<br>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
+</code></pre></div>
+を
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;Content-type: text/html&quot;</span>
+</code></pre></div>
+に置き換えるとただのtxtファイルからhtmlファイルになります。<br>
 cgiでは、コマンドの実行結果がソースコードとして認識されます。<br>
-つまり、<br></p>
-<pre><code class="language-bash">echo '&amp;lt;p class=&quot;container&quot;&amp;gt;ABC&amp;lt;/p&amp;gt;'
-</code></pre>
-<p>をcgiファイルに書いてアクセスすると、<br></p>
-<pre><code class="language-html">&amp;lt;p class=&quot;container&quot;&amp;gt;ABC&amp;lt;/p&amp;gt;
-</code></pre>
-<p>と解釈され、ABCと表示されます。<br></p>
+つまり、<br>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;&amp;lt;p class=&quot;container&quot;&amp;gt;ABC&amp;lt;/p&amp;gt;&#39;</span>
+</code></pre></div>
+をcgiファイルに書いてアクセスすると、<br>
+<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>p class=&quot;container&quot;<span class="ni">&amp;gt;</span>ABC<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+</code></pre></div>
+と解釈され、ABCと表示されます。<br></p>
 <h2>例</h2>
-<p><label>suspend.cgi</label></p>
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;Content-type: text/plain&quot;
-echo
-echo &quot;Suspended.&quot;
-sudo /usr/bin/systemctl suspend
-</code></pre>
-<p>これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
+<p><label>suspend.cgi</label>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&quot;Suspended.&quot;</span>
+sudo /usr/bin/systemctl <span class="nb">suspend</span>
+</code></pre></div>
+これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
 BASIC認証など、絶対に他人に突破されない方法をつかってアクセスを制限してください。<br>
 なお、これはcurlでも反応するので、このsuspend.cgiを使って、こんなこともできます。<br>
-<label>suspend-after-push-to-github.cgi</label></p>
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;Content-type: text/plain&quot;
-echo
-echo &quot;pushing to github...&quot;
-cd /github/repo/
+<label>suspend-after-push-to-github.cgi</label>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s2">&quot;pushing to github...&quot;</span>
+<span class="nb">cd</span> /github/repo/
 git push
-echo &quot;suspending...&quot;
+<span class="nb">echo</span> <span class="s2">&quot;suspending...&quot;</span>
 curl localhost/cgi-bin/suspend.cgi
-</code></pre>
-<p>これはGithubにPushしてからサスペンドするというプログラムです。<br>
+</code></pre></div>
+これはGithubにPushしてからサスペンドするというプログラムです。<br>
 Jekyllでブログやってる人は、書き終えてからCommit&amp;Pushしないと反映されないので、Pushの手間が省けます。<br>
 ...っていっても、サスペンドされるので書き終えてから少し休憩するときや、書き終えたから今日はもう寝ようとかそういうことが多いひとはこれをつくったほうがいいと思います。<br>
 このコマンドが実行されるのはサーバーの上なので、<br>
-<label>get-blog-feed.cgi</label></p>
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;Content-type: text/plain&quot;
-echo
+<label>get-blog-feed.cgi</label>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
+<span class="nb">echo</span>
 sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-feed.xml
-</code></pre>
-<p>これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
+</code></pre></div>
+これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
 まあ、sudoは動かないんですけどね。<br></p>
 <hr>
 <p style="color: gray; height: 0.25cm;">なお、cgi上でsudoを動かす方法は、NOPASSWDしかありません。が、okaitsのようにwww-data ALL=(ALL) NOPASSWD: ALLとかじゃなくて、せめてwww-data ALL=(ALL) NOPASSWD: /usr/bin/systemctl suspend というふうに特定のコマンドだけを許可したほうがいいです。</p>
 <p><br></p>
 <hr>
 <p>ちなみにこれ、htmlにもできます。<br>
-<label>turn-on-pc.cgi</label></p>
-<pre><code class="language-bash">#!/bin/bash
-echo &quot;Content-type: text/html&quot;
-echo
-echo '&amp;lt;head&amp;gt;&amp;lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC&quot; crossorigin=&quot;anonymous&quot;&amp;gt;&amp;lt;title&amp;gt;Turning on PC with WOL...&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;'
-echo '&amp;lt;div class=&quot;container&quot;&amp;gt;'
-echo '&amp;lt;h1&amp;gt;WakeOnLan Running...&amp;lt;/h1&amp;gt;&amp;lt;hr&amp;gt;'
-echo '&amp;lt;p&amp;gt;Turning on your computer With WOR, etherwake...&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;'
-sudo etherwake [コンピューターのmacアドレス]
-echo '&amp;lt;/div&amp;gt;'
-</code></pre>
-<p>のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
+<label>turn-on-pc.cgi</label>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Content-type: text/html&quot;</span>
+<span class="nb">echo</span>
+<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;head&amp;gt;&amp;lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC&quot; crossorigin=&quot;anonymous&quot;&amp;gt;&amp;lt;title&amp;gt;Turning on PC with WOL...&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&#39;</span>
+<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;div class=&quot;container&quot;&amp;gt;&#39;</span>
+<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;h1&amp;gt;WakeOnLan Running...&amp;lt;/h1&amp;gt;&amp;lt;hr&amp;gt;&#39;</span>
+<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;p&amp;gt;Turning on your computer With WOR, etherwake...&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;&#39;</span>
+sudo etherwake <span class="o">[</span>コンピューターのmacアドレス<span class="o">]</span>
+<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;/div&amp;gt;&#39;</span>
+</code></pre></div>
+のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
                 
                   
                 

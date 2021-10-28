@@ -6,21 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="ちなみにがokaitsが前にやってたブログはJekyllで動いてます。今はもう編集不可だけど。ちなみにこの記事はこのブログから移植してきたやつです。">
+        <meta name="description" content="Windows11にWindows SubSystem For Androidを無理矢理入れる方法です。今は書いてる時点ではまだアメリカ限定だったから、それをガン無視してやる方法です。">
       
       
       
-        <meta name="author" content="okaits">
       
-      
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072002/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/10/28/2021102801/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
-        <title>jekyllとGithub Pagesでブログを作る方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>Windows 11にWindows SubSystem For Androidを無理矢理入れる方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              jekyllとGithub Pagesでブログを作る方法
+              Windows 11にWindows SubSystem For Androidを無理矢理入れる方法
             
           </span>
         </div>
@@ -526,29 +524,67 @@
               
                 
                 
-                  <h1>jekyllとGithub Pagesでブログを作る方法 (2021/07/20)</h1>
-                
-                <p>ちなみにがokaitsが前にやってたブログはJekyllで動いてます。今はもう編集不可だけど。ちなみにこの記事はこのブログから移植してきたやつです。<br></p>
-<h2>Jekyllって何？</h2>
-<p><br>
-Jekyllとは、Github Pagesなどで動くブログを作るためのものです。<br></p>
-<h2>方法</h2>
-<p><br>
-まずは<a href="https://github.com/gdgmanagua/jekyll-mdl">このレポジトリ</a>をForkしてください。<br>
-そしたら他のサイトを参考にGithub Pagesを有効化してください。<br>
-この時、gh-pagesブランチを選択してください。<br>
-そしたらDisqusの登録をします。<br>
-<a href="https://disqus.com/profile/signup/">ここ</a>からDisqusの登録をしてください。<br>
-そしたらgh-pagesブランチの_config.ymlを一旦全行消してからこれをコピペしてください。<br></p>
-<script src="https://gist.github.com/okaits/390935c3f4334bc99e807b60acd4cdfc.js"></script>
-<h2>記事の投稿</h2>
-<p><br>
-記事は、gh-pagesブランチの_postsに置きます。<br>
-ファイル名は、<br>
-yyyy-mm-dd-タイトル.md<br>
-で、このように最初にタイトルなどの情報を書き込みます。(View rawボタンを押してください。)<br></p>
-<script src="https://gist.github.com/okaits/08ddb58f57b44dc8a6e288745f9aa93d.js"></script>
-<p>これを書き終えたら、後は本文を入力してcommitするだけです。<br></p>
+                <p>Windows11にWindows SubSystem For Androidを無理矢理入れる方法です。今は書いてる時点ではまだアメリカ限定だったから、それをガン無視してやる方法です。<br></p>
+<h2>前提条件</h2>
+<p>まず最初に、次の条件を満たしている必要があります。<br>
+- Windows11がインストールされていること<br>
+- Windows SubSystem For <strong>Linux</strong> 2(WSL2) が有効化されていること<br>
+- UbuntuまたはDebianがWSL2にインストールされていること<br>
+- 7Zipがインストールされていること</p>
+<h2>ダウンロード</h2>
+<h3>Windowsでの作業</h3>
+<p>まずは必要なファイルをダウンロードします。<br>
+まず最初に、<a href="https://store.rg-adguard.net/">ここ</a>に行きます。<br>
+すると、こんな感じの画面が表示されると思います。<br>
+<img src="https://linuxcodevserver.github.io/img/202110280101.png"><br>
+そしたら、左のドロップダウンメニューから<code>ProductId</code>を選び、真ん中に<code>9P3395VX91NR</code>と入力し、右のドロップダウンメニューは<code>Slow</code>を押してチェックボックスを押します。<br>
+そうすると下にファイル一覧が出るので、一番下の<code>.msixbundle</code>で終わるファイルをダウンロードします。<br>
+ダウンロードできたらそれを7Zipで開いて展開します。（展開先の名前をwsfaとしておいてください。）<br>
+wsfaを7Zipで開くと、このように大量のファイルがあります。<br>
+<img src="https://linuxcodevserver.github.io/img/202110280102.png"><br>
+この中から、<code>WsaPackage_バージョンによって異なります_x64_Release-Nightly.msix</code>というファイルを見つけ出し、それをダブルクリックして、そのままwsfaに展開してください。<br>
+この時、<code>WsaPackage_バージョンによって異なります_language-ja.msix</code>といういかにも関係ありそうなやつがありますが、飛ばしましょう。<br>
+これを使ってしまうと、最後にインストールするときにエラーでとまります。<br>
+そしたら、準備完了したwsfaをWSL2のホームディレクトリにコピー（または移動）しておいてください。<br></p>
+<h2>インストール
+<h3>Linuxでの作業</h3>
+これらをシェルスクリプトとかにして実行しましょう。<br>
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt install -y unzip lzip git
+git clone https://github.com/ADeltaX/WSAGAScript
+<span class="nb">cd</span> WSAGAScript/<span class="se">\#</span>IMAGES
+cp ../../wsfa/*.img .
+<span class="nb">cd</span> ../<span class="se">\#</span>GAPPS
+wget https://sourceforge.net/projects/opengapps/files/x86_64/20211028/open_gapps-x86_64-11.0-pico-20211028.zip/download -O open_gapps-x86_64-11.0-pico-20211028.zip
+<span class="nb">cd</span> ..
+chmod +x extract_gapps_pico.sh
+chmod +x extend_and_mount_images.sh
+chmod +x apply.sh
+chmod +x unmount_images.sh
+./extract_gapps_pico.sh
+sudo ./extend_and_mount_images.sh
+sudo ./apply.sh
+sudo ./unmount_images.sh
+<span class="nb">cd</span> <span class="se">\#</span>IMAGES
+cp *.img ../../wsfa/
+</code></pre></div>
+<h3>Windowsでの作業</h3>
+Linuxのホームディレクトリの中にあるwsfaファイルをもう一度Windows側にコピーして、wsfa2に改名してください。<br>
+そしたら、PowerShell(Windows Terminalでも可)を管理者権限で開いてください。<br>
+PowerShellはそのままにして、設定アプリを開いてください。
+そしたら、開発者モードを有効化します。
+プライバシーとセキュリティ&rarr;開発者向け&rarr;開発者用モードをオンにしてください。<br>
+そしたら設定アプリを閉じてPowerShellに戻ってください。<br>
+そしたら、PowerShellでこのコマンドを実行します。<br>
+```powershell {contenteditable}
+Add-AppxPackage -Register [wsfa2の位置]\AppxManifest.xml
+```
+&uarr; 編集できるようになってます。編集してからコピペできます。<br>
+`[wsfa2の位置]`はwsfa2の位置（パス）に置き換えて実行してください。<br>
+無事成功したらインストール完了です。失敗したらwebで検索するか<a href="https://linuxcodevserver.github.io/contact.md">okaitsに聞いて</a>ください。<br>
+<h1>余談</h1>
+7zipでwsfaを開いたらところなんですが、じつは`okaits`が`okats`(?)になってました。気づきましたか？<br>
+(ちなみにこれは予定があって焦ってた結果タイプミスったからこうなりました。)<br>
                 
                   
                 

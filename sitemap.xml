@@ -141,6 +141,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linuxcodevserver.github.io/blog/2021/10/28/2021102801/</loc>
+         <lastmod>2021-10-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linuxcodevserver.github.io/tags.html</loc>
          <lastmod>2021-10-28</lastmod>
          <changefreq>daily</changefreq>

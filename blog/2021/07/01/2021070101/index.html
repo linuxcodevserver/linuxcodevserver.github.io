@@ -568,13 +568,31 @@ User: 自分で決めたユーザー名<br>
 Team Number: 登録時に出てくる数字<br>
 <br>
 で、登録してください。<br>
-登録が終わったら、自動的に貢献が開始されます。<br>
-なお、linuxでは、再起動時に貢献が自動的に開始されません。<br>
+登録が終わったら、自動的に貢献が開始されます。<br></p>
+<h3>Linuxの場合</h3>
+<p>Linuxの場合、再起動時に貢献が自動的に開始されません。<br>
 開始されるようにしたい場合、<br>
 <div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> FAHClient
 sudo systemctl start FAHClient
 </code></pre></div>
 を実行してください。</p>
+<h2>進行状況を確認</h2>
+<p><a href="https://client.foldingathome.org">管理画面</a>では、計算がどれくらい出来たかを表示させる機能があります。<br>
+管理画面を開くと、真ん中に進行状況を表すバーがあります。<br>
+それが100%になると計算が完了し、結果がアップロードされて次の計算に必要なファイルがダウンロードされます。<br>
+結果がアップロードされると、ポイントがもらえます。<br></p>
+<h2>証明書</h2>
+<p>Folding@homeで計算を一定以上やると、証明書がもらえます。<br>
+証明書はこんな感じです。<br>
+<img src="https://linuxcodevserver.github.io/img/202107010101.jpg"><br>
+これを受け取るには、まず「Folding@homeのポイントを初めてとった日から1日経っている」という条件が必要です。<br>
+この条件が揃ったら、早速証明書をダウンロードできます。<br>
+まず、<a href="https://stats.foldingathome.org">STATISTICSページ</a>で、自分の名前を入力して、Lookupボタンを押します。<br>
+そうすると、自分の成績やポイントが表示されるので、下にある「My award」を押します。<br>
+すると、証明書がjpg形式でダウンロードされます。<br>
+あとは友達に自慢するのもよし、<br>
+印刷して飾るのもよし、<br>
+好きにつかってよいです。</p>
                 
                   
                 

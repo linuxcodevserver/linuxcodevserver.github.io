@@ -1,5 +1,5 @@
 ---
-title: お問い合わせ
+title: ボット追加申請
 ---
 <style>
     .textlines {
@@ -15,17 +15,21 @@ title: お問い合わせ
 </style>
 <h2>フォーム</h2>
 <form
-  action="https://formspree.io/f/mnqlybkq"
+  action="https://formspree.io/f/mwkadaeq"
   method="POST"
 >
   <label>
-    メールアドレス<br>
+    メール
     <input type="email" name="email" class="textlines" required>
-  </label><br><br>
+  </label>
   <label>
-    内容<br>
-    <textarea name="message" class="textlines" required></textarea>
-  </label><br><br>
+    ボットURL
+    <input type="url" name="url" class="textlines" required>
+  </label>
+  <label>
+    ボットの内容(任意)
+    <input type="text" name="bot" class="textlines">
+  </label>
   <!-- your other form fields go here -->
   <button type="submit" class=".md-button .md-button--primary">送信</button>
 </form>

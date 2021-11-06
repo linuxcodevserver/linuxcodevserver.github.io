@@ -37,27 +37,27 @@ opacity: 0;
 <form action="https://formspree.io/f/xnqllyaw" method="POST">
   <label>
     メールアドレス<br>
-    <input type="email" name="_replyto" class="textlines"></input>
+    <input type="email" name="_replyto" class="textlines" required></input>
   </label><br><br>
   <label>
     Discordユーザー名<br>
-    <input type="text" name="discordusername" class="textlines"></input>
+    <input type="text" name="discordusername" class="textlines" required></input>
   </label><br><br>
   <label>
     記事のタイトル<br>
-    <input type="text" name="title" class="textlines"></input>
+    <input type="text" name="title" class="textlines" required></input>
   </label><br><br>
   <label>
     記事の概要・導入文<br>
-    <input type="text" name="description" class="textlines"></input>
+    <input type="text" name="description" class="textlines" required></input>
   </label><br><br>
   <label>
     記事のタグ（スペースで区切る）<br>
-    <input type="text" name="tags" class="textlines"></input>
+    <input type="text" name="tags" class="textlines" required></input>
   </label><br><br>
   <label>
     記事のカテゴリ<br>
-    <input type="text" name="categories" class="textlines"></input>
+    <input type="text" name="categories" class="textlines" required></input>
   </label><br><br>
   <label>
     申請ID<br>
@@ -69,11 +69,11 @@ opacity: 0;
   </label><br><br>
   <label>
     書いた日<br>
-    <input type="date" name="date" class="textlines"></input>
+    <input type="date" name="date" class="textlines" required></input>
   </label><br><br>
   <label>
     本文<br>
-    <textarea name="main" class="textlines"></textarea>
+    <textarea name="main" class="textlines" required></textarea>
   </label><br><br>
   <!-- your other form fields go here -->
   <!-- <div class="g-recaptcha" data-sitekey="6LeV8NQcAAAAAG3WzxcpLx-e-v3Q8LbCyp1-i1og"></div> -->

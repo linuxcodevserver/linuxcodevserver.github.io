@@ -45,6 +45,7 @@ nav:
         - 投稿＆アイデア募集状況: status.md
     - お問い合わせ: contact.md
     - ボット追加申請: addbot.md
+    - Qiita Organization参加申請: qiitaorg.md
 
 plugins:
     - blog:

@@ -30,7 +30,7 @@ jobs:
           <h1>ブログ目次</h1>
           <h2>ブログ一覧</h2>
           EOF
-          cat bloglist | tr '\n' ' ' > bloglist-fixed
+          cat bloglist | tac | tr '\n' ' ' > bloglist-fixed
           for filename in $(cat bloglist-fixed)
             do
             echo '<hr>' >> docs/blogs.md

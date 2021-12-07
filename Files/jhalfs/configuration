@@ -133,4 +133,4 @@ PKG_LST="unpacked"
 # end of Internal Settings (WARNING: for jhalfs developers only)
 # end of Advanced Features
 
-REBUILD_MAKEFILE=y
+REBUILD_MAKEFILE=n

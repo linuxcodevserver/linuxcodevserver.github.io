@@ -74,7 +74,8 @@ DEL_LA_FILES=y
 # System configuration
 #
 # HAVE_FSTAB is not set
-# CONFIG_BUILD_KERNEL is not set
+CONFIG_BUILD_KERNEL=y
+CONFIG="/usr/src/kconfig.tmp"
 # NCURSES5 is not set
 TIMEZONE="JST"
 LANG="C.UTF-8"

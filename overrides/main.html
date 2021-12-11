@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
+<!-- Disqus Script -->
 {% block disqus %}
-<div id="disqus_thread"></div>
-<script>
+  <div id="disqus_thread"></div>
+  <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -18,20 +19,35 @@
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 {% endblock %}
+
+
+<!-- Extra Head -->
 {% block extrahead %}
-<!-- Import Google Fonts(Noto Sans JP) -->
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
-</style>
-<!-- Add ReCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js"></script>
+
+  <!-- Import Google Fonts(Noto Sans JP) -->
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+  </style>
+
+  <!-- Add ReCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
 {% endblock %}
-{% block header %}
-  {% include "partials/header.html" %}
-  {% if page and page.meta and page.meta.ads %}
-    {% include "ads.html" %}
-  {% endif %}
+
+
+<!-- Extra Scripts-->
+{% block scripts %}
+
+  <!-- Default Script -->
+  <script src="{{ 'assets/javascripts/bundle.17f42bbf.min.js' | url }}"></script>
+  {% for path in config["extra_javascript"] %}
+    <script src="{{ path | url }}"></script>
+  {% endfor %}
+
+  <!-- Adservice Code -->
+  <script src="https://linuxcodevserver.github.io/javascript/adservice/main.js"></script>
+
 {% endblock %}

@@ -7,7 +7,7 @@ const invidsp=42;
 const invidpc=57;
 
 /* Main Code */
-if (navigator.userAgent.match(/(iPhone|iPod|Android.*Mobile)/i)) {
+if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches) {
     adssp.innerHTML = '<script src="https://aas.information-portal.net/tag.php?invid=' + invidsp + '"></script>';
 } else {
     adspc.innerHTML = '<script src="https://aas.information-portal.net/tag.php?invid=' + invidpc + '"></script>';

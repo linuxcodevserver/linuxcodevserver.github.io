@@ -18,8 +18,8 @@ if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches)
     }
 }
 adstag.style.border = "none"
-adstag.style.height = 300
-adstag.style.height = 250
+adstag.style.width = "300px"
+adstag.style.height = "250px"
 adstag.contentWindow.document.open();
 adstag.contentWindow.document.write(html);
 adstag.contentWindow.document.close()

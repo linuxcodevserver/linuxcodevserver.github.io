@@ -17,8 +17,9 @@ if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches)
         adspc[i].appendChild(adstag);
     }
 }
-adstag.setAttribute("style", "border: none;")
-adstag.style.height = adstag.contentWindow.document.body.scrollHeight + "px"
+adstag.style.border = "none"
+adstag.style.height = 300
+adstag.style.height = 250
 adstag.contentWindow.document.open();
 adstag.contentWindow.document.write(html);
 adstag.contentWindow.document.close()

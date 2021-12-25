@@ -562,6 +562,7 @@
 
   <h1>htmlの裏技 (2021/08/09)</h1>
 
+<div class="adservice-pc"></div>
 <p>htmlの裏技です。このサイトでもたまーに使われてます。<br></p>
 <h2><a href="https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Editable_content">contenteditable属性</a></h1>
 contenteditable属性とは、その名の通り内容を編集できるようにすることです。<br>
@@ -598,6 +599,7 @@ cgiの設定方法は、<a href="https://linuxcodevserver.github.io/blog/2021/08
 ちなみに、ファイル名の「http404.cgi」と「http418.html」を変えて「http418.cgi」と「http418.html」にして、<code class="prettyprint lang-bash">echo 'Status: 404 Not Found'</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http404.cgi')&lt;/script&gt;</code>を変えて<code class="prettyprint lang-bash">echo "Status: 418 I'm a teapot"</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http418.cgi')&lt;/script&gt;</code>にして、<code class="prettyprint lang-bash">echo '&lt;h1&gt;404 Not Found&lt;/h1&gt;'</code>を<code class="prettyprint lang-bash">echo "&lt;h1&gt;418 I'm a teapot&lt;/h1&gt;"</code>にすれば、、418番「I'm a teapot」のエラーも出せます。（ジョークのステータスコード。）
 <h4>結果</h4>
 <strike>残念ながらGithub Pages(ブログに使ってる)がcgiに対応してないので無理です。（）</strike>
+<div class="adservice-pc adservice-sp"></div>
 
               
             </article>

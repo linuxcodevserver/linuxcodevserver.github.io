@@ -2,21 +2,24 @@
 /* Set class name */
 const adssp = document.getElementsByClassName('adservice-sp'); /* for SmartPhone */
 const adspc = document.getElementsByClassName('adservice-pc'); /* for PC */
+/* Set HTML */
+const html = '<script src="https://aas.information-portal.net/tag.php?invid=42"></script>'
 
 /* Main Code */
 if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches) {
     for (i = 0; i < adssp.length; i++) {
         var adstag = document.createElement("iframe");
-        adstag.setAttribute("src", "https://linuxcodevserver.github.io/javascript/adservice/ads.html");
         adssp[i].appendChild(adstag);
     }
 } else {
     for (i=0; i < adspc.length; i++) {
         var adstag = document.createElement("iframe");
-        adstag.setAttribute("src", "https://linuxcodevserver.github.io/javascript/adservice/ads.html");
         adspc[i].appendChild(adstag);
     }
 }
+adstag.contentWindow.document.open();
+adstag.contentWindow.document.write(html);
+adstag.contentWindow.document.close()
 
 /* Main Code(Disabled)
 if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches) {

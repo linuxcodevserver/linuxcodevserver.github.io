@@ -6,20 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?さ、さぁ、何のことやら（黒歴史）">
+        <meta name="description" content="ネタです。タイトルの通りです。">
       
       
-        <meta name="author" content="okaits">
       
-      
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/06/29/2021062901/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/12/26/2021122601/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>Discordのクライアントをクラッシュさせる方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -79,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -115,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              Discordのクライアントをクラッシュさせる方法
             
           </span>
         </div>
@@ -565,39 +558,17 @@
               
                 
 
-  <h1>Raspberry PiでiSCSIターゲットを構築する方法 (2021/06/29)</h1>
-
 <div class="adservice-pc"></div>
-<p>実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?さ、さぁ、何のことやら（黒歴史)</p>
-<h2 id="_1">作業</h2>
-<p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h3 id="step-2-omv">Step 2 OMVのインストール</h3>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br>
-<div class="highlight"><pre><span></span><code>wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
-</code></pre></div>
-これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local">管理画面</a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+<p>今回は完全にネタです。<wbr>
+Discordを秒でクラッシュさせる方法です。<br></p>
+<h1>手順</h1>
+<h2>開発者ツールを開く</h2>
+<p>簡単。クライアント（アプリ）内でCtrl+Shift+Iを押すだけ。</p>
+<h2>特定の要素を削除</h2>
+<p>開発者ツールの中にある、「チャンネルのヘッダー」を選択して、右クリック=&gt;Delete Elementを選択<br></p>
+<h3>完成</h3>
+<p>あとは、他の適当なチャンネルを開くと、簡単にクライアントをクラッシュさせることができます。<br>
+以上!!</p>
 <div class="adservice-pc adservice-sp"></div>
 
               

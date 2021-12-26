@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="じつはokaitsも昔はやってたんですけど、いまはもうあんまやってません。（）なぜかというと、電気代の問題と重くなりすぎるからです。こんなことやってたらコンパイルとかでフリーズします。なので、今はLightにしてます。">
+        <meta name="description" content="Folding@homeをつかって新型コロナウイルスやがん、認知症などの様々な病気を解析する方法です。">
       
       
         <meta name="author" content="okaits">
@@ -565,48 +565,54 @@
 <div class="adservice-pc"></div>
 <h2>TL;DR</h2>
 <p><br>
-今回は、<a href="https://foldingathome.org">Folding@home(FAH,F@H)</a>を使って、新型コロナウイルスやガンなどを解析します。<br>
-じつはokaitsも昔はやってたんですけど、いまはもうあんまやってません。（）なぜかというと、電気代の問題と重くなりすぎるからです。こんなことやってたらコンパイルとかでフリーズします。なので、今はLightにしてます。<br></p>
+今回は、<a href="https://foldingathome.org">Folding@home(FAH,F@H)</a>を使って、新型コロナウイルスやがん、認知症などの様々な病気を解析する方法です。<br>
+<strike>じつはokaitsも昔はやってたんですけど、いまはもうあんまやってません。（）なぜかというと、電気代の問題とPCが重くなりすぎるからです。こんなことやってたらコンパイルとかでフリーズします。なので、今はLightにしてます。</strike><br>
+追記 2021/12/26: やっぱりコロナウイルス、最近やばいからまたFullにしてます。<br></p>
 <h2>インストール</h2>
 <p><br></p>
-<h3>Windowsの場合</h3>
-<p>Windowsの場合、<a href="https://download.foldingathome.org/releases/public/release/fah-installer/windows-10-32bit/v7.6/fah-installer_7.6.21_x86.exe">ここ</a>からFolding@homeのインストーラーをとってきます。<br>
-そしたら、fah-installer_7.6.21_x86.exeがダウンロードされると思います。<br>
-そしたら、それを起動して、初期設定のままで最後までいき、インストールします。<br></p>
-<h3>Ubuntuの場合</h3>
-<p>Ubuntuの場合、CtrlとAltとTを同時に押し、ターミナルを開き、<br>
-<div class="highlight"><pre><span></span><code>wget <span class="s2">&quot;https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21_amd64.deb&quot;</span> -o-
-sudo apt install ./fahclient_7.6.21_amd64.deb
+<h3>インストーラーのダウンロード</h3>
+<p>インストーラーのダウンロードです。<br>
+まず、<a href="https://foldingathome.org/alternative-downloads/?lng=en">公式ページ</a>(英語)に飛びます。<br>
+飛ぶと英語ですが、自分が使っているOSがあると思います。<br>
+自分が使っているOSの「fahclient」から始まるインストーラーをダウンロードします。<br></p>
+<h3>インストール</h3>
+<h4>Debian系の人</h4>
+<p>Debian系の人は、<br>
+<div class="highlight"><pre><span></span><code>sudo apt install ダウンロードしたファイルの絶対パス
 </code></pre></div>
-を実行します。<br>
+<br>を実行してください。<br>
+もちろん、「ダウンロードしたファイルの絶対パス」は置き換えてください。<br>
 途中で質問されたら、全てEnterを押してください。</p>
+<h4>Redhat系の人</h4>
+<p>Redhat系の人は、次のコマンドを実行してください。<br>
+<div class="highlight"><pre><span></span><code>sudo rpm -ivh ダウンロードしたファイルの絶対パスか相対パス
+</code></pre></div>
+<br>もちろん、「ダウンロードしたファイルの絶対パスか相対パス」は置き換えください。<br></p>
+<h4>Windows NT系の人</h4>
+<p>Windows NT系(Windows10,11も含まれる)の人は、ダウンロードしたファイルをそのまま実行してください。（雑）<br>
+質問はすべてデフォルトのままでいいです。</p>
 <h2>初期設定</h2>
 <p><br>
 インストールが終わったら、<a href="https://client.foldingathome.org">ここ</a>を開きます。<br>
 すると、<br><img src="https://pc.watch.impress.co.jp/img/pcw/docs/1243/458/03.png"><br>このような画面が表示されます。<br>
 そしたら、Set up an identifyを選択し、Start Foldingを押します。<br></p>
-<h3>ただ単に貢献だけをしたい人</h3>
-<p>貢献をして、ポイント（換金不可(例外あり)）とかはいらない人は、<br>
-User: 2x3m7aufjcj7<br>
-Team Number: 234980<br>
-Passkey: 無し<br>
-にしてください。<br>
-なお、この設定だとポイントはokaitsの方に入っていきます。<br></p>
-<h3>自分の名前で貢献したい人</h3>
-<p>ポイントを自分でためたり、自分の名前（ニックネーム）で貢献したい人は、<br>
+<h3>ユーザー名の設定</h3>
+<h4>自分の名前で貢献したい人</h4>
+<p>ポイントを自分でためたり、自分の名前（ニックネーム）で貢献したい人は、皆の意見交流所の公式チームで貢献することができます。<br>
+...今の所(2021/12/26)、okaits一人しかいないので(公式とは...)、できれば入ってほしいです。<br><br>
 User: 自分で決めたユーザー名<br>
 Team Number: 1062284<br></p>
-<h3>自分のチームで貢献したい人</h3>
+<h4>自分のチームで貢献したい人</h4>
 <p>自分が作ったチームで貢献したい人は、<a href="https://apps.foldingathome.org/team">ここ</a>からチームを作ります。<br>
-作り終わったら、Team Numberが出てくるので、<br>
+作り終わったら、Team Numberが出てくるので、<br><br>
 User: 自分で決めたユーザー名<br>
 Team Number: 登録時に出てくる数字<br>
 <br>
 で、登録してください。<br>
 登録が終わったら、自動的に貢献が開始されます。<br></p>
 <h3>Linuxの場合</h3>
-<p>Linuxの場合、再起動時に貢献が自動的に開始されません。<br>
-開始されるようにしたい場合、<br>
+<p>Linuxの場合、再起動すると一時的に停止してしまいます。<br>
+これを防ぐには、次のコマンドを実行してください。<br>
 <div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> FAHClient
 sudo systemctl start FAHClient
 </code></pre></div>
@@ -614,8 +620,19 @@ sudo systemctl start FAHClient
 <h2>進行状況を確認</h2>
 <p><a href="https://client.foldingathome.org">管理画面</a>では、計算がどれくらい出来たかを表示させる機能があります。<br>
 管理画面を開くと、真ん中に進行状況を表すバーがあります。<br>
-それが100%になると計算が完了し、結果がアップロードされて次の計算に必要なファイルがダウンロードされます。<br>
-結果がアップロードされると、ポイントがもらえます。<br></p>
+それが99%になると次の計算に必要なファイルがダウンロードされます。<br>
+100%になって計算が終わり、結果がアップロードされると、ポイント(換金不可)がもらえます。<br></p>
+<h2>パスキーの設定</h2>
+<p>暇な人は、セキュリティ用のパスキーを設定すればいいかもしれません。<br>
+パスキーを設定すると、ポイントが少しだけ増えることがあります。
+パスキーは、まず<a href="https://apps.foldingathome.org/getpasskey">ここ</a>に行き、メールアドレスと初期設定時に設定したユーザー名を入力して、「Get passkey」をクリックします。<br>
+そうすると、入力したメールアドレスにパスキーが書いてあるメールが来るので、<a href="https://client.foldingathome.org">管理画面</a>に来て、<wbr>「Change Identify」を押し、「Passkey」のところにまるごとコピペします。<br>
+Saveを押すと保存されます。</p>
+<h2>ボーナスポイント(早期リターンボーナス, QRB)</h2>
+<p>ボーナスポイントという制度があります。<br>
+これは、次の条件に当てはまっていたら自動的にもらえています。<br>
+・計算の正答率が80%以上<br>
+・パスキーが設定されている</p>
 <h2>証明書</h2>
 <p>Folding@homeで計算を一定以上やると、証明書がもらえます。<br>
 証明書はこんな感じです。<br>

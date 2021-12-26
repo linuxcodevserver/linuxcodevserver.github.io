@@ -560,15 +560,13 @@
               
                 
 
-  <h1>htmlの裏技 (2021/08/09)</h1>
-
 <div class="adservice-pc"></div>
 <p>htmlの裏技です。このサイトでもたまーに使われてます。<br></p>
 <h2><a href="https://developer.mozilla.org/ja/docs/Web/Guide/HTML/Editable_content">contenteditable属性</a></h1>
 contenteditable属性とは、その名の通り内容を編集できるようにすることです。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>p contenteditable<span class="ni">&amp;gt;</span>abc<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">contenteditable</span><span class="p">&gt;</span>abc<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4>結果</h4>
 <p contenteditable>abc</p><br>
@@ -576,7 +574,7 @@ contenteditable属性とは、その名の通り内容を編集できるよう�
 隠しリンクとは、その名の通りリンクだけど上にマウスをおいても何もおこらないリンクのことです。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<div class="highlight"><pre><span></span><code><span class="ni">&amp;lt;</span>p onclick=&quot;location.href=&#39;https://okaitslinblog.github.io&#39;;&quot;<span class="ni">&amp;gt;</span>abc<span class="ni">&amp;lt;</span>/p<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;location.href=&#39;https://okaitslinblog.github.io&#39;;&quot;</span><span class="p">&gt;</span>abc<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4>結果</h4>
 <p onclick="location.href='https://okaitslinblog.github.io';">abc</p><br>
@@ -592,11 +590,11 @@ cgiの設定方法は、<a href="https://linuxcodevserver.github.io/blog/2021/08
 <span class="nb">echo</span> <span class="s1">&#39;Status: 404 Not Found&#39;</span>
 <span class="nb">echo</span> <span class="s1">&#39;Content-type: text/html&#39;</span>
 <span class="nb">echo</span>
-<span class="nb">echo</span> <span class="s1">&#39;&amp;lt;h1&amp;gt;404 Not Found&amp;lt;/h1&amp;gt;&#39;</span>
+<span class="nb">echo</span> <span class="s1">&#39;&lt;h1&gt;404 Not Found&lt;/h1&gt;&#39;</span>
 </code></pre></div>
 <label>http404.html</label>
-<pre class="prettyprint"><code class="prettyprint lang-html">&lt;script&gt;location.href('/http404.cgi')&lt;/script&gt;</code></pre>
-ちなみに、ファイル名の「http404.cgi」と「http418.html」を変えて「http418.cgi」と「http418.html」にして、<code class="prettyprint lang-bash">echo 'Status: 404 Not Found'</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http404.cgi')&lt;/script&gt;</code>を変えて<code class="prettyprint lang-bash">echo "Status: 418 I'm a teapot"</code>と<code class="prettyprint lang-html">&lt;script&gt;location.href('/http418.cgi')&lt;/script&gt;</code>にして、<code class="prettyprint lang-bash">echo '&lt;h1&gt;404 Not Found&lt;/h1&gt;'</code>を<code class="prettyprint lang-bash">echo "&lt;h1&gt;418 I'm a teapot&lt;/h1&gt;"</code>にすれば、、418番「I'm a teapot」のエラーも出せます。（ジョークのステータスコード。）
+<pre class="prettyprint"><code class="prettyprint lang-html"><script>location.href('/http404.cgi')</script></code></pre>
+ちなみに、ファイル名の「http404.cgi」と「http418.html」を変えて「http418.cgi」と「http418.html」にして、<code class="prettyprint lang-bash">echo 'Status: 404 Not Found'</code>と<code class="prettyprint lang-html"><script>location.href('/http404.cgi')</script></code>を変えて<code class="prettyprint lang-bash">echo "Status: 418 I'm a teapot"</code>と<code class="prettyprint lang-html"><script>location.href('/http418.cgi')</script></code>にして、<code class="prettyprint lang-bash">echo '<h1>404 Not Found</h1>'</code>を<code class="prettyprint lang-bash">echo "<h1>418 I'm a teapot</h1>"</code>にすれば、、418番「I'm a teapot」のエラーも出せます。（ジョークのステータスコード。）
 <h4>結果</h4>
 <strike>残念ながらGithub Pages(ブログに使ってる)がcgiに対応してないので無理です。（）</strike>
 <div class="adservice-pc adservice-sp"></div>

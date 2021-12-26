@@ -6,20 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?さ、さぁ、何のことやら（黒歴史）">
+        <meta name="description" content="GPGの署名についてです。できるかぎりわかりやすいようにしました。">
       
       
-        <meta name="author" content="okaits">
       
-      
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/06/29/2021062901/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/12/26/2021122602/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
-        <title>Raspberry PiでiSCSIターゲットを構築する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>GPGの署名とは - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -79,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          コンテンツにスキップ
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -115,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Raspberry PiでiSCSIターゲットを構築する方法
+              GPGの署名とは
             
           </span>
         </div>
@@ -565,39 +558,35 @@
               
                 
 
-  <h1>Raspberry PiでiSCSIターゲットを構築する方法 (2021/06/29)</h1>
-
 <div class="adservice-pc"></div>
-<p>実はこの記事、むかしokaitsがやっていたブログで公開されていたものを直して投稿された記事なんですよ。今もその記事にはアクセスできるけど、口調が全然ちがってまだwebとかにもなれてないんです。URL?さ、さぁ、何のことやら（黒歴史)</p>
-<h2 id="_1">作業</h2>
-<p><br></p>
-<h2 id="step-1-raspberry-pi-os">Step 1 Raspberry Pi OSをインストール</h2>
-<p>では、Raspberry PiにRaspberry Pi OSをインストールします....が、ここで解説していると記事が長くなってしまうので、<a href="https://jellyware.jp/kuragemd/raspi/raspberrypi.html">他の人の記事</a>を参考にしてください。<br></p>
-<h3 id="step-2-omv">Step 2 OMVのインストール</h3>
-<p>では、OMVをインストールしてみましょう。<br>
-OMVとは、ファイルやハードディスクを共有することに特化したソフトウェアです。<br>
-インストールが終わったら、CtrlとAltとTを同時に押し、ターミナルを開き、次のコマンドを実行してください。<br>
-<div class="highlight"><pre><span></span><code>wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-sudo bash install
-</code></pre></div>
-これが終わったら、再起動し、<br>
-<a href="http://raspberrypi.local">管理画面</a>を開きます。<br>
-なお、このリンクはRapsbery Piが起動していて、なおかつ同じWi-Fiに接続しているときにしかアクセスできません。<br>
-そうすると、ログイン画面が出てきます。<br>
-ユーザー名：　admin <br>
-パスワード：　openmediavault <br>
-でログインしてください。<br>
-そして、メニューの<br>
-plugin <br>
-を押し、openmediavault-tgtをインストールしてください。<br>
-そして、メニューの<br>
-Service <br>
-をクリックし、tgtを開きます。<br>
-そうして、最後にTargetの名前を入力して、保存してください。<br>
-それで完成です。<br></p>
-<h2 id="iqn">iqn</h2>
-<p>iqnは、iqnはiqn.作成した年-作成した月.raspberrypi:設定した名前<br>
-です。<br></p>
+<h1>PGPとは？</h1>
+<p>PGPとは、物凄くざっくり言うと、公開鍵と秘密鍵を使ってファイルを暗号化したりすることができるものです。<br></p>
+<h1>暗号化の手順</h1>
+<p>署名について話す前に、暗号化はどのように行われているかをいいます。<br>
+1. <strong>ファイルを受け取る人</strong>が秘密鍵と公開鍵のペアを専用ソフト(GPGなど)を使って作る<br>
+2. 公開鍵をファイルを送信する人<strong>に</strong>ファイルを受け取る人<strong>が</strong>公開鍵<strong>だけ</strong>を送る<br>
+3. ファイルを送信する人が<strong>公開鍵</strong>を使ってファイルを暗号化する<br>
+4. ファイルを受取先に送信する<br>
+5. 受け取る人が秘密鍵を使って復号化する<br>
+!!! info 復号化とは</p>
+<p>復号化とは、暗号化されたファイルをもとに戻すことです。
+!!! hint 公開鍵と秘密鍵</p>
+<p>公開鍵は、ファイルの暗号化はできるけど、復号化はできません。
+  逆に、秘密鍵はファイルの復号化ができます。
+  つまり、公開鍵はその名の通り公開してもなにも差し支えありません。
+  ただし、秘密鍵はその名の通り公開したり友人に教えたりするのは一切<strong>NG</strong>です。
+  そこだけは気を付けましょう。</p>
+<h1>署名とは<h1>
+では本題に入りましょう。
+署名とは、秘密鍵を持っている本人しか作れない暗号化されたメッセージ、またはそれを作ることです。<br>
+これを使うと、このメッセージは本人が書いたことを証明できるので、本人確認などに最適です。<br>
+これは暗号化とは逆で、秘密鍵を持っている人しか暗号化できません。<br>
+!!! danger 秘密鍵を公開すると
+
+  秘密鍵を公開すると、次のことが起こります。
+  ・勝手に暗号化されたファイルを解読できる
+  ・秘密鍵を持っている本人になりすますことができる
+  なので、絶対に公開はしてはいけません。
 <div class="adservice-pc adservice-sp"></div>
 
               

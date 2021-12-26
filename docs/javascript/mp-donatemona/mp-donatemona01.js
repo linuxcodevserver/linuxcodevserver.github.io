@@ -1,5 +1,5 @@
-const txHash = window.mpurse.sendAsset('MB56hAzDE9s7KeCmnPfFk7qVe77tq57ZPa', 'MONA', 1, 'plain','test');
-console.log("txHash: txHash")
+const txHash = window.mpurse.sendAsset('MQ7rWj7bkdjXd3BH3TpwR6Sesgz4vXqexe', 'MONA', 1, 'plain','test');
+console.log("txHash:" + txHash)
 var txdiv = document.getElementById('txid')
 var txid = document.createElement('p');
 txid.textContent = 'ID: ' + txHash;

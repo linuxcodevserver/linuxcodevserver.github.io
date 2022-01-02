@@ -11,6 +11,8 @@ if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches)
         var adstag = document.createElement("iframe");
         adssp[i].appendChild(adstag);
         adstag.style.border = "none";
+        adstag.style.overflowY = "hidden";
+        adstag.scrolling = "no";
         adstag.style.width = "300px";
         adstag.style.height = "250px";
         adstag.contentWindow.document.open();
@@ -22,6 +24,8 @@ if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches)
         var adstag = document.createElement("iframe");
         adspc[i].appendChild(adstag);
         adstag.style.border = "none";
+        adstag.style.overflowY = "hidden";
+        adstag.scrolling = "no";
         adstag.style.width = "300px";
         adstag.style.height = "250px"
         adstag.contentWindow.document.open();

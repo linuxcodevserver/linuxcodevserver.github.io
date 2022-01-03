@@ -66,16 +66,5 @@ jobs:
         run: |
           python3 -m pip install setuptools
           python3 -m pip install -r requirements.txt
-          git clone https://github.com/facelessuser/pymdown-extensions/
-          cd pymdown-extensions
-          python3 -m pip install .
-          cd ..
-          rm -rf pymdown-extensions
-          git clone https://github.com/jackjt8/mkdocs-responsive-image/
-          cd mkdocs-responsive-image/
-          python3 -m pip install .
-          cd ..
-          rm -rf mkdocs-responsive-image
-          
       - name: Deploy HTML files
         run: python3 -m mkdocs gh-deploy

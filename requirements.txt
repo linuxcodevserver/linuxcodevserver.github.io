@@ -2,3 +2,5 @@ mkdocs
 mkdocs-material
 mkdocs-blog-plugin
 git+https://github.com/jldiaz/mkdocs-plugin-tags.git
+git+https://github.com/facelessuser/pymdown-extensions.git
+git+https://github.com/jackjt8/mkdocs-responsive-image.git

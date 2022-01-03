@@ -51,14 +51,11 @@ plugins:
     - blog:
         format: "(%Y/%m/%d)"
         text-align: "right"
-    - search:
-        lang:
-            - en
-            - ja
     - tags:
         tags_folder: docs/
         tags_template: tags.md.template
     - responsive-image
+    - search
 extra:
       analytics:
         - provider: google

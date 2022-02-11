@@ -60,7 +60,7 @@ title: Qiita Organization参加申請
 
   <div class="item">
     <label class="label_left" for="sid">申請ID</label>
-    <input id="sid" type="text" placeholder="形式: ユーザー名#タグ" name="sid" required readonly><br>
+    <input id="sid" type="text" placeholder="Javascriptが動いてません。不具合です。無視してください。" name="sid" readonly><br>
   </div>
 
   <button class=".md-button .md-button--primary" style="height: 1cm; color: white; background-color: #2f40de;" type="submit">Send</button>

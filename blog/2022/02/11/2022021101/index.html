@@ -6,18 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Windows11にWindows SubSystem For Androidを無理矢理入れる方法です。今は書いてる時点ではまだアメリカ限定だったから、それをガン無視してやる方法です。">
+        <meta name="description" content="UbuntuやDebianで顔認証を使ってログインする方法です。ここでは精度が高い(=認識しにくいが別人を認識することはほぼなくなる)設定です。">
       
       
       
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/10/28/2021102801/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2022/02/11/2022021101/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.11">
     
     
       
-        <title>Windows 11にWindows SubSystem For Androidを無理矢理入れる方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>UbuntuやDebianで顔認証を使ってログインする方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows 11にWindows SubSystem For Androidを無理矢理入れる方法
+              UbuntuやDebianで顔認証を使ってログインする方法
             
           </span>
         </div>
@@ -567,69 +567,29 @@
               
                 
 
-  <h1>Windows 11にWindows SubSystem For Androidを無理矢理入れる方法 (2021/10/28)</h1>
-
 <div class="adservice-pc"></div>
-<p>Windows11にWindows SubSystem For Androidを無理矢理入れる方法です。今は書いてる時点ではまだアメリカ限定だったから、それをガン無視してやる方法です。<br></p>
-<h2>前提条件</h2>
-<p>まず最初に、次の条件を満たしている必要があります。<br>
-- Windows11がインストールされていること<br>
-- Windows SubSystem For <strong>Linux</strong> 2(WSL2) が有効化されていること<br>
-- UbuntuまたはDebianがWSL2にインストールされていること<br>
-- 7Zipがインストールされていること</p>
-<h2>ダウンロード</h2>
-<h3>Windowsでの作業</h3>
-<p>まずは必要なファイルをダウンロードします。<br>
-まず最初に、<a href="https://store.rg-adguard.net/">ここ</a>に行きます。<br>
-すると、こんな感じの画面が表示されると思います。<br>
-<img src="https://linuxcodevserver.github.io/img/202110280101.png"><br>
-そしたら、左のドロップダウンメニューから<code>ProductId</code>を選び、真ん中に<code>9P3395VX91NR</code>と入力し、右のドロップダウンメニューは<code>Slow</code>を押してチェックボックスを押します。<br>
-そうすると下にファイル一覧が出るので、一番下の<code>.msixbundle</code>で終わるファイルをダウンロードします。<br>
-ダウンロードできたらそれを7Zipで開いて展開します。（展開先の名前をwsfaとしておいてください。）<br>
-wsfaを7Zipで開くと、このように大量のファイルがあります。<br>
-<img src="https://linuxcodevserver.github.io/img/202110280102.png"><br>
-この中から、<code>WsaPackage_バージョンによって異なります_x64_Release-Nightly.msix</code>というファイルを見つけ出し、それをダブルクリックして、そのままwsfaに展開してください。<br>
-この時、<code>WsaPackage_バージョンによって異なります_language-ja.msix</code>といういかにも関係ありそうなやつがありますが、飛ばしましょう。<br>
-これを使ってしまうと、最後にインストールするときにエラーでとまります。<br>
-そしたら、準備完了したwsfaをWSL2のホームディレクトリにコピー（または移動）しておいてください。<br></p>
-<h2>インストール
-<h3>Linuxでの作業</h3>
-これらをシェルスクリプトとかにして実行しましょう。<br>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install -y unzip lzip git
-git clone https://github.com/ADeltaX/WSAGAScript
-<span class="nb">cd</span> WSAGAScript/<span class="se">\#</span>IMAGES
-cp ../../wsfa/*.img .
-<span class="nb">cd</span> ../<span class="se">\#</span>GAPPS
-wget https://sourceforge.net/projects/opengapps/files/x86_64/20211028/open_gapps-x86_64-11.0-pico-20211028.zip/download -O open_gapps-x86_64-11.0-pico-20211028.zip
-<span class="nb">cd</span> ..
-chmod +x extract_gapps_pico.sh
-chmod +x extend_and_mount_images.sh
-chmod +x apply.sh
-chmod +x unmount_images.sh
-./extract_gapps_pico.sh
-sudo ./extend_and_mount_images.sh
-sudo ./apply.sh
-sudo ./unmount_images.sh
-<span class="nb">cd</span> <span class="se">\#</span>IMAGES
-cp *.img ../../wsfa/
+<p>UbuntuやDebianで顔認証を使ってログインする方法です。ここでは精度が高い(=認識しにくいが別人を認識することはほぼなくなる)設定を使います。<br></p>
+<h1>インストール</h1>
+<p><div class="highlight"><pre><span></span><code>wget --no-trust-server-name https://github.com/boltgolt/howdy/releases/download/v2.6.1/howdy_2.6.1.deb
+sudo apt install ./howdy_2.6.1.deb
 </code></pre></div>
-<h3>Windowsでの作業</h3>
-Linuxのホームディレクトリの中にあるwsfaファイルをもう一度Windows側にコピーして、wsfa2に改名してください。<br>
-そしたら、PowerShell(Windows Terminalでも可)を管理者権限で開いてください。<br>
-PowerShellはそのままにして、設定アプリを開いてください。
-そしたら、開発者モードを有効化します。
-プライバシーとセキュリティ&rarr;開発者向け&rarr;開発者用モードをオンにしてください。<br>
-そしたら設定アプリを閉じてPowerShellに戻ってください。<br>
-そしたら、PowerShellでこのコマンドを実行します。<br>
-<div class="highlight"><pre><span></span><code><span class="nb">Add-AppxPackage</span> <span class="n">-Register</span> <span class="p">&lt;</span><span class="n">wsfa2の位置</span><span class="p">&gt;\</span><span class="n">AppxManifest</span><span class="p">.</span><span class="n">xml</span>
+!!! note "インストール中に質問されたら"</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span></pre></div></td><td class="code"><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%;"><span></span><code>インストール中に質問されたら、「s」を入力してEnterしてください。
 </code></pre></div>
-<code>&#x3C;wsfa2の位置&#x3E;</code>はwsfa2の位置（パス）に置き換えて実行してください。<br>
-無事成功したらインストール完了です。失敗したらwebで検索するか<a href="https://linuxcodevserver.github.io/contact/">okaitsに聞いて</a>ください。<br>
-<h2>余談</h2>
-7zipでwsfaを開いたらところなんですが、じつは<code>okaits</code>が<code>okats</code>(?)になってました。気づきましたか？<br>
-(ちなみにこれは予定があって焦ってた結果タイプミスったからこうなりました。)<br>
-<div class="adservice-pc adservice-sp"></div>
+</td></tr></table>
+<h1>顔の登録</h1>
+<p>当たり前ですが、顔認証がインストールされても顔を登録しないと何も始まりません。<br>
+<div class="highlight"><pre><span></span><code>sudo howdy add
+</code></pre></div>
+を実行すると<code>Enter a label for this new model [Model #1] (max 24 characters):</code>みたいに名前を聞かれるので、登録する名前を入力してEnterしてからカメラを見てください。筆者は「Nomal Model」として登録しました。<br>
+少し経ったら登録が終了してメッセージがでます。これで設定完了です。<br></p>
+<h2>複数の顔を登録する</h2>
+<p>普通の顔以外にも「ヘッドホンバージョン」「メガネバージョン」など、複数登録できます。<br>
+最初の顔と同じように<br>
+<div class="highlight"><pre><span></span><code>sudo howdy add
+</code></pre></div>
+で登録できます。<br></p>
+<div class="adservice-sp adservice-pc"></div>
 
               
             </article>

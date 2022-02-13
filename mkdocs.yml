@@ -31,7 +31,6 @@ theme:
         repo: fontawesome/brands/github
 repo_name: linuxcodevserver/linuxcodevserver.github.io
 repo_url: "https://github.com/linuxcodevserver/linuxcodevserver.github.io"
-edit_uri: ""
 
 nav:
     - ホーム: index.md

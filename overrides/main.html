@@ -44,18 +44,6 @@
     }
   </style>
 
-{% endblock %}
-
-
-<!-- Extra Scripts -->
-{% block scripts %}
-
-  <!-- Default Script -->
-  <script src="{{ 'assets/javascripts/bundle.17f42bbf.min.js' | url }}"></script>
-  {% for path in config["extra_javascript"] %}
-    <script src="{{ path | url }}"></script>
-  {% endfor %}
-
   <!-- Adservice Code -->
   <script src="https://linuxcodevserver.github.io/javascript/adservice/main.js"></script>
 

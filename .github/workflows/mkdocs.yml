@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - mkdocs.yml
+      - bloglist
       - docs/**
       - custom_dir/**
       - overrides/**

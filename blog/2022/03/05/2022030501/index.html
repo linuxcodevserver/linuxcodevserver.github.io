@@ -6,20 +6,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="あれ？なんか前にもやったことがあるような...？">
+        <meta name="description" content="たまにQiitaとかで見るpushd/popdコマンドの意味・使い方です。">
       
       
-        <meta name="author" content="okaits">
       
-      
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072003/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2022/03/05/2022030501/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
     
     
       
-        <title>pvでddコマンドの進歩状況を百分率で確認する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>pushdとpopdコマンドの使い方 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -129,7 +127,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              pvでddコマンドの進歩状況を百分率で確認する方法
+              pushdとpopdコマンドの使い方
             
           </span>
         </div>
@@ -578,7 +576,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/linuxcodevserver/linuxcodevserver.github.io/edit/master/docs/blog/2021/07/20/2021072003.md" title="編集" class="md-content__button md-icon">
+<a href="https://github.com/linuxcodevserver/linuxcodevserver.github.io/edit/master/docs/blog/2022/03/05/2022030501.md" title="編集" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
@@ -587,22 +585,53 @@
 
 
 
-  <h1>pvでddコマンドの進歩状況を百分率で確認する方法 (2021/07/20)</h1>
+  <h1>pushdとpopdコマンドの使い方 (2022/03/05)</h1>
 
 <div class="adservice-pc"></div>
-<p>あれ？なんか前にもやったことがあるような...？<br></p>
-<h2>インストール</h2>
-<p><br>
-インストールは簡単です。aptでできます。<br>
-<div class="highlight"><pre><span></span><code>sudo apt install pv
-</code></pre></div>
-だけでインストールできます。<br></p>
+<h2>概要</h2>
+<p>pushdとpopdはシェル組み込みのコマンドで、めっちゃかんたんに言うとこれはcdの強化版です。<br>
+流石にこれだけじゃわからないと思うので、詳しく説明すると、pushdでディレクトリに入って、popdで出れます。以上です。</p>
 <h2>使い方</h2>
-<p><br>
-ddコマンドに細工をします。<br>
-修正前：dd if=a.img of=/dev/sda<br>
-修正後：pv a.img | dd of=/dev/sda<br>
-このようにコマンドを修正すると進歩状況付きでddコマンドを実行できます。</p>
+<p>よくわからないかもしれませんが、見たほうが早いと思います。</p>
+<h3>pushd</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> /path/to/directory
+</code></pre></div>
+<h3>popd</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">popd</span>
+</code></pre></div>
+<h3>例</h3>
+
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
+<span class="nb">pushd</span> Work
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
+<span class="nb">popd</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
+</code></pre></div>
+コメントにすべてがありますが、要はこういうことです。</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
+<span class="nb">cd</span> Work <span class="c1">#pushd Workと同義</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
+<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
+</code></pre></div>
+!!! note</p>
+<p><code>$OLDPWD</code>は最後のcdの前のpwdを表しています。</p>
+<p>ですが、これには問題があります。それは、下の場合に対処できません。</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
+<span class="nb">cd</span> Work <span class="c1">#pushd Workと同義</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
+mkdir hogehoge
+<span class="nb">cd</span> hogehoge <span class="c1">#pushd hogehogeと同義？</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work/hogehoge</span>
+<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
+<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義？</span>
+<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果 /home/okaits/Work/hogehoge</span>
+</code></pre></div>
+このように、3層以上あると誤作動を起こしてしまいます。なのでpushd/popdを使ったほうが良いということです。</p>
 <div class="adservice-pc adservice-sp"></div>
 
               

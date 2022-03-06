@@ -609,14 +609,14 @@
 <span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
 </code></pre></div>
 コメントにすべてがありますが、要はこういうことです。</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
 <span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
 <span class="nb">cd</span> Work <span class="c1">#pushd Workと同義</span>
 <span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
 <span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義</span>
 <span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
 </code></pre></div>
-!!! note</p>
+<p>!!! note</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span></pre></div></td><td class="code"><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%;"><span></span><code>`$OLDPWD`は最後のcdの前のpwdを表しています。
 </code></pre></div>
 </td></tr></table>

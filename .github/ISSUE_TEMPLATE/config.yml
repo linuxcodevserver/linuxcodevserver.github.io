@@ -1,0 +1,6 @@
+blank_issues_enabled: true
+contact_links:
+  - name: ToDoリストに登録
+    about: made by config.yml
+    # edit {username} and {repo} for your environment
+    url: https://github.com/linuxcodevserver/linuxcodevserver.github.io/issues/new?template=custom.md&projects=linuxcodevserver%2Flinuxcodevserver.github.io%2F1&labels=ToDo

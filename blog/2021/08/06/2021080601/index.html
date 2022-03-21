@@ -591,7 +591,7 @@
     <span class="nb">echo</span> <span class="s2">&quot;already installed.&quot;</span>
 <span class="k">fi</span>
 </code></pre></div>
-</code></pre><br>
+<br>
 そしたら、cgi-binフォルダを作成し、Apache2でmod_cgidを有効化します。<br>
 <div class="highlight"><pre><span></span><code>sudo mkdir /var/www/cgi-bin -p
 sudo chown www-data /var/www/cgi-bin -R
@@ -614,7 +614,7 @@ EOF
 <div class="highlight"><pre><span></span><code>sudo nano /etc/apache2/apache2.conf
 </code></pre></div>
 で、apache2の設定を編集します。
-<strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからである。（笑）</strike><br>
+<strike>実は言うと、okaitsの能力不足でシェルスクリプトにできなかったからです。（笑）</strike><br>
 <div class="highlight"><pre><span></span><code>&lt;Directory /var/www/&gt;
         Options Indexes FollowSymLinks
         AllowOverride None
@@ -660,17 +660,18 @@ cgiでは、コマンドの実行結果がソースコードとして認識さ�
 </code></pre></div>
 と解釈され、ABCと表示されます。<br></p>
 <h2>例</h2>
-<p><label>suspend.cgi</label>
+<p><label>suspend.cgi
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s2">&quot;Suspended.&quot;</span>
 sudo /usr/bin/systemctl <span class="nb">suspend</span>
 </code></pre></div>
+</label>
 これを公開したら誰もが自由にサーバーをサスペンドさせることができるようになります。（）<br>
 BASIC認証など、絶対に他人に突破されない方法をつかってアクセスを制限してください。<br>
 なお、これはcurlでも反応するので、このsuspend.cgiを使って、こんなこともできます。<br>
-<label>suspend-after-push-to-github.cgi</label>
+<label>suspend-after-push-to-github.cgi
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
 <span class="nb">echo</span>
@@ -680,24 +681,26 @@ git push
 <span class="nb">echo</span> <span class="s2">&quot;suspending...&quot;</span>
 curl localhost/cgi-bin/suspend.cgi
 </code></pre></div>
+</label>
 これはGithubにPushしてからサスペンドするというプログラムです。<br>
 Jekyllでブログやってる人は、書き終えてからCommit&amp;Pushしないと反映されないので、Pushの手間が省けます。<br>
 ...っていっても、サスペンドされるので書き終えてから少し休憩するときや、書き終えたから今日はもう寝ようとかそういうことが多いひとはこれをつくったほうがいいと思います。<br>
 このコマンドが実行されるのはサーバーの上なので、<br>
-<label>get-blog-feed.cgi</label>
+<label>get-blog-feed.cgi
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Content-type: text/plain&quot;</span>
 <span class="nb">echo</span>
-sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-feed.xml
+wget https://linuxcodevserver.github.io/blog/2021/08/06/2021082601 -O /var/cache/linuxcodevserver-2021082601
 </code></pre></div>
-これを実行すると、このブログのFeedがサーバーの/var/cache/okaitslinblog-feed.xmlに保存されます。<br>
+</label>
+これを実行すると、この記事がサーバーの<code>/var/cache/linuxcodevserver-2021082601</code>に保存されます。<br>
 まあ、sudoは動かないんですけどね。<br></p>
 <hr>
 <p style="color: gray; height: 0.25cm;">なお、cgi上でsudoを動かす方法は、NOPASSWDしかありません。が、okaitsのようにwww-data ALL=(ALL) NOPASSWD: ALLとかじゃなくて、せめてwww-data ALL=(ALL) NOPASSWD: /usr/bin/systemctl suspend というふうに特定のコマンドだけを許可したほうがいいです。</p>
 <p><br></p>
 <hr>
 <p>ちなみにこれ、htmlにもできます。<br>
-<label>turn-on-pc.cgi</label>
+<label>turn-on-pc.cgi
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;Content-type: text/html&quot;</span>
 <span class="nb">echo</span>
@@ -708,6 +711,7 @@ sudo wget https://okaitslinblog.github.io/feed.xml -O /var/cache/okaitslinblog-f
 sudo etherwake <span class="o">[</span>コンピューターのmacアドレス<span class="o">]</span>
 <span class="nb">echo</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span>
 </code></pre></div>
+</label>
 のようなプログラムを作れば、WOLでPCを起動させることもできます。<br></p>
 <div class="adservice-pc adservice-sp"></div>
 

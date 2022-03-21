@@ -578,6 +578,8 @@
 
 
 
+  <h1>Android11（LineageOS18.1）をビルドする方法 (2021/08/14)</h1>
+
 <div class="adservice-pc"></div>
 <p>x86も対応してます。動かせるかどうかは検証してません。なんでかって？PCが処理落ちしたからです。（）あれ？なんか見たことあるような<br></p>
 <h2>作業フォルダ作成</h2>
@@ -614,44 +616,43 @@ Enable color display in this user account (y/N)?
 また、名前とメールアドレスを聞かれますが、ビルドしている人の名前（ニックネームでも可）とメールアドレスを入力してください。<br>
 <div class="highlight"><pre><span></span><code>repo init -u git://github.com/LineageOS/android.git -b lineage-18.1 --depth<span class="o">=</span><span class="m">1</span> --config-name
 repo sync -j4
-<span class="sb">```</span>bash
-&lt;h2&gt;Google APIの設定&lt;/h2&gt;
-Google APIを設定してChromium OSからログインできるようにします。&lt;br&gt;
-まず、&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev&quot;</span>&gt;ここ&lt;/a&gt;に参加します。&lt;br&gt;
-参加したら、&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://cloud.google.com/console&quot;</span>&gt;ここ&lt;/a&gt;へ行って、左上の「My First Project」をクリックします。&lt;br&gt;
-そしたら、右上の「新しいプロジェクト」をクリックして、適当に名前をつけて作成してください。&lt;br&gt;
-それができたら、左上の「My First Project」をもう一度クリックして、自分でつけた名前が表示されているところの読み込みが終わるまで待ちます。&lt;br&gt;
-読み込みが終わったら、そこをクリックしてください。&lt;br&gt;
-そしたら、上の検索ボックスに、次の文字例をいれ、有効化してください。&lt;br&gt;
-&lt;ul&gt;
-&lt;li&gt;Cloud Search API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Geolocation API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Google Drive API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Safe Browsing API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Time Zone API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Admin SDK API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Geocoding API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Google Assistant API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Google Calendar API&lt;br&gt;&lt;/li&gt;
-&lt;li&gt;Nearby Messages API&lt;br&gt;&lt;/li&gt;
-&lt;/ul&gt;
-終わったら、左のメニューの「APIとサービス」、「認証情報」の順にクリックしてください。&lt;br&gt;
-そして、「+ 認証情報を作成」、「OAuth クライアントID」、「同意画面の設定」の順にクリックし、&lt;br&gt;
-「外部」を選択し、「作成」をクリックしてください。&lt;br&gt;
-そして、アプリ名に適当な名前を入力し、ユーザーサポートメールとデベロッパーの連絡先情報に自分のメールアドレスを選択し、「保存して次へ」をクリックします。&lt;br&gt;
-そして、「スコープを追加または削除」ボタンを押し、すべてにチェックをつけ、「更新」を押します。&lt;br&gt;
-そして、「保存して次へ」を押します。&lt;br&gt;
-そして、「+ ADD USERS」ボタンを押し、Chromium OSにログインするユーザーのメールアドレスを入力して、「追加」ボタンを押してください。&lt;br&gt;
-そして、「保存して次へ」を押し、「ダッシュボードに戻る」ボタンを押してください。&lt;br&gt;
-そしたらまた、「+ 認証情報を作成」、「OAuth クライアント ID」の順にクリックし、&lt;br&gt;
-アプリケーションの種類に「デスクトップ アプリ」、名前に適当な名前をつけて作成してください。&lt;br&gt;
-そしたら、クライアントIDとクライアントシークレットが出るので、どこかに保存してください。&lt;br&gt;
-そしたらまた「+ 認証情報を作成」、「API キー」の順にクリックしてください。&lt;br&gt;
-そしたら、APIキーが出てくるので、保存してください。&lt;br&gt;
-そしたら、これを実行してください。&lt;br&gt;
-&lt;span contenteditable&gt;
-<span class="sb">```</span>bash
-<span class="nv">api</span><span class="o">=[</span>メモしておいたAPIキー<span class="o">]</span>
+</code></pre></div></p>
+<h2>Google APIの設定</h2>
+<p>Google APIを設定してChromium OSからログインできるようにします。<br>
+まず、<a href="https://groups.google.com/a/chromium.org/forum/?fromgroups#!forum/chromium-dev">ここ</a>に参加します。<br>
+参加したら、<a href="https://cloud.google.com/console">ここ</a>へ行って、左上の「My First Project」をクリックします。<br>
+そしたら、右上の「新しいプロジェクト」をクリックして、適当に名前をつけて作成してください。<br>
+それができたら、左上の「My First Project」をもう一度クリックして、自分でつけた名前が表示されているところの読み込みが終わるまで待ちます。<br>
+読み込みが終わったら、そこをクリックしてください。<br>
+そしたら、上の検索ボックスに、次の文字例をいれ、有効化してください。<br></p>
+<ul>
+<li>Cloud Search API<br></li>
+<li>Geolocation API<br></li>
+<li>Google Drive API<br></li>
+<li>Safe Browsing API<br></li>
+<li>Time Zone API<br></li>
+<li>Admin SDK API<br></li>
+<li>Geocoding API<br></li>
+<li>Google Assistant API<br></li>
+<li>Google Calendar API<br></li>
+<li>Nearby Messages API<br></li>
+</ul>
+<p>終わったら、左のメニューの「APIとサービス」、「認証情報」の順にクリックしてください。<br>
+そして、「+ 認証情報を作成」、「OAuth クライアントID」、「同意画面の設定」の順にクリックし、<br>
+「外部」を選択し、「作成」をクリックしてください。<br>
+そして、アプリ名に適当な名前を入力し、ユーザーサポートメールとデベロッパーの連絡先情報に自分のメールアドレスを選択し、「保存して次へ」をクリックします。<br>
+そして、「スコープを追加または削除」ボタンを押し、すべてにチェックをつけ、「更新」を押します。<br>
+そして、「保存して次へ」を押します。<br>
+そして、「+ ADD USERS」ボタンを押し、Chromium OSにログインするユーザーのメールアドレスを入力して、「追加」ボタンを押してください。<br>
+そして、「保存して次へ」を押し、「ダッシュボードに戻る」ボタンを押してください。<br>
+そしたらまた、「+ 認証情報を作成」、「OAuth クライアント ID」の順にクリックし、<br>
+アプリケーションの種類に「デスクトップ アプリ」、名前に適当な名前をつけて作成してください。<br>
+そしたら、クライアントIDとクライアントシークレットが出るので、どこかに保存してください。<br>
+そしたらまた「+ 認証情報を作成」、「API キー」の順にクリックしてください。<br>
+そしたら、APIキーが出てくるので、保存してください。<br>
+そしたら、これを実行してください。<br>
+<span contenteditable>
+<div class="highlight"><pre><span></span><code><span class="nv">api</span><span class="o">=[</span>メモしておいたAPIキー<span class="o">]</span>
 <span class="nv">clientId</span><span class="o">=</span>メモしておいたクライアントID
 <span class="nv">clientSecret</span><span class="o">=</span>メモしておいたクライアントシークレット
 <span class="nb">echo</span> <span class="s2">&quot;&#39;google_api_key&#39;: &#39;&quot;</span><span class="si">${</span><span class="nv">api</span><span class="si">}</span><span class="s2">&quot;&#39;,&quot;</span> &gt; <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.googleapikeys
@@ -660,7 +661,7 @@ Google APIを設定してChromium OSからログインできるようにしま�
 </code></pre></div>
 </span>
 &uarr; 編集できるようになってます。コピーする前に最初のところのAPIキーとクライアントID,シークレットだけ書き換えたほうがいいと思います。<br></p>
-<h1>ビルド</h1>
+<h2>ビルド</h2>
 <p>いよいよビルドです。<br>
 <span contenteditable>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span> build/envsetup.sh

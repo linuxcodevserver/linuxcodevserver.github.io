@@ -592,10 +592,10 @@ contenteditable属性とは、その名の通り内容を編集できるよう�
 隠しリンクとは、その名の通りリンクだけど上にマウスをおいても何もおこらないリンクのことです。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;location.href=&#39;https://okaitslinblog.github.io&#39;;&quot;</span><span class="p">&gt;</span>abc<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;location.href=&#39;https://linuxcodevserver.github.io&#39;;&quot;</span><span class="p">&gt;</span>abc<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4>結果</h4>
-<p onclick="location.href='https://okaitslinblog.github.io';">abc</p><br>
+<p onclick="location.href='https://linuxcodevserver.github.io';">abc</p><br>
 <h2>httpステータスコードを指定</h2>
 httpステータスコードとは、リクエストが処理されたかを確かめるためのコードです。<br>
 代表的なのは、404 Not Found(ページが見つからない)や、200 OK(リクエストが処理された)です。<br>
@@ -603,14 +603,14 @@ httpステータスコードとは、リクエストが処理されたかを確�
 cgiの設定方法は、<a href="https://linuxcodevserver.github.io/blog/2021/08/06/2021080601">ここ</a>にあります。<br>
 <h3>例</h3>
 <h4>コード</h4>
-<label>http404.cgi</label>
+<label>http404.cgi
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s1">&#39;Status: 404 Not Found&#39;</span>
 <span class="nb">echo</span> <span class="s1">&#39;Content-type: text/html&#39;</span>
 <span class="nb">echo</span>
 <span class="nb">echo</span> <span class="s1">&#39;&lt;h1&gt;404 Not Found&lt;/h1&gt;&#39;</span>
 </code></pre></div>
-<label>http404.html</label>
+</label>
 <pre class="prettyprint"><code class="prettyprint lang-html"><script>location.href('/http404.cgi')</script></code></pre>
 ちなみに、ファイル名の「http404.cgi」と「http418.html」を変えて「http418.cgi」と「http418.html」にして、<code class="prettyprint lang-bash">echo 'Status: 404 Not Found'</code>と<code class="prettyprint lang-html"><script>location.href('/http404.cgi')</script></code>を変えて<code class="prettyprint lang-bash">echo "Status: 418 I'm a teapot"</code>と<code class="prettyprint lang-html"><script>location.href('/http418.cgi')</script></code>にして、<code class="prettyprint lang-bash">echo '<h1>404 Not Found</h1>'</code>を<code class="prettyprint lang-bash">echo "<h1>418 I'm a teapot</h1>"</code>にすれば、、418番「I'm a teapot」のエラーも出せます。（ジョークのステータスコード。）
 <h4>結果</h4>

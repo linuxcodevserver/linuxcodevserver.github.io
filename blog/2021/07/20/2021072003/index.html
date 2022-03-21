@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="あれ？なんか前にもやったことがあるような...？">
+        <meta name="description" content="前回の続きです。">
       
       
         <meta name="author" content="okaits">
@@ -581,7 +581,7 @@
   <h1>pvでddコマンドの進歩状況を百分率で確認する方法 (2021/07/20)</h1>
 
 <div class="adservice-pc"></div>
-<p>あれ？なんか前にもやったことがあるような...？<br></p>
+<p><a href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072001">前回</a>の続きです。<br></p>
 <h2>インストール</h2>
 <p><br>
 インストールは簡単です。aptでできます。<br>
@@ -591,8 +591,8 @@
 <h2>使い方</h2>
 <p><br>
 ddコマンドに細工をします。<br>
-修正前：dd if=a.img of=/dev/sda<br>
-修正後：pv a.img | dd of=/dev/sda<br>
+修正前: <code>dd if=a.img of=/dev/sda</code><br>
+修正後: <code>pv a.img | dd of=/dev/sda</code><br>
 このようにコマンドを修正すると進歩状況付きでddコマンドを実行できます。</p>
 <div class="adservice-pc adservice-sp"></div>
 

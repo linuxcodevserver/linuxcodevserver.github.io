@@ -48,7 +48,7 @@ jobs:
             echo "author: $author"
             description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
             echo "<span><b>${categories}</b></span>" >> docs/blogs.md
-            echo "<span>${author}</span>"
+            echo "<span>${author}</span>" >> docs/blogs.md
             echo '<p style="width: 70%, height: 70%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
             echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blogs.md
             echo "description: $description"

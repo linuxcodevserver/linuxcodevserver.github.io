@@ -50,6 +50,8 @@ plugins:
     - blog:
         format: "(%Y/%m/%d)"
         text-align: "right"
+        display-more-articles: true
+        display-article-date: true
     - tags:
         tags_folder: docs/
         tags_template: tags.md.template

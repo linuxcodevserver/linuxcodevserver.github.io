@@ -34,7 +34,7 @@ jobs:
           cat bloglist | tac | tr '\n' ' ' > bloglist-fixed
           for filename in $(cat bloglist-fixed)
             do
-            echo '<hr>' >> docs/blogs.md
+            echo '<hr style="border-top: 2px dashed #bbb;">' >> docs/blogs.md
             echo $filename
             url=$(echo ${filename} | sed "s/docs\///g" | sed "s/.md//g")
             url="https://linuxcodevserver.github.io/${url}"
@@ -47,13 +47,13 @@ jobs:
             echo "categories: $categories"
             echo "author: $author"
             description=$(cat $filename | grep "description: " | sed "s/description:\ //g")
-            echo "<span><b>${categories}</b></span>" >> docs/blogs.md
-            echo "<span>${author}</span>" >> docs/blogs.md
+            echo "<span><b>Categories: ${categories}</b></span>" >> docs/blogs.md
+            echo "<span>Author: ${author}</span>"
             echo '<p style="width: 70%, height: 70%; color: gray;">'"${description}"'</p>' >> docs/blogs.md
-            echo '<p style="width: 70%, height: 70%, color: black:">'"$author"'</p>' >> docs/blogs.md
+            echo '<p style="width: 70%, height: 70%, color: black:">'"Written by: $author"'</p>' >> docs/blogs.md
             echo "description: $description"
             done
-          echo '<hr>' >> docs/blogs.md
+          echo '<hr style="border-top: 2px dashed #bbb;">' >> docs/blogs.md
           rm bloglist-fixed
           od -vAn --width=4 -tu4 -N4 < /dev/urandom > random
 

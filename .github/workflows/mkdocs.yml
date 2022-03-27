@@ -55,7 +55,6 @@ jobs:
             done
           echo '<hr style="border-top: 2px dashed #bbb;">' >> docs/blogs.md
           rm bloglist-fixed
-          od -vAn --width=4 -tu4 -N4 < /dev/urandom > random
 
       - name: Configure Git
         run: |

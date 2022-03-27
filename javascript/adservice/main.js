@@ -34,6 +34,7 @@ try {
   /* Main Code */
   if (window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches) {
       for (i = 0; i < adssp.length; i++) {
+          console.log("SmartPhone Mode");
           var adstag = document.createElement("iframe");
           adssp[i].appendChild(adstag);
           adstag.style.border = "none";
@@ -47,6 +48,7 @@ try {
       }
   } else {
       for (i=0; i < adspc.length; i++) {
+          console.log("PC Mode")
           var adstag = document.createElement("iframe");
           adspc[i].appendChild(adstag);
           adstag.style.border = "none";

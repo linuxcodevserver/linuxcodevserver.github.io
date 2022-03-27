@@ -77,7 +77,7 @@ opacity: 0;
 
   <div class="item">
     <label class="label_left" for="msg">本文</label>
-    <textarea id="msg" placeholder="なんでも" name="msg" required></textaria><br>
+    <textarea id="msg" placeholder="なんでも。ちなみに「ここに画像挿入してください」とかそういうのはokaitsが読んで処理するのでそうやって書いておいてください。" name="msg" required></textaria><br>
   </div>
 
   <div class="item">

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="前回の続きです。">
+        <meta name="description" content="昔okaitsが躓いたんで書きました。">
       
       
         <meta name="author" content="okaits">
@@ -19,7 +19,7 @@
     
     
       
-        <title>pvでddコマンドの進歩状況を百分率で確認する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>UbuntuにGithub Desktopをインストールする方法 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              pvでddコマンドの進歩状況を百分率で確認する方法
+              UbuntuにGithub Desktopをインストールする方法
             
           </span>
         </div>
@@ -578,22 +578,46 @@
 
 
 
-  <h1>pvでddコマンドの進歩状況を百分率で確認する方法 (2021/07/20)</h1>
+  <h1>UbuntuにGithub Desktopをインストールする方法 (2021/07/20)</h1>
 
 <div class="adservice-pc"></div>
-<p><a href="https://linuxcodevserver.github.io/blog/2021/07/20/2021072001">前回</a>の続きです。<br></p>
+<p>昔okaitsが躓いたんで書きました。<br></p>
 <h2>インストール</h2>
 <p><br>
-インストールは簡単です。aptでできます。<br>
-<div class="highlight"><pre><span></span><code>sudo apt install pv
+まず、<a href="https://github.com/shiftkey/desktop/releases/download/release-2.9.0-linux4/GitHubDesktop-linux-2.9.0-linux4.deb">ここ</a>からインストーラーをダウンロードします。<br>
+そして、ターミナルで<br>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/ダウンロード
+sudo apt install ./GitHubDesktop-linux-2.9.0-linux4.deb
 </code></pre></div>
-だけでインストールできます。<br></p>
-<h2>使い方</h2>
+と実行してください。<br></p>
+<h2>初期設定の注意事項</h2>
 <p><br>
-ddコマンドに細工をします。<br>
-修正前: <code>dd if=a.img of=/dev/sda</code><br>
-修正後: <code>pv a.img | dd of=/dev/sda</code><br>
-このようにコマンドを修正すると進歩状況付きでddコマンドを実行できます。</p>
+途中でメールアドレスに謎のメールアドレスが入力されていますが、これはスルーです。<br></p>
+<h2>使いやすいように設定</h2>
+<p><br></p>
+<h3>Visual Studio Codeのインストール</h3>
+<p>vscodeをインストールすると、Github Desktopからファイルを編集できます。<br>
+vscodeのインストールはsnapからいけますが、日本語入力が使えなくなります。<br>
+<a href="https://code.visualstudio.com/docs/?dv=linux64_deb">Microsoftの公式からダウンロード</a>してインストールします。<br>
+ダウンロードしたら、<br>
+cd ~/ダウンロード<br>
+<div class="highlight"><pre><span></span><code>sudo apt install ./code*.deb
+</code></pre></div>
+を実行してください。<br>
+<br></p>
+<h3>GithubにPushできないのを改善する</h3>
+<p>環境によりますが、Github DesktopでPushするときにエラーが出てくる可能性があります。<br>
+解決策は、最もかんたんなのは、Pushを自動的に実行する.desktopファイルをデスクトップやDashに置くことです。<br>
+Dashに置くことで、お気に入り登録もできます。<br>
+やり方は、まず<br>
+~/.local/share/applications/<br>
+や<br>
+~/デスクトップ/
+<br>
+に、<br></p>
+<script src="https://gist.github.com/okaits/725da880b0113d36a5994b4375bc168b.js"></script>
+<p><br>
+を置くと、デスクトップやDashに登録できます。</p>
 <div class="adservice-pc adservice-sp"></div>
 
               

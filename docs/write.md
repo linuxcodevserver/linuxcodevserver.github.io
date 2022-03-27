@@ -59,6 +59,7 @@ opacity: 0;
 </style>
 -->
 <h2>フォーム</h2>
+<p>詳しいひとはPR立ててください、そっちのほうが楽です。</p><br>
 <form action="https://formspree.io/f/mqkwoagl" method="POST">
   <div class="item">
     <label class="label_left" for="mail">メールアドレス</label>

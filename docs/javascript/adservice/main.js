@@ -17,9 +17,9 @@ try {
           }
       }
   } else {
-      window.alert('Cookieを許可しますか？このサイトは以前Googleのサービスをサイトに組み込むだけで裁判が起こりおよそ13,135円の罰金が管理者に課されることがあったので対策にCookieがあると便利なのです。たかが13,135円と侮ってはいけません、学生にとっては大金なのです。');
-      window.alert('Cookieを拒否するとAlpha Adservice（広告）とIBM（ウィジェット）とGithub（このサイトのすべての元）にブラウザが自動的にアクセスされる可能性があることを承認したことになります。つまり、ipアドレスをAlpha AdserviceとIBMとGithubに共有してもいいのなら、cokieを拒否しても構いません。なお、このアラートはcokieを拒否した場合仕様上サイトを訪問するたびに表示されます。')
-      if (window.confirm('Cokieを許可しますか？')) {
+      /* window.alert('Cookieを許可しますか？'); */
+      /* window.alert('Cookieを拒否するとAlpha Adservice（広告）とIBM（ウィジェット）とGithub（このサイトのすべての元）にブラウザが自動的にアクセスされる可能性があることを承認したことになります。つまり、ipアドレスをAlpha AdserviceとIBMとGithubに共有してもいいのなら、cokieを拒否しても構いません。なお、このアラートはcokieを拒否した場合仕様上サイトを訪問するたびに表示されます。') */
+      if (window.confirm('Cookieを拒否するとAlpha Adservice（広告）とIBM（ウィジェット）とGithub（このサイトのすべての元）にブラウザが自動的にアクセスされる可能性があることを承認したことになります。つまり、ipアドレスをAlpha AdserviceとIBMとGithubに共有してもいいのなら、cokieを拒否しても構いません。なお、このアラートはcokieを拒否した場合仕様上サイトを訪問するたびに表示されます。\nCokieを許可しますか？')) {
           document.cookie = "cookieagree=true";
           location.reload();
       }

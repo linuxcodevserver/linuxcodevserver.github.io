@@ -8,8 +8,8 @@ try {
           console.log('additionalservicedisagree.');
           throw new Error('Additional Service will not run. exiting...');
       } else {
-          window.alert('追加サービスを許可しますか？許可するとAlpha Adservice(広告)とIBM(ウィジェット)とGithub(このサイトのすべての元)にブラウザが自動的にアクセスし、ipアドレスが送信される可能性があることを承諾したことになります。');
-          if (window.confirm('追加サービスを許可しますか？')) {
+          /* window.alert('追加サービスを許可しますか？許可するとAlpha Adservice(広告)とIBM(ウィジェット)とGithub(このサイトのすべての元)にブラウザが自動的にアクセスし、ipアドレスが送信される可能性があることを承諾したことになります。'); */
+          if (window.confirm('追加サービスを許可しますか？許可するとAlpha Adservice(広告)とIBM(ウィジェット)とGithub(このサイトのすべての元)にブラウザが自動的にアクセスし、ipアドレスが送信される可能性があることを承諾したことになります。')) {
               document.cookie = "additionalserviceagree=true";
           } else {
               document.cookie = "additionalservicedisagree=true";

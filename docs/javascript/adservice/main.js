@@ -21,6 +21,7 @@ try {
       /* window.alert('Cookieを拒否するとAlpha Adservice（広告）とIBM（ウィジェット）とGithub（このサイトのすべての元）にブラウザが自動的にアクセスされる可能性があることを承認したことになります。つまり、ipアドレスをAlpha AdserviceとIBMとGithubに共有してもいいのなら、cokieを拒否しても構いません。なお、このアラートはcokieを拒否した場合仕様上サイトを訪問するたびに表示されます。') */
       if (window.confirm('Cookieを拒否するとAlpha Adservice（広告）とIBM（ウィジェット）とGithub（このサイトのすべての元）にブラウザが自動的にアクセスされる可能性があることを承認したことになります。つまり、ipアドレスをAlpha AdserviceとIBMとGithubに共有してもいいのなら、cokieを拒否しても構いません。なお、このアラートはcokieを拒否した場合仕様上サイトを訪問するたびに表示されます。\nCokieを許可しますか？')) {
           document.cookie = "cookieagree=true";
+          document.cookie = "SameSite=Lax";
           location.reload();
       }
   }

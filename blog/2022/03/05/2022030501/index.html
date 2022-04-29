@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2022/03/05/2022030501/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.8c5ef100.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
@@ -587,45 +587,45 @@
 <h2>使い方</h2>
 <p>よくわからないかもしれませんが、見たほうが早いと思います。</p>
 <h3>pushd</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">pushd</span> /path/to/directory
-</code></pre></div>
+<p><code>bash
+pushd /path/to/directory</code></p>
 <h3>popd</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">popd</span>
-</code></pre></div>
+<p><code>bash
+popd</code></p>
 <h3>例</h3>
 
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
-<span class="nb">pushd</span> Work
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
-<span class="nb">popd</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
-</code></pre></div>
+<p><code>bash
+cd
+echo $(pwd) #結果　/home/okaits
+pushd Work
+echo $(pwd) #結果　/home/okaits/Work
+popd
+echo $(pwd) #結果　/home/okaits</code>
 コメントにすべてがありますが、要はこういうことです。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
-<span class="nb">cd</span> Work <span class="c1">#pushd Workと同義</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
-<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
-</code></pre></div>
+<p><code>bash
+cd
+echo $(pwd) #結果　/home/okaits
+cd Work #pushd Workと同義
+echo $(pwd) #結果　/home/okaits/Work
+cd $OLDPWD #popdと同義
+echo $(pwd) #結果　/home/okaits</code></p>
 <p>!!! note</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span></pre></div></td><td class="code"><div class="codehilite" style="background: #ffffff"><pre style="line-height: 125%;"><span></span><code>`$OLDPWD`は最後のcdの前のpwdを表しています。`
 </code></pre></div>
 </td></tr></table>
 <p>ですが、これには問題があります。それは、下の場合に対処できません。</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits</span>
-<span class="nb">cd</span> Work <span class="c1">#pushd Workと同義</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
+<p><code>bash
+cd
+echo $(pwd) #結果　/home/okaits
+cd Work #pushd Workと同義
+echo $(pwd) #結果　/home/okaits/Work
 mkdir hogehoge
-<span class="nb">cd</span> hogehoge <span class="c1">#pushd hogehogeと同義？</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work/hogehoge</span>
-<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果　/home/okaits/Work</span>
-<span class="nb">cd</span> <span class="nv">$OLDPWD</span> <span class="c1">#popdと同義？</span>
-<span class="nb">echo</span> <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span> <span class="c1">#結果 /home/okaits/Work/hogehoge</span>
-</code></pre></div>
+cd hogehoge #pushd hogehogeと同義？
+echo $(pwd) #結果　/home/okaits/Work/hogehoge
+cd $OLDPWD #popdと同義
+echo $(pwd) #結果　/home/okaits/Work
+cd $OLDPWD #popdと同義？
+echo $(pwd) #結果 /home/okaits/Work/hogehoge</code>
 このように、3層以上あると誤作動を起こしてしまいます。なのでpushd/popdを使ったほうが良いということです。</p>
 <div class="adservice-pc adservice-sp"></div>
 
@@ -814,7 +814,7 @@ fill="#000000" stroke="none">
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.top", "toc.integrate"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.748e2769.min.js"></script>
       
     
   </body>

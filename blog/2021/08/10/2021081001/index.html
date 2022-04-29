@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/08/10/2021081001/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.120efc48.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.8c5ef100.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.9647289d.min.css">
@@ -584,28 +584,28 @@
 <p>通常よりダウンロードが早くなってます。ちなみに、okaitsのPCは処理能力が足りずにフリーズしてしまったので、成功の保証はできません。<br></p>
 <h2>作業フォルダを作る</h2>
 <p>作業フォルダを作ります。
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="nv">$HOME</span>
-<span class="nb">umask</span> <span class="m">022</span>
-mkdir -p google/chromiumos
-</code></pre></div></p>
+<code>bash
+cd $HOME
+umask 022
+mkdir -p google/chromiumos</code></p>
 <h2>依存ソフトのインストール</h2>
 <p>ビルドに必要なソフトのインストールです。<br>
-<div class="highlight"><pre><span></span><code>sudo apt-get install git-core gitk git-gui curl lvm2 thin-provisioning-tools python3-pkg-resources python3-virtualenv python3-oauth2client xz-utils python3.6
-</code></pre></div></p>
+<code>bash
+sudo apt-get install git-core gitk git-gui curl lvm2 thin-provisioning-tools python3-pkg-resources python3-virtualenv python3-oauth2client xz-utils python3.6</code></p>
 <h2>depot_tools導入</h2>
 <p>depot_toolsとは、ソースコードのダウンロードなどに使う「repo」コマンドなどをまとめたツールセットです。<br>
 導入は簡単です。<br>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/google/
+<code>bash
+cd ${HOME}/google/
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-<span class="nb">echo</span> <span class="s1">&#39;export PATH=&quot;${HOME}/google/depot_tools:${PATH}&quot;&#39;</span> &gt;&gt; <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.bashrc
-<span class="nb">source</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.bashrc
-</code></pre></div></p>
+echo 'export PATH="${HOME}/google/depot_tools:${PATH}"' &gt;&gt; ${HOME}/.bashrc
+source ${HOME}/.bashrc</code></p>
 <h2>ソースコードのダウンロード</h2>
 <p>ソースコードのダウンロードです。普通めっちゃ時間かるん<b>ですが</b>、なんと<code class="prettyprint">--depth=1</code>というオプションを<code class="prettyprint lang-bash">repo init</code>コマンドにつけ足すと、ものすごく速くなります。<br>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/google/chromiumos/
-repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git --depth<span class="o">=</span><span class="m">1</span>
-repo sync -j4
-</code></pre></div>
+<code>bash
+cd ${HOME}/google/chromiumos/
+repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git --depth=1
+repo sync -j4</code>
 ??? note "速くなる理由"</p>
 <p>ちなみに、なぜ<code class="prettyprint">--depth=1</code>オプションをつけると速くなるというと、Gitには変更履歴を保存する機能があって、デフォルトではその変更履歴が一からダウンロードされます。Chrome OSのような変更履歴がものすごく多いレポジトリは、もちろんダウンロードに時間がかかります。そこで、<code class="prettyprint">--depth=1</code>オプションをつけると変更履歴が最後から1番目までしかダウンロードされません。なので、速くなるわけです。ちなみに、gitコマンドでも使えます。</p><br>
 ??? warn</p>
@@ -645,24 +645,24 @@ repo sync -j4
 そしたら、APIキーが出てくるので、保存してください。<br>
 そしたら、これを実行してください。<br>
 <span contenteditable>
-<div class="highlight"><pre><span></span><code><span class="nv">api</span><span class="o">=[</span>メモしておいたAPIキー<span class="o">]</span>
-<span class="nv">clientId</span><span class="o">=</span>メモしておいたクライアントID
-<span class="nv">clientSecret</span><span class="o">=</span>メモしておいたクライアントシークレット
-<span class="nb">echo</span> <span class="s2">&quot;&#39;google_api_key&#39;: &#39;&quot;</span><span class="si">${</span><span class="nv">api</span><span class="si">}</span><span class="s2">&quot;&#39;,&quot;</span> &gt; <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.googleapikeys
-<span class="nb">echo</span> <span class="s2">&quot;&#39;google_default_client_id: &#39;&quot;</span><span class="si">${</span><span class="nv">clientId</span><span class="si">}</span><span class="s2">&quot;&#39;,&quot;</span> &gt;&gt; <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.googleapikeys
-<span class="nb">echo</span> <span class="s2">&quot;&#39;google_default_client_secret&#39;: &#39;&quot;</span><span class="si">${</span><span class="nv">clientSecret</span><span class="si">}</span><span class="s2">&quot;&#39;,&quot;</span> &gt;&gt; <span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.googleapikeys
-</code></pre></div>
+<code>bash
+api=[メモしておいたAPIキー]
+clientId=メモしておいたクライアントID
+clientSecret=メモしておいたクライアントシークレット
+echo "'google_api_key': '"${api}"'," &gt; ${HOME}/.googleapikeys
+echo "'google_default_client_id: '"${clientId}"'," &gt;&gt; ${HOME}/.googleapikeys
+echo "'google_default_client_secret': '"${clientSecret}"'," &gt;&gt; ${HOME}/.googleapikeys</code>
 </span>
 &uarr; 編集できるようになってます。コピーする前に最初のところのAPIキーとクライアントID,シークレットだけ書き換えたほうがいいと思います。<br></p>
 <h2>ビルド</h2>
 <p>いよいよビルドです。<br>
-<div class="highlight"><pre><span></span><code>cros_sdk
-<span class="nb">export</span> <span class="nv">BOARD</span><span class="o">=</span>amd64-generic
-setup_board --board<span class="o">=</span><span class="si">${</span><span class="nv">BOARD</span><span class="si">}</span>
+<code>bash
+cros_sdk
+export BOARD=amd64-generic
+setup_board --board=${BOARD}
 ./set_shared_user_password.sh
-./build_packages --board<span class="o">=</span><span class="si">${</span><span class="nv">BOARD</span><span class="si">}</span>
-./build_image --board<span class="o">=</span><span class="si">${</span><span class="nv">BOARD</span><span class="si">}</span> --noenable_rootfs_verification <span class="nb">test</span>
-</code></pre></div>
+./build_packages --board=${BOARD}
+./build_image --board=${BOARD} --noenable_rootfs_verification test</code>
 これで終わりです。</p>
 <div class="adservice-pc adservice-sp"></div>
 
@@ -851,7 +851,7 @@ fill="#000000" stroke="none">
     <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.top", "toc.integrate"], "search": "../../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.748e2769.min.js"></script>
       
     
   </body>

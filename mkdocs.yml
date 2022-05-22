@@ -45,6 +45,8 @@ nav:
     - お問い合わせ: contact.md
     - ボット追加申請: addbot.md
     - Qiita Organization参加申請: qiitaorg.md
+    - プライバシーポリシー: privacy.md
+    - 利用規約: terms.md
 
 plugins:
     - blog:

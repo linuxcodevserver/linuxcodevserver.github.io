@@ -1,3 +1,21 @@
+<style type="text/css">
+  .button {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 18pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 11px 12px;   /* 余白       */
+    background    : #000066;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    box-shadow    : 1px 1px #666666;  /* 影の設定 */
+  }
+  .button:hover {
+    box-shadow    : none;        /* カーソル時の影消去 */
+  }
+</style>
 <h1>寄付ありがとうございました。</h1>
 <h2>Discordで皆の意見交流所に参加している場合</h2>
 DONATERロールがつけれます。良ければ記入してください。
@@ -16,12 +34,19 @@ DONATERロールがつけれます。良ければ記入してください。
   </label><br><br>
   <label>
     寄付額<br>
-    <input type="number" name="mona">
+    <input type="number" name="amount" id="amount">
   </label><br><br>
   <label>
-    ID(送付が終わったら出てくるもの)<br>
-    <input type="text" name="txid">
+    TxHash<br>
+    <input type="text" name="txid" id="txid">
   </label>
   <!-- your other form fields go here -->
   <button type="submit">申請</button>
 </form>
+<br><br><hr><br>
+<a href="javascript:history.go(-2)" id="back" class="button">戻る</a>
+<script>
+  params = new URLSearchParams(document.location.search.substring(1))
+  document.getElementById("txid").value = parms.get("txid")
+  document.getElementByID("txid").value = parms.get("amount")
+</script>

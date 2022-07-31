@@ -4,26 +4,32 @@ description: プライバシーポリシー
 ---
 <h1>プライバシーポリシー(2022/05/14 新規)</h1>
 <h2>各種フォームへ送信された個人情報の取り扱いについて</h2>
-<p>各種フォームへ送信された個人情報などはすべて必要な作業が終わったら破棄します。<br>必要な場合、<a href="keys.openpgp.org">keys.openpgp.org</a>に保管されているGPG鍵EF5B5E124C4C6D496A0303263FFEBE51606EC94C宛に暗号化してください。なお、暗号化してメッセージを送信する場合はASCII形式の外装を作成した状態で送ってください。<br></p>
+<p>各種フォームへ送信された個人情報などはすべて必要な作業が終わったら破棄します。<br>必要な場合、<a href="keys.openpgp.org">keys.openpgp.org</a>に保管されているGPG鍵86D1E161CC748989CAE07E8220AE621F85888B81宛に暗号化してください。なお、暗号化してメッセージを送信する場合はASCII形式の外装を作成した状態で送ってください。<br></p>
 <label>暗号時の例
 <pre>-----BEGIN PGP MESSAGE-----
 
-hQIMA4a5Q9eJqv47AQ//T9OKd5tKYz7jmyQMCaTb1U42R6mPq63KAajXD+x8l0C7
-siukARLptzGyVg0zln+OJ3ZfbyAVQoqBjGofn44wUuybZcijycQOPWdLHS9XgMII
-q2nZFHxVqf00+naKb9VpR/l+7el4+T78riTGCIl1GUd+aM/EvTec3o5vXFUdK0ep
-NfbJSSOjrWvxK/iMPSWhxC2vn64b/Ld7FnUq+NoXw9sRoE0C2qxxt9o0FPwaRQXY
-pReKzyuWtbwwbOpyW1O4TcD+eF2FN0fW17B4Yvuehxv+Rlgl3gvIc2lkgGd3mYyL
-wu6hLUtmkkpJ6817+KQXxCP1CKQacWEmMYwWB3neZCo6pWj0NxVXFa4OPt4xozLi
-Ap8DldXVwJPhqUj8ttyz7ZX6jxBZVlw4lnm19lMwdJU5vCWiVq+gTAICqOQkQJwa
-kXOB49m8z5H6upmMuP1cjQyRSDmPurfM3cR4lOwSt47zzygsjsH7UCl66QmGhUiK
-S7Hg/Io9tFl3lBsMayLmu8DzQNV0YycQCevOZeThxQ31TtbtaC3WK3+ZLCV6WYcF
-lsqCCEKrU0BbTVWPHFT4l/tNjpths1ck+ILSxvPXIMPAbqL/QF65aOVYytzzCyIL
-8H8JN4o9/9WBx3XX7qIaNZgF2sBJdZntVGqB16PN8ZvrTaWyqM2azmwtk/iCExTS
-SQETUf6wms2EHSDZntScJRWe7Vru1004aD5uuYWuLIEj/J/U8MzC3FzW9VI7AAmk
-mwzXCAuvbwcNHMb9p88/axSaSRoRphjM0+8=
-=rWfG
------END PGP MESSAGE-----
-</pre>
+hQGMA9e2AZGDVRNPAQwAp41Vfm/EyBzD4coN6y+5/mW7XGsS0wQnn1BH4PHurbDz
+nhnuU4maopL/2Yjef/yn8ecUb8yf+zghOLwnG2Ah6k3z34fIU/6IjFzYMrI9h0yc
+9UMo87pUNqQdo+Z62l/axvSgrooMMgwxt0cbEycTa2frFpMkuMaZRWxSDAf6TqsA
+FW1RZ/HT/IJT3g3ZOTejCRxXvlNU8KbK4DfMDDIIYLMxQAWjD+EvEF9GW5dG5lPt
+FGmwiR9HNGePpyc175ca4siS7gfNlzLy54O5dh70pPcA28dHY3RhrEDZdoVV2AIB
+tlZLY0OJkum4S+w/lbXpXM8NktoSlAkuhDlhCuchtMc+0xGZHYhaZRdU1ushR6Bc
+8yQWwVzyhzueqwN8e053itdmlK4AK7MO9x3Mfy3EZ8UpCojkhTDRiRTl/sDtEoPT
+gAfcbZNym8GmWAaTI3X/9YZDpxhWKBHbDyTdytJ7S7shXwYUGRwka4fL/MsoZ+rx
+ZC8hTFjKL/PJyhQkPqNT1OkBCQIQI8gvtlpj3lWvc0gRmWHp2Fy4sMAiRfBITXsY
+BGctlmHboo0jtSWPr0RZCWm/0M8lLYV9RXsMWYzYS1HdxcJ75mz2gkXQ99bduc8J
+UFVKfqKjzmWLAhjrE/uSM06gkwDZkYtUb+2MV9BWpfIJMi7HvL6alEMDLey4k1l9
+cq8XjwYrWlCAdhgVJHAR34DxuuPn72OxVUsH3gCHXUkGD5G4eKff/Wj5A6St6LP/
+aVCdBvjdYHN44shzeCJp+CZTHlCSxgqMBanknxaz1v5S12cNmTW2ahoeyUEoTDxv
+uLZ+33zVvvLkxlnG5K49wJLQyCvHDIfoN/tSnL5KFFJzZs1/KjSuqGRpzDXxVol7
+Vaqzi8rrf6dVPQ4bmrflb88wnjUNSXexy4XY6Ud/Mu3yIgj1fdpRxtOwJ0wcbsMy
+avJIsymFFCD26Nk3izWVYjSJpfWO0u1LzCcAIkYY99rdOGXcqkGA93KndkzhsCYQ
+RctEMwWhX6LbnjKLv4xP5ajRkDWfENfwYjFMW3lgT8MPiUFMbAIRx/KBDnaj1+7v
+Oom2aBUxMhbQC83DH/qgt9XhTAcgag10MD0OhndAPwhYEcE2BcGKzWnXQFXVKPjP
+SQ/UP3CsZ9uvH1qnBBEhT8E9EQXi7BkO9YN5PjfyxO4x81jaFAEnx8WYk42AtuN5
+hRIY1siXkSEK+/RAho+znYYzg9U=
+=VIMT
+-----END PGP MESSAGE-----</pre>
 </label>
 <h2>ホームページをご覧になるときの注意事項</h2>
 <p>このサイトは訪問時に以下のサイトに自動的にアクセスする可能性があります。<br></p>

@@ -6,20 +6,20 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Folding@homeをつかって新型コロナウイルスやがん、認知症などの様々な病気を解析する方法です。">
+        <meta name="description" content="S/MIMEについての説明です。">
       
       
         <meta name="author" content="okaits">
       
       
-        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2021/07/01/2021070101/">
+        <link rel="canonical" href="https://linuxcodevserver.github.io/blog/2022/07/31/2022073101/">
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Folding@homeを使って新型コロナウイルスやガンを解析する方法 - 皆の意見交流所サーバー公式ホームページ</title>
+        <title>GPGの信用データベースの使い方 - 皆の意見交流所サーバー公式ホームページ</title>
       
     
     
@@ -93,6 +93,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -124,7 +129,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Folding@homeを使って新型コロナウイルスやガンを解析する方法
+              GPGの信用データベースの使い方
             
           </span>
         </div>
@@ -573,7 +578,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/linuxcodevserver/linuxcodevserver.github.io/edit/master/docs/blog/2021/07/01/2021070101.md" title="編集" class="md-content__button md-icon">
+  <a href="https://github.com/linuxcodevserver/linuxcodevserver.github.io/edit/master/docs/blog/2022/07/31/2022073101.md" title="編集" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
@@ -582,92 +587,115 @@
 
 
 
-  <h1>Folding@homeを使って新型コロナウイルスやガンを解析する方法 (2021/07/01)</h1>
+  <h1>GPGの信用データベースの使い方 (2022/07/31)</h1>
 
 <div class="adservice-pc"></div>
-<h2>TL;DR</h2>
-<p><br>
-今回は、<a href="https://foldingathome.org">Folding@home(FAH,F@H)</a>を使って、新型コロナウイルスやがん、認知症などの様々な病気を解析する方法です。<br>
-<strike>じつはokaitsも昔はやってたんですけど、いまはもうあんまやってません。（）なぜかというと、電気代の問題とPCが重くなりすぎるからです。こんなことやってたらコンパイルとかでフリーズします。なので、今はLightにしてます。</strike><br>
-追記 2021/12/26: やっぱりコロナウイルス、最近やばいからまたFullにしてます。<br></p>
-<h2>インストール</h2>
-<p><br></p>
-<h3>インストーラーのダウンロード</h3>
-<p>インストーラーのダウンロードです。<br>
-まず、<a href="https://foldingathome.org/alternative-downloads/?lng=en">公式ページ</a>(英語)に飛びます。<br>
-飛ぶと英語ですが、自分が使っているOSがあると思います。<br>
-自分が使っているOSの「fahclient」から始まるインストーラーをダウンロードします。<br></p>
-<h3>インストール</h3>
-<h4>Debian系の人</h4>
-<p>Debian系の人は、<br>
-<div class="highlight"><pre><span></span><code>sudo apt install ダウンロードしたファイルの絶対パス
+
+<h2 id="_1">謎の表示</h2>
+<p>GPGで鍵を管理してるときに、
+<div class="highlight"><pre><span></span><code>gpg --list-keys
 </code></pre></div>
-<br>を実行してください。<br>
-もちろん、「ダウンロードしたファイルの絶対パス」は置き換えてください。<br>
-途中で質問されたら、全てEnterを押してください。</p>
-<h4>Redhat系の人</h4>
-<p>Redhat系の人は、次のコマンドを実行してください。<br>
-<div class="highlight"><pre><span></span><code>sudo rpm -ivh ダウンロードしたファイルの絶対パスか相対パス
+みたいなコマンドを実行することってあるじゃないですか。<br>
+このとき、ほとんどの場合「[究極]」とか「[不明]」みたいな表示があります。<br>
+では、これは一体どういうことなのかという話です。<br></p>
+<h2 id="_2">信用データベース</h2>
+<p>実はGPGには「信用データベース」というものがあって、鍵がどのくらい信用できるかが保存されています。<br>
+例えば自分が作った鍵の場合、[究極]とあります。これは、自分自身なのでなりすましなわけないよね、ということで究極的に信用ができると記録されています。<br>
+また、自分で作った鍵を別PCに移行してインポートした直後とか、他人の公開鍵をインポートした直後では[不明]が記録されています。これは、まだこの鍵をどのくらい信用できるかがわからないので不明になっているのです。<br></p>
+<h3 id="_3">鍵を信用？</h3>
+<p>鍵を信用ってなんやねんってことです。<br>
+GPGとかを使うと簡単に鍵を作れるわけですが、そのときにメールアドレスとかを登録しますよね。<br>
+ですが、その登録した情報が信用できるかはわかりません。<br>
+悪意を持った人が勝手に他の人のメールアドレスなどを使用して鍵を作ったとしても、それが本当に正しいのかはわかりません。<br>
+他人が偽物の秘密鍵を使って署名すると簡単にその人になりすませてしまいます。<br>
+それを防ぐため、信用データベースがあるのです。<br>
+もし鍵の信用情報が[不明]なら、署名を検証するときに「この鍵、本当にあってるの？」みたいな警告がでてきます。逆に[究極]なら、出てきません。<br>
+このように信用度を管理することで、なりすましを防ぐことをできるのです。<br></p>
+<h2 id="_4">信用データベースの変更</h2>
+<p>信用データベースがあっても、それを編集できなければ何も起こりません。<br>
+信用データベースは、自分自身の秘密鍵を使って信用情報に署名することで適用できます。<br>
+つまり、信用データベースを更新したあとは署名をします。<br>
+信用データベースの変更に使うのが「<code>--edit-key 対象鍵id</code>」、署名に使うのが「<code>--sign-with 自分自身の鍵id --sign-key 対象鍵id</code>」です。<br>
+ちなみに<code>--edit-key</code>を使うと信用データベースを調整する以外にも、副鍵を作ったりいろいろできます。<br>
+たとえば鍵<code>83B593C7BE6DB6A89FB7CBFFD058A05E90C4ECFEC</code>(Ubuntuのapt用署名鍵)の信用情報を更新して、鍵<code>86D1E161CC748989CAE07E8220AE621F85888B81</code>(筆者の鍵)で署名する場合、こんな感じになります。<br><br></p>
+<div class="highlight"><pre><span></span><code>$ gpg --edit-key 3B593C7BE6DB6A89FB7CBFFD058A05E90C4ECFEC
+gpg (GnuPG) 2.3.8-beta2; Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+pub  dsa1024/058A05E90C4ECFEC
+     作成: 2005-05-24  有効期限: 無期限      利用法: SC  
+     信用: 不明の     有効性: 不明の
+sub  elg2048/90EC593740A3E9B2
+     作成: 2005-05-24  有効期限: 無期限      利用法: E   
+[  不明  ] (1). Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+
+gpg&gt; trust
+pub  dsa1024/058A05E90C4ECFEC
+     作成: 2005-05-24  有効期限: 無期限      利用法: SC  
+     信用: 不明の     有効性: 不明の
+sub  elg2048/90EC593740A3E9B2
+     作成: 2005-05-24  有効期限: 無期限      利用法: E   
+[  不明  ] (1). Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+
+他のユーザの鍵を正しく検証するために、このユーザの信用度を決めてください
+(パスポートを見せてもらったり、他から得たフィンガープリントを検査したり、などなど)
+
+  1 = 知らない、または何とも言えない
+  2 = 信用し ない
+  3 = まぁまぁ信用する
+  4 = 充分に信用する
+  5 = 究極的に信用する
+  m = メーン・メニューに戻る
+
+あなたの決定は? 4
+
+pub  dsa1024/058A05E90C4ECFEC
+     作成: 2005-05-24  有効期限: 無期限      利用法: SC  
+     信用: 充分        有効性: 不明の
+sub  elg2048/90EC593740A3E9B2
+     作成: 2005-05-24  有効期限: 無期限      利用法: E   
+[  不明  ] (1). Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+プログラムを再起動するまで、表示された鍵の有効性は正しくないかもしれない、
+ということを念頭においてください。
+
+gpg&gt; save
+鍵は無変更なので更新は不要です。
+
+
+
+$ gpg --sign-with 86D1E161CC748989CAE07E8220AE621F85888B81 --sign-key 3B593C7BE6DB6A89FB7CBFFD058A05E90C4ECFEC
+pub  dsa1024/058A05E90C4ECFEC
+     作成: 2005-05-24  有効期限: 無期限      利用法: SC  
+     信用: 充分        有効性: 不明の
+sub  elg2048/90EC593740A3E9B2
+     作成: 2005-05-24  有効期限: 無期限      利用法: E   
+[  不明  ] (1). Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+
+
+pub  dsa1024/058A05E90C4ECFEC
+     作成: 2005-05-24  有効期限: 無期限      利用法: SC  
+     信用: 充分        有効性: 不明の
+  主鍵フィンガープリント: 3B59 3C7B E6DB 6A89 FB7C  BFFD 058A 05E9 0C4E CFEC
+
+     Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+
+本当にこの鍵にあなたの鍵&quot;okaits#7534 &lt;okaits7534@gmail.com&gt;&quot;で署名してよいですか
+(20AE621F85888B81)
+
+本当に署名しますか? (y/N) y
+
+
+
+$ gpg --list-key 3B593C7BE6DB6A89FB7CBFFD058A05E90C4ECFEC
+pub   dsa1024 2005-05-24 [SC]
+      3B593C7BE6DB6A89FB7CBFFD058A05E90C4ECFEC
+uid           [  充分  ] Ubuntu-ja Archive Automatic Signing Key &lt;archive@ubuntulinux.jp&gt;
+sub   elg2048 2005-05-24 [E]
 </code></pre></div>
-<br>もちろん、「ダウンロードしたファイルの絶対パスか相対パス」は置き換えください。<br></p>
-<h4>Windows NT系の人</h4>
-<p>Windows NT系(Windows10,11も含まれる)の人は、ダウンロードしたファイルをそのまま実行してください。（雑）<br>
-質問はすべてデフォルトのままでいいです。</p>
-<h2>初期設定</h2>
-<p><br>
-インストールが終わったら、<a href="https://client.foldingathome.org">ここ</a>を開きます。<br>
-すると、<br><img src="https://pc.watch.impress.co.jp/img/pcw/docs/1243/458/03.png"><br>このような画面が表示されます。<br>
-そしたら、Set up an identifyを選択し、Start Foldingを押します。<br></p>
-<h3>ユーザー名の設定</h3>
-<h4>自分の名前で貢献したい人</h4>
-<p>ポイントを自分でためたり、自分の名前（ニックネーム）で貢献したい人は、皆の意見交流所の公式チームで貢献することができます。<br>
-...今の所(2021/12/26)、okaits一人しかいないので(公式とは...)、できれば入ってほしいです。<br><br>
-User: 自分で決めたユーザー名<br>
-Team Number: 1062284<br></p>
-<h4>自分のチームで貢献したい人</h4>
-<p>自分が作ったチームで貢献したい人は、<a href="https://apps.foldingathome.org/team">ここ</a>からチームを作ります。<br>
-作り終わったら、Team Numberが出てくるので、<br><br>
-User: 自分で決めたユーザー名<br>
-Team Number: 登録時に出てくる数字<br>
-<br>
-で、登録してください。<br>
-登録が終わったら、自動的に貢献が開始されます。<br></p>
-<h3>Linuxの場合</h3>
-<p>Linuxの場合、再起動すると一時的に停止してしまいます。<br>
-これを防ぐには、次のコマンドを実行してください。<br>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> FAHClient
-sudo systemctl start FAHClient
-</code></pre></div>
-を実行してください。</p>
-<h2>進行状況を確認</h2>
-<p><a href="https://client.foldingathome.org">管理画面</a>では、計算がどれくらい出来たかを表示させる機能があります。<br>
-管理画面を開くと、真ん中に進行状況を表すバーがあります。<br>
-それが99%になると次の計算に必要なファイルがダウンロードされます。<br>
-100%になって計算が終わり、結果がアップロードされると、ポイント(換金不可)がもらえます。<br></p>
-<h2>パスキーの設定</h2>
-<p>暇な人は、セキュリティ用のパスキーを設定すればいいかもしれません。<br>
-パスキーを設定すると、ポイントが少しだけ増えることがあります。
-パスキーは、まず<a href="https://apps.foldingathome.org/getpasskey">ここ</a>に行き、メールアドレスと初期設定時に設定したユーザー名を入力して、「Get passkey」をクリックします。<br>
-そうすると、入力したメールアドレスにパスキーが書いてあるメールが来るので、<a href="https://client.foldingathome.org">管理画面</a>に来て、<wbr>「Change Identify」を押し、「Passkey」のところにまるごとコピペします。<br>
-Saveを押すと保存されます。</p>
-<h2>ボーナスポイント(早期リターンボーナス, QRB)</h2>
-<p>ボーナスポイントという制度があります。<br>
-これは、次の条件に当てはまっていたら自動的にもらえています。<br>
-・計算の正答率が80%以上<br>
-・パスキーが設定されている</p>
-<h2>証明書</h2>
-<p>Folding@homeで計算を一定以上やると、証明書がもらえます。<br>
-証明書はこんな感じです。<br>
-<img src="https://linuxcodevserver.github.io/img/202107010101.jpg"><br>
-これを受け取るには、まず「Folding@homeのポイントを初めてとった日から1日経っている」という条件が必要です。<br>
-この条件が揃ったら、早速証明書をダウンロードできます。<br>
-まず、<a href="https://stats.foldingathome.org">STATISTICSページ</a>で、自分の名前を入力して、Lookupボタンを押します。<br>
-そうすると、自分の成績やポイントが表示されるので、下にある「My award」を押します。<br>
-すると、証明書がjpg形式でダウンロードされます。<br>
-あとは友達に自慢するのもよし、<br>
-印刷して飾るのもよし、<br>
-好きにつかってよいです。</p>
-<div class="adservice-pc adservice-sp"></div>
+<h2 id="_5">まとめ(?)</h2>
+<p>ということで、信用データベースの概要とその編集方法でした。<br>
+とは言っても筆者自身あまりGPGとかPGPとか詳しくないので、間違っているところや紛らわしい表現方法などを発見したら、是非Discordで指摘してもらえると助かります。</p>
 
               
             </article>

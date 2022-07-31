@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://linuxcodevserver.github.io/privacy/</loc>
+         <lastmod>2022-07-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://linuxcodevserver.github.io/qiitaorg/</loc>
          <lastmod>2022-07-31</lastmod>
          <changefreq>daily</changefreq>
@@ -52,6 +57,11 @@
     </url>
     <url>
          <loc>https://linuxcodevserver.github.io/tags/</loc>
+         <lastmod>2022-07-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linuxcodevserver.github.io/terms/</loc>
          <lastmod>2022-07-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
